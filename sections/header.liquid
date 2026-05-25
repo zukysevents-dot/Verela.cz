@@ -1,0 +1,91 @@
+<div class="verela-header-wrapper">
+  <input class="verela-menu-state" type="checkbox" id="VerelaMobileMenu">
+
+  <header class="verela-header">
+    <label class="verela-mobile-toggle" for="VerelaMobileMenu" aria-label="Otevřít menu">
+      <span class="verela-mobile-toggle__line"></span>
+      <span class="verela-mobile-toggle__line"></span>
+      <span class="verela-mobile-toggle__line"></span>
+    </label>
+
+    <nav class="verela-menu" aria-label="Hlavní menu">
+      <a href="{{ routes.root_url }}">Domů</a>
+      <a href="/pages/proc-led-terapie">Proč LED?</a>
+
+      <div class="verela-category">
+        <button class="verela-category-toggle" type="button" aria-expanded="false">Kategorie</button>
+        <ul class="verela-category-menu">
+          <li><a href="/collections/led-terapie">LED terapie</a></li>
+          <li><a href="/collections/bestsellery">Bestsellery</a></li>
+          <li><a href="/collections/pece-o-plet">Péče o pleť</a></li>
+          <li><a href="/collections/domaci-wellness">Masáž a regenerace</a></li>
+          <li><a href="/collections/telova-pece">Tělová péče</a></li>
+          <li><a href="/collections/aromaterapie">Aromaterapie</a></li>
+        </ul>
+      </div>
+
+      <a href="/collections/led-terapie">LED terapie</a>
+      <a href="/collections/bestsellery">Bestsellery</a>
+      <a href="/pages/kontakt">Kontakt</a>
+    </nav>
+
+    <a href="{{ routes.root_url }}" class="verela-logo" aria-label="{{ shop.name }}">
+      {% if settings.logo != blank %}
+        {{ settings.logo | image_url: width: 360 | image_tag: alt: shop.name, loading: 'eager' }}
+      {% else %}
+        <img
+          class="verela-logo-fallback"
+          src="{{ 'verela-logo.svg' | asset_url }}"
+          alt="{{ shop.name | escape }}"
+          width="156"
+          height="64"
+          loading="eager"
+        >
+      {% endif %}
+    </a>
+
+    <div class="verela-icons">
+      <a class="verela-icon" href="{{ routes.search_url }}" aria-label="Hledat">
+        <span class="svg-wrapper">
+          {{- 'icon-search.svg' | inline_asset_content -}}
+        </span>
+      </a>
+
+      {%- if shop.customer_accounts_enabled -%}
+        <a class="verela-icon small-hide" href="{{ routes.account_url }}" aria-label="Účet">
+          <span class="svg-wrapper">
+            {{- 'icon-account.svg' | inline_asset_content -}}
+          </span>
+        </a>
+      {%- endif -%}
+
+      <a class="verela-icon verela-cart-link" href="{{ routes.cart_url }}" aria-label="Košík">
+        <span class="svg-wrapper">
+          {{- 'icon-cart.svg' | inline_asset_content -}}
+        </span>
+        {%- if cart.item_count > 0 -%}
+          <span class="verela-cart-count" aria-hidden="true">{{ cart.item_count }}</span>
+        {%- endif -%}
+      </a>
+    </div>
+  </header>
+
+  <nav class="verela-mobile-menu" aria-label="Mobilní menu">
+    <a href="{{ routes.root_url }}">Domů</a>
+    <a href="/pages/proc-led-terapie">Proč LED terapie</a>
+    <a href="/collections/led-terapie">LED terapie</a>
+    <a href="/collections/bestsellery">Bestsellery</a>
+    <a href="/collections/pece-o-plet">Péče o pleť</a>
+    <a href="/collections/domaci-wellness">Masáž a regenerace</a>
+    <a href="/collections/telova-pece">Tělová péče</a>
+    <a href="/collections/aromaterapie">Aromaterapie</a>
+    <a href="/pages/kontakt">Kontakt</a>
+  </nav>
+</div>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": []
+}
+{% endschema %}

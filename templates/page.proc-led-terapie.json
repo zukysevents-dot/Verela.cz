@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "main": {
+      "type": "verela-led-guide",
+      "settings": {
+        "hero_image": "shopify://shop_images/ChatGPT_Image_18._5._2026_20_19_29.png"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

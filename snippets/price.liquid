@@ -1,0 +1,80 @@
+{%- liquid
+  if use_variant
+    assign target = product.selected_or_first_available_variant
+  elsif placeholder
+    assign target = null
+  else
+    assign target = product
+  endif
+
+  assign compare_at_price = target.compare_at_price
+  assign price = target.price | default: 0
+  assign available = true
+  if target.available == false
+    assign available = false
+  endif
+  assign money_price = price | money
+  assign money_compare_at_price = compare_at_price | money
+
+  if settings.currency_code_enabled
+    assign money_price = price | money_with_currency
+    assign money_compare_at_price = compare_at_price | money_with_currency
+  endif
+
+  if target == product and product.price_varies
+    assign money_price = 'products.product.price.from_price_html' | t: price: money_price
+  endif
+-%}
+
+{%- unless target == null and placeholder == null -%}
+  <div
+    class="
+      price
+      {%- if price_class %} {{ price_class }}{% endif -%}
+      {%- if available == false %} price--sold-out{% endif -%}
+      {%- if compare_at_price > price %} price--on-sale{% endif -%}
+      {%- if show_badges %} price--show-badge{% endif -%}
+    "
+  >
+    <div class="price__container">
+      <div class="price__regular">
+        <span class="visually-hidden">{{ 'products.product.price.regular_price' | t }}</span>
+        <span class="price-item price-item--regular">
+          {{ money_price }}
+        </span>
+      </div>
+
+      <div class="price__sale">
+        {%- if compare_at_price > price -%}
+          <span class="visually-hidden">{{ 'products.product.price.regular_price' | t }}</span>
+          <s class="price-item price-item--regular">
+            {{ money_compare_at_price }}
+          </s>
+        {%- endif -%}
+        <span class="visually-hidden">{{ 'products.product.price.sale_price' | t }}</span>
+        <span class="price-item price-item--sale price-item--last">
+          {{ money_price }}
+        </span>
+      </div>
+
+      {%- if product.selected_or_first_available_variant.unit_price_measurement -%}
+        {% render 'unit-price',
+          price: product.selected_or_first_available_variant.unit_price,
+          measurement: product.selected_or_first_available_variant.unit_price_measurement
+        %}
+      {%- endif -%}
+    </div>
+
+    {%- if show_badges and compare_at_price > price -%}
+      <span class="badge price__badge-sale color-{{ settings.sale_badge_color_scheme }}">
+        Sleva
+      </span>
+    {%- endif -%}
+
+    {%- if show_badges and available == false -%}
+      <span class="badge price__badge-sold-out color-{{ settings.sold_out_badge_color_scheme }}">
+        Vyprodáno
+      </span>
+    {%- endif -%}
+  </div>
+{%- endunless -%}

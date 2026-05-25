@@ -1,0 +1,57 @@
+<div {{ block.shopify_attributes }}>
+  {%- if product != blank -%}
+    {%- liquid
+      assign selected_variant = product.selected_or_first_available_variant
+      assign button_label = 'Přidat do košíku'
+
+      unless selected_variant.available
+        assign button_label = 'Vyprodáno'
+      endunless
+    -%}
+
+    <product-form class="product-form" data-section-id="{{ section.id }}">
+      {%- form 'product',
+        product,
+        id: product_form_id,
+        class: 'form',
+        novalidate: 'novalidate',
+        data-type: 'add-to-cart-form'
+      -%}
+        <input
+          type="hidden"
+          name="id"
+          value="{{ selected_variant.id }}"
+          class="product-variant-id"
+          {% unless selected_variant.available %}
+            disabled
+          {% endunless %}
+        >
+
+        <div class="product-form__buttons">
+          <button
+            id="ProductSubmitButton-{{ section_id }}"
+            type="submit"
+            name="add"
+            class="product-form__submit button button--full-width button--primary"
+            {% unless selected_variant.available %}
+              disabled
+            {% endunless %}
+          >
+            <span>{{ button_label }}</span>
+            {%- render 'loading-spinner' -%}
+          </button>
+
+          {%- if block.settings.show_dynamic_checkout and selected_variant.available -%}
+            {{ form | payment_button }}
+          {%- endif -%}
+        </div>
+      {%- endform -%}
+    </product-form>
+
+    <div class="verela-buy-reassurance" aria-label="Informace k nákupu">
+      <span>Bezpečná platba</span>
+      <span>Doručení 5-12 pracovních dnů</span>
+      <span>Vrácení do 14 dnů</span>
+    </div>
+  {%- endif -%}
+</div>

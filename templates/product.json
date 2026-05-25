@@ -1,0 +1,161 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "benefit_note": {
+          "type": "text",
+          "settings": {
+            "text": "Domácí beauty a wellness rutina bez zbytečné složitosti",
+            "text_style": "subtitle"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "inventory": {
+          "type": "inventory",
+          "settings": {
+            "text_style": "body",
+            "inventory_threshold": 5,
+            "show_inventory_quantity": false
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "verela_icons": {
+          "type": "icon-with-text",
+          "settings": {
+            "layout": "horizontal",
+            "icon_1": "truck",
+            "heading_1": "Doručení 5-12 dnů",
+            "icon_2": "lock",
+            "heading_2": "Bezpečná platba",
+            "icon_3": "return",
+            "heading_3": "Vrácení do 14 dnů"
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "delivery_tab": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Doručení",
+            "icon": "truck",
+            "content": "<p>Objednávky obvykle doručujeme během 5-12 pracovních dnů podle produktu a dodavatele. Po dokončení nákupu obdržíte potvrzení e-mailem.</p>",
+            "page": ""
+          }
+        },
+        "returns_tab": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Vrácení a výměna",
+            "icon": "return",
+            "content": "<p>Nevyhovuje? Nepoužité zboží můžete vrátit do 14 dnů od doručení podle obchodních podmínek.</p>",
+            "page": ""
+          }
+        },
+        "care_tab": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Jak používat",
+            "icon": "heart",
+            "content": "<p>Produkt používejte podle návodu u konkrétního balení. Začněte opatrně, sledujte reakci pleti nebo těla a zařaďte produkt do rutiny, která vám vyhovuje.</p>",
+            "page": ""
+          }
+        },
+        "share": {
+          "type": "share",
+          "settings": {
+            "share_label": "Sdílet"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_note",
+        "title",
+        "price",
+        "inventory",
+        "variant_picker",
+        "quantity_selector",
+        "buy_buttons",
+        "verela_icons",
+        "description",
+        "delivery_tab",
+        "returns_tab",
+        "care_tab",
+        "share"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "color_scheme": "scheme-1",
+        "media_size": "medium",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "gallery_layout": "thumbnail_slider",
+        "mobile_thumbnails": "show",
+        "media_position": "right",
+        "image_zoom": "lightbox",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    },
+    "verela_product_confidence": {
+      "type": "verela-product-confidence",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "kicker": "Před nákupem",
+        "heading": "Všechno důležité hned na očích",
+        "text": "U dražších beauty pomůcek rozhoduje důvěra. Proto produktová stránka ukazuje použití, doručení, vrácení a férové upozornění bez přehnaných slibů."
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "heading": "Mohlo by se vám líbit",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "columns_mobile": "2",
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "padding_top": 48,
+        "padding_bottom": 56
+      }
+    }
+  },
+  "order": [
+    "main",
+    "verela_product_confidence",
+    "related-products"
+  ]
+}

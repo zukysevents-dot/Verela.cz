@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 148" role="img" aria-labelledby="title desc">
+  <title id="title">Verela</title>
+  <desc id="desc">Verela luxury beauty skincare logo</desc>
+  <defs>
+    <linearGradient id="gold" x1="74" y1="20" x2="286" y2="128" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#d8bc75"/>
+      <stop offset="0.46" stop-color="#9b7239"/>
+      <stop offset="1" stop-color="#e5c986"/>
+    </linearGradient>
+    <linearGradient id="paper" x1="0" y1="0" x2="360" y2="148" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f8f3ec"/>
+      <stop offset="1" stop-color="#efe4d8"/>
+    </linearGradient>
+  </defs>
+  <rect width="360" height="148" rx="8" fill="url(#paper)"/>
+  <text x="180" y="78" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="58" font-style="italic" letter-spacing="-4" fill="url(#gold)">VR</text>
+  <path d="M132 84c26 12 69 12 96 0" fill="none" stroke="url(#gold)" stroke-width="2" stroke-linecap="round"/>
+  <text x="180" y="113" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="30" letter-spacing="12" fill="#5e4938">VERELA</text>
+  <text x="180" y="133" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" letter-spacing="4" fill="#9b856b">LUXURY BEAUTY SKINCARE</text>
+</svg>

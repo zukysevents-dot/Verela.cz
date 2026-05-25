@@ -1,0 +1,1476 @@
+:root {
+  --verela-bg: #f7f5f0;
+  --verela-surface: #ffffff;
+  --verela-soft: #edf3ee;
+  --verela-warm: #f0e8df;
+  --verela-ink: #181619;
+  --verela-muted: #625d58;
+  --verela-rose: #7c4357;
+  --verela-sage: #5f735d;
+  --verela-border: rgba(24, 22, 25, 0.12);
+  --verela-shadow: 0 18px 44px rgba(24, 22, 25, 0.08);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body,
+.gradient {
+  background: var(--verela-bg) !important;
+  color: var(--verela-ink) !important;
+  letter-spacing: 0 !important;
+}
+
+.page-width {
+  max-width: 1280px;
+}
+
+h1,
+h2,
+h3,
+.h0,
+.h1,
+.h2,
+.h3,
+.title,
+.banner__heading,
+.image-with-text__heading,
+.rich-text__heading,
+.collection__title,
+.product__title h1,
+.card__heading {
+  color: var(--verela-ink) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0 !important;
+}
+
+h1,
+.h0,
+.h1,
+.banner__heading,
+.product__title h1 {
+  font-size: 4.8rem !important;
+  line-height: 1.02 !important;
+}
+
+h2,
+.h2,
+.title,
+.collection__title,
+.rich-text__heading,
+.image-with-text__heading {
+  font-size: 3.6rem !important;
+  line-height: 1.08 !important;
+}
+
+h3,
+.h3,
+.card__heading {
+  font-size: 1.9rem !important;
+  line-height: 1.25 !important;
+}
+
+p,
+.rte,
+.banner__text,
+.rich-text__text,
+.image-with-text__text,
+.product__description,
+.product__text,
+.caption-with-letter-spacing {
+  color: var(--verela-muted) !important;
+  letter-spacing: 0 !important;
+}
+
+.verela-header-wrapper {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(247, 245, 240, 0.94);
+  border-bottom: 1px solid var(--verela-border);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.verela-menu-state {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.verela-header {
+  min-height: 78px;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 28px;
+}
+
+.verela-menu {
+  display: flex;
+  gap: 26px;
+  align-items: center;
+}
+
+.verela-menu a,
+.verela-category-toggle,
+.verela-mobile-menu a {
+  color: var(--verela-ink);
+  text-decoration: none;
+  font-size: 1.25rem;
+  letter-spacing: 0 !important;
+  text-transform: uppercase;
+  font-weight: 600;
+  line-height: 1;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.verela-menu a:hover,
+.verela-category-toggle:hover,
+.verela-icon:hover {
+  color: var(--verela-rose);
+}
+
+.verela-category {
+  position: relative;
+}
+
+.verela-category::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: -28px;
+  right: -28px;
+  height: 26px;
+}
+
+.verela-category-toggle::after {
+  content: "";
+  display: inline-block;
+  width: 0.55em;
+  height: 0.55em;
+  margin-left: 0.65rem;
+  border-right: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+  transform: translateY(-0.2rem) rotate(45deg);
+}
+
+.verela-category-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 12px);
+  left: -18px;
+  min-width: 250px;
+  padding: 10px 0;
+  margin: 0;
+  background: var(--verela-surface);
+  border: 1px solid var(--verela-border);
+  border-radius: 8px;
+  box-shadow: var(--verela-shadow);
+  list-style: none;
+  z-index: 1001;
+}
+
+.verela-category-menu::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -22px;
+  height: 22px;
+}
+
+.verela-category-menu a {
+  display: block;
+  padding: 12px 18px;
+  white-space: nowrap;
+}
+
+.verela-category-menu a:hover {
+  background: var(--verela-soft);
+}
+
+.verela-category:hover .verela-category-menu,
+.verela-category:focus-within .verela-category-menu {
+  display: block;
+}
+
+.verela-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--verela-ink);
+  text-decoration: none;
+  font-size: 2.4rem;
+  font-weight: 700;
+  letter-spacing: 0 !important;
+  line-height: 1;
+}
+
+.verela-logo img {
+  display: block;
+  width: auto;
+  max-width: 156px;
+  max-height: 64px;
+  object-fit: contain;
+}
+
+.verela-icons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 14px;
+}
+
+.verela-icon {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--verela-ink);
+  text-decoration: none;
+  border-radius: 50%;
+}
+
+.verela-icon .svg-wrapper,
+.verela-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.verela-cart-count {
+  position: absolute;
+  right: 0;
+  top: 0;
+  min-width: 17px;
+  height: 17px;
+  padding: 0 4px;
+  border-radius: 9px;
+  background: var(--verela-rose);
+  color: #fff;
+  font-size: 1rem;
+  line-height: 17px;
+  text-align: center;
+}
+
+.verela-mobile-toggle,
+.verela-mobile-menu {
+  display: none;
+}
+
+.banner {
+  min-height: 540px;
+  background: var(--verela-bg) !important;
+}
+
+.banner__box {
+  max-width: 620px !important;
+  background: rgba(247, 245, 240, 0.86) !important;
+  border: 1px solid rgba(24, 22, 25, 0.08);
+  border-radius: 8px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 3.2rem !important;
+}
+
+.banner__media img {
+  object-fit: cover !important;
+}
+
+.banner__buttons {
+  gap: 1rem;
+}
+
+.button,
+.shopify-challenge__button,
+.customer button,
+.product-form__submit,
+.shopify-payment-button__button,
+button.shopify-payment-button__button--unbranded {
+  min-height: 5.2rem !important;
+  border-radius: 6px !important;
+  box-shadow: none !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  font-size: 1.5rem !important;
+  font-weight: 700 !important;
+  transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease, transform 0.18s ease !important;
+}
+
+.button,
+.product-form__submit,
+.shopify-payment-button__button,
+button.shopify-payment-button__button--unbranded {
+  background: var(--verela-ink) !important;
+  color: #fff !important;
+  border: 1px solid var(--verela-ink) !important;
+}
+
+.button::before,
+.button::after,
+.product-form__submit::before,
+.product-form__submit::after,
+.shopify-payment-button__button::before,
+.shopify-payment-button__button::after {
+  box-shadow: none !important;
+  border: 0 !important;
+}
+
+.button:not([disabled]):hover,
+.product-form__submit:not([disabled]):hover,
+.shopify-payment-button__button:not([disabled]):hover {
+  background: var(--verela-rose) !important;
+  border-color: var(--verela-rose) !important;
+  transform: translateY(-1px);
+}
+
+.button--secondary,
+.button--tertiary {
+  background: transparent !important;
+  color: var(--verela-ink) !important;
+  border: 1px solid var(--verela-border) !important;
+}
+
+.shopify-section {
+  background: transparent;
+}
+
+.image-with-text,
+.rich-text,
+.multicolumn,
+.collection,
+.featured-collection,
+.collection-list-wrapper {
+  padding-top: 6.4rem;
+  padding-bottom: 6.4rem;
+}
+
+.card__inner,
+.card__media,
+.card__media .media,
+.product__media-wrapper .product__media,
+.product__media-list .product__media-item {
+  background: var(--verela-warm) !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+}
+
+.card__inner {
+  aspect-ratio: 1 / 1;
+}
+
+.card__media,
+.card__media .media {
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.card__media img {
+  width: 100% !important;
+  height: 100% !important;
+  padding: 1.4rem;
+  object-fit: contain !important;
+  object-position: center !important;
+  background: #fff;
+  opacity: 1 !important;
+  transition: transform 0.35s ease, opacity 0.2s ease;
+}
+
+.card__media .media img + img {
+  opacity: 0 !important;
+}
+
+.card-wrapper:hover .card__media img:first-child {
+  transform: scale(1.02);
+}
+
+.card-wrapper:hover .card__media .media img + img {
+  opacity: 0 !important;
+}
+
+.card__information {
+  padding-top: 1.4rem !important;
+}
+
+.price {
+  color: var(--verela-muted) !important;
+  letter-spacing: 0 !important;
+}
+
+.card-information--price {
+  display: block !important;
+  margin-top: 0.7rem;
+}
+
+.price--card,
+.price--card .price-item {
+  display: inline-flex !important;
+  align-items: baseline;
+  color: var(--verela-ink) !important;
+  font-size: 1.65rem !important;
+  font-weight: 800 !important;
+  line-height: 1.2 !important;
+}
+
+.price--card .price__container,
+.price--card .price__regular,
+.price--card .price__sale {
+  display: inline-flex !important;
+  align-items: baseline;
+  gap: 0.7rem;
+}
+
+.price--card.price--on-sale .price__regular {
+  display: none !important;
+}
+
+.price--card.price--on-sale .price__sale {
+  display: inline-flex !important;
+}
+
+.price--card .price-item--regular {
+  margin: 0 !important;
+}
+
+.price--card .price__sale .price-item--regular {
+  color: var(--verela-muted) !important;
+  font-size: 1.35rem !important;
+  font-weight: 600 !important;
+}
+
+.card-variants {
+  margin-top: 0.9rem;
+  color: var(--verela-muted);
+  font-size: 1.25rem;
+}
+
+.card-option-name {
+  display: none;
+}
+
+.card-option-values {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.card-option-pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.6rem;
+  padding: 0.35rem 0.8rem;
+  border: 1px solid var(--verela-border);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.58);
+}
+
+.badge,
+.price__badge-sale,
+.price__badge-sold-out {
+  border-radius: 999px !important;
+  background: var(--verela-rose) !important;
+  color: #fff !important;
+  border: 0 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+}
+
+.card__badge {
+  pointer-events: none;
+  z-index: 2;
+}
+
+.card__badge .badge {
+  display: inline-flex !important;
+  align-items: center;
+  min-height: 2.8rem;
+  padding: 0.45rem 1rem !important;
+  font-size: 1.2rem !important;
+  line-height: 1 !important;
+}
+
+.product {
+  gap: 4.2rem !important;
+  align-items: flex-start !important;
+}
+
+@media screen and (min-width: 990px) {
+  .product:not(.product--no-media) {
+    display: grid !important;
+    grid-template-columns: minmax(360px, 0.86fr) minmax(420px, 1.14fr) !important;
+    gap: 4.2rem !important;
+  }
+
+  .product.product--right .product__info-wrapper {
+    order: 1 !important;
+    width: 100% !important;
+    max-width: none !important;
+    padding: 0 !important;
+  }
+
+  .product.product--right .product__media-wrapper {
+    order: 2 !important;
+    width: 100% !important;
+    max-width: none !important;
+  }
+}
+
+.product__media-wrapper {
+  min-width: 0;
+}
+
+.product__media-list {
+  gap: 1.2rem !important;
+}
+
+.product__media-wrapper .product__media,
+.product__media-list .product__media-item,
+.product-media-container,
+.product__modal-opener,
+.product__modal-opener .media {
+  border-radius: 8px !important;
+  background: #fff !important;
+}
+
+.product__media-wrapper .product__media img,
+.product__modal-opener .media > img,
+.product-media-container .media > img {
+  width: 100% !important;
+  max-height: 560px !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  background: #fff !important;
+}
+
+.product__info-wrapper {
+  min-width: 0;
+}
+
+.product__info-container {
+  padding: 2.8rem !important;
+  border: 1px solid var(--verela-border);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 20px 46px rgba(24, 22, 25, 0.06);
+}
+
+.product__title {
+  margin-bottom: 1rem !important;
+}
+
+.product__title h1 {
+  font-size: 3.8rem !important;
+  line-height: 1.08 !important;
+}
+
+.product .price {
+  font-size: 2.6rem !important;
+  color: var(--verela-ink) !important;
+  font-weight: 700 !important;
+}
+
+.product__description {
+  padding: 2rem;
+  border: 1px solid var(--verela-border);
+  border-radius: 8px;
+  background: rgba(247, 245, 240, 0.72);
+}
+
+.product__description h3 {
+  margin: 1.8rem 0 0.8rem;
+  font-size: 1.7rem !important;
+}
+
+.product__description ul {
+  padding-left: 1.8rem;
+}
+
+.product-form__buttons {
+  max-width: none !important;
+}
+
+.product-form__submit {
+  min-height: 5.6rem !important;
+}
+
+.verela-product-confidence {
+  padding: 5.6rem 0;
+  background: var(--verela-bg) !important;
+}
+
+.verela-product-confidence__head {
+  max-width: 760px;
+  margin: 0 0 2.6rem;
+}
+
+.verela-product-confidence__head h2 {
+  margin: 0 0 1rem;
+}
+
+.verela-product-confidence__head p {
+  margin: 0;
+  font-size: 1.55rem;
+  line-height: 1.65;
+}
+
+.verela-product-confidence__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.2rem;
+}
+
+.verela-product-confidence__grid article {
+  padding: 2rem;
+  border: 1px solid var(--verela-border);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.verela-product-confidence__grid strong {
+  display: block;
+  color: var(--verela-ink);
+  font-size: 1.55rem;
+}
+
+.verela-product-confidence__grid p {
+  margin: 0.8rem 0 0;
+  color: var(--verela-muted);
+  font-size: 1.35rem;
+  line-height: 1.55;
+}
+
+.product__description {
+  font-size: 1.6rem !important;
+  line-height: 1.75 !important;
+}
+
+.premium-inventory {
+  gap: 0.8rem !important;
+  color: var(--verela-sage);
+  font-weight: 700;
+}
+
+.inventory-dot {
+  width: 0.9rem;
+  height: 0.9rem;
+  border-radius: 50%;
+  background: var(--verela-sage);
+  box-shadow: 0 0 0 5px rgba(95, 115, 93, 0.12);
+}
+
+.verela-buy-reassurance {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.8rem;
+  margin-top: 1.2rem;
+}
+
+.verela-buy-reassurance span,
+.verela-cart-reassurance span {
+  display: flex;
+  align-items: center;
+  min-height: 4.2rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--verela-border);
+  border-radius: 8px;
+  color: var(--verela-muted);
+  font-size: 1.25rem;
+  line-height: 1.25;
+  background: rgba(255, 255, 255, 0.52);
+}
+
+.icon-with-text {
+  gap: 1rem !important;
+  justify-content: flex-start !important;
+  padding: 1.2rem 0;
+}
+
+.icon-with-text--horizontal .icon-with-text__item {
+  width: auto !important;
+  min-width: 0;
+}
+
+.icon-with-text .h4 {
+  color: var(--verela-ink) !important;
+  font-size: 1.25rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0 !important;
+}
+
+.product__accordion {
+  border-top: 1px solid var(--verela-border);
+}
+
+.product__accordion:last-of-type {
+  border-bottom: 1px solid var(--verela-border);
+}
+
+.verela-trust-bar {
+  padding: 3rem 0;
+  border-top: 1px solid var(--verela-border);
+  border-bottom: 1px solid var(--verela-border);
+  background: var(--verela-soft) !important;
+}
+
+.verela-trust-bar__head {
+  max-width: 760px;
+  margin: 0 auto 2rem;
+  text-align: center;
+}
+
+.verela-trust-bar__head h2 {
+  margin: 0 0 0.8rem;
+  font-size: 2.6rem !important;
+}
+
+.verela-trust-bar__head p {
+  margin: 0;
+  font-size: 1.45rem;
+  line-height: 1.55;
+}
+
+.verela-trust-bar__list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.2rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.verela-trust-bar__item {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  min-width: 0;
+  padding: 1.4rem;
+  border: 1px solid rgba(24, 22, 25, 0.08);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.62);
+}
+
+.verela-trust-bar__mark {
+  width: 0.9rem;
+  height: 0.9rem;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: var(--verela-rose);
+}
+
+.verela-trust-bar__content {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.verela-trust-bar__content strong {
+  color: var(--verela-ink);
+  font-size: 1.35rem;
+  line-height: 1.2;
+}
+
+.verela-trust-bar__content span {
+  color: var(--verela-muted);
+  font-size: 1.25rem;
+  line-height: 1.25;
+}
+
+.verela-ritual {
+  padding: 7.2rem 0;
+}
+
+.verela-ritual__header {
+  max-width: 760px;
+  margin-bottom: 3.2rem;
+}
+
+.verela-kicker {
+  margin: 0 0 1rem;
+  color: var(--verela-rose) !important;
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.verela-ritual__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+}
+
+.verela-ritual__item {
+  padding: 2.4rem;
+  border: 1px solid var(--verela-border);
+  border-radius: 8px;
+  background: var(--verela-surface);
+}
+
+.verela-ritual__number {
+  display: block;
+  margin-bottom: 2.2rem;
+  color: var(--verela-rose);
+  font-weight: 700;
+}
+
+.verela-ritual__item h3 {
+  margin: 0 0 1rem;
+}
+
+.verela-cart-reassurance {
+  display: grid;
+  gap: 0.8rem;
+  margin: 1.4rem 0 1.6rem;
+}
+
+.verela-checkout-note {
+  margin: 0 0 1rem;
+  color: var(--verela-muted) !important;
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+.footer {
+  background: var(--verela-ink) !important;
+  color: rgba(255, 255, 255, 0.76) !important;
+}
+
+.footer h2,
+.footer a,
+.footer p,
+.footer .rte {
+  color: rgba(255, 255, 255, 0.86) !important;
+}
+
+.verela-led-home {
+  background: var(--verela-bg);
+}
+
+.verela-led-hero,
+.verela-led-banner {
+  position: relative;
+  min-height: 690px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: var(--verela-warm);
+}
+
+.verela-led-hero__image,
+.verela-led-banner__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.verela-led-hero::after,
+.verela-led-banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(247, 245, 240, 0.92) 0%, rgba(247, 245, 240, 0.70) 34%, rgba(247, 245, 240, 0.08) 72%);
+}
+
+.verela-led-hero__inner,
+.verela-led-banner__inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+.verela-led-hero__content {
+  max-width: 680px;
+  padding: 4rem 0;
+}
+
+.verela-led-banner__content {
+  max-width: 680px;
+  padding: 4rem;
+  border: 1px solid rgba(24, 22, 25, 0.08);
+  border-radius: 8px;
+  background: rgba(247, 245, 240, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.verela-led-kicker {
+  margin: 0 0 1.2rem;
+  color: var(--verela-rose) !important;
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: 0 !important;
+  text-transform: uppercase;
+}
+
+.verela-led-hero h1,
+.verela-led-banner h2 {
+  margin: 0 0 1.6rem;
+}
+
+.verela-led-hero__price {
+  display: inline-flex;
+  align-items: center;
+  min-height: 42px;
+  margin: 0 0 1.8rem;
+  padding: 0.8rem 1.4rem;
+  border: 1px solid rgba(124, 67, 87, 0.26);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.68);
+  color: var(--verela-rose) !important;
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+.verela-led-hero__text {
+  max-width: 56rem;
+  font-size: 1.8rem;
+  line-height: 1.65;
+}
+
+.verela-led-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2.4rem;
+}
+
+.verela-led-hero__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin: 2rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.verela-led-hero__badges li {
+  position: relative;
+  padding: 0.8rem 1.2rem 0.8rem 2.8rem;
+  border: 1px solid rgba(24, 22, 25, 0.1);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.58);
+  color: var(--verela-ink);
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.verela-led-hero__badges li::before {
+  content: "";
+  position: absolute;
+  left: 1.1rem;
+  top: 50%;
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 50%;
+  background: var(--verela-sage);
+  transform: translateY(-50%);
+}
+
+.verela-led-proof {
+  padding: 1.8rem 0;
+  background: var(--verela-soft);
+  border-top: 1px solid var(--verela-border);
+  border-bottom: 1px solid var(--verela-border);
+}
+
+.verela-led-proof__list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.verela-led-proof__list li {
+  padding: 1.6rem 1.8rem;
+  border: 1px solid rgba(24, 22, 25, 0.08);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.54);
+}
+
+.verela-led-proof__list strong,
+.verela-led-proof__list span {
+  display: block;
+}
+
+.verela-led-proof__list strong {
+  color: var(--verela-ink);
+  font-size: 1.45rem;
+}
+
+.verela-led-proof__list span {
+  margin-top: 0.35rem;
+  color: var(--verela-muted);
+  font-size: 1.3rem;
+  line-height: 1.35;
+}
+
+.verela-led-products {
+  padding-top: 7.2rem;
+  padding-bottom: 7.2rem;
+}
+
+.verela-led-section-head {
+  max-width: 780px;
+  margin-bottom: 3rem;
+}
+
+.verela-led-section-head h2 {
+  margin: 0 0 1rem;
+}
+
+.verela-led-section-head p {
+  margin: 0;
+  font-size: 1.6rem;
+  line-height: 1.65;
+}
+
+.verela-led-empty {
+  padding: 3rem;
+  border: 1px solid var(--verela-border);
+  border-radius: 8px;
+  background: var(--verela-surface);
+}
+
+.verela-led-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.85fr);
+  gap: 1.6rem;
+  align-items: stretch;
+  padding-top: 1rem;
+  padding-bottom: 7.2rem;
+}
+
+.verela-led-split__media,
+.verela-led-split__content {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.verela-led-split__media {
+  min-height: 520px;
+  background: var(--verela-warm);
+}
+
+.verela-led-split__media img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.verela-led-split__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem;
+  border: 1px solid var(--verela-border);
+  background: var(--verela-surface);
+}
+
+.verela-led-split__content p {
+  font-size: 1.6rem;
+  line-height: 1.7;
+}
+
+.verela-led-checks {
+  display: grid;
+  gap: 1rem;
+  margin: 2rem 0 2.4rem;
+  padding: 0;
+  list-style: none;
+}
+
+.verela-led-checks li {
+  position: relative;
+  padding-left: 2.4rem;
+  color: var(--verela-ink);
+  font-weight: 700;
+}
+
+.verela-led-checks li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55rem;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background: var(--verela-sage);
+}
+
+.verela-led-banner {
+  min-height: 560px;
+}
+
+.verela-led-banner::after {
+  background: linear-gradient(90deg, rgba(247, 245, 240, 0.94) 0%, rgba(247, 245, 240, 0.72) 42%, rgba(247, 245, 240, 0.10) 100%);
+}
+
+.verela-led-guide {
+  background: var(--verela-bg);
+}
+
+.verela-led-guide__hero {
+  position: relative;
+  min-height: 620px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: var(--verela-warm);
+}
+
+.verela-led-guide__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.verela-led-guide__hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(247, 245, 240, 0.96) 0%, rgba(247, 245, 240, 0.78) 44%, rgba(247, 245, 240, 0.14) 100%);
+}
+
+.verela-led-guide__hero-inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+.verela-led-guide__intro {
+  max-width: 760px;
+  padding: 4rem 0;
+}
+
+.verela-led-guide__intro h1 {
+  margin: 0 0 1.8rem;
+}
+
+.verela-led-guide__intro p {
+  margin: 0;
+  font-size: 1.75rem;
+  line-height: 1.65;
+}
+
+.verela-led-guide__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2.6rem;
+}
+
+.verela-led-guide__wrap {
+  padding-top: 6.4rem;
+  padding-bottom: 7.2rem;
+}
+
+.verela-led-guide__statement {
+  margin-bottom: 2rem;
+  padding: 2rem 2.4rem;
+  border: 1px solid rgba(124, 67, 87, 0.22);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.verela-led-guide__statement p {
+  margin: 0;
+  color: var(--verela-ink) !important;
+  font-size: 1.55rem;
+  font-weight: 700;
+  line-height: 1.55;
+}
+
+.verela-led-guide__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.2rem;
+}
+
+.verela-led-guide__grid article,
+.verela-led-guide__choice,
+.verela-led-guide__safety > div,
+.verela-led-guide__sources {
+  border: 1px solid var(--verela-border);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.verela-led-guide__grid article {
+  padding: 2.4rem;
+}
+
+.verela-led-guide__grid span {
+  color: var(--verela-rose);
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.verela-led-guide__grid h2 {
+  margin: 1.2rem 0 1rem;
+  font-size: 2.2rem !important;
+}
+
+.verela-led-guide__grid p,
+.verela-led-guide__choice li,
+.verela-led-guide__safety p,
+.verela-led-guide__sources li {
+  font-size: 1.45rem;
+  line-height: 1.62;
+}
+
+.verela-led-guide__choice {
+  display: grid;
+  grid-template-columns: minmax(0, 0.7fr) minmax(0, 1fr);
+  gap: 2rem;
+  margin-top: 1.2rem;
+  padding: 3rem;
+}
+
+.verela-led-guide__choice h2,
+.verela-led-guide__safety h2,
+.verela-led-guide__sources h2 {
+  margin: 0 0 1rem;
+}
+
+.verela-led-guide__choice ul,
+.verela-led-guide__sources ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.verela-led-guide__choice li + li {
+  margin-top: 1rem;
+}
+
+.verela-led-guide__safety {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.2rem;
+  margin-top: 1.2rem;
+}
+
+.verela-led-guide__safety > div,
+.verela-led-guide__sources {
+  padding: 2.4rem;
+}
+
+.verela-led-guide__sources {
+  margin-top: 1.2rem;
+}
+
+.verela-led-guide__sources li + li {
+  margin-top: 0.7rem;
+}
+
+.verela-led-guide__sources a {
+  color: var(--verela-ink);
+  font-weight: 700;
+  text-underline-offset: 0.25em;
+}
+
+.verela-led-404 {
+  min-height: 58vh;
+  display: flex;
+  align-items: center;
+  padding: 7rem 0;
+  background: var(--verela-bg);
+}
+
+.verela-led-404 h1 {
+  max-width: 760px;
+  margin: 0 0 1.4rem;
+}
+
+.verela-led-404 p:not(.verela-led-kicker) {
+  max-width: 620px;
+  margin: 0;
+  font-size: 1.7rem;
+  line-height: 1.6;
+}
+
+@media screen and (max-width: 989px) {
+  h1,
+  .h0,
+  .h1,
+  .banner__heading,
+  .product__title h1 {
+    font-size: 3.4rem !important;
+  }
+
+  h2,
+  .h2,
+  .title,
+  .collection__title,
+  .rich-text__heading,
+  .image-with-text__heading {
+    font-size: 2.8rem !important;
+  }
+
+  .verela-header {
+    min-height: 64px;
+    padding: 0 16px;
+    grid-template-columns: 44px 1fr auto;
+    gap: 10px;
+  }
+
+  .verela-menu {
+    display: none;
+  }
+
+  .verela-mobile-toggle {
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+  }
+
+  .verela-mobile-toggle__line {
+    width: 22px;
+    height: 1px;
+    background: var(--verela-ink);
+  }
+
+  .verela-logo {
+    justify-content: center;
+    font-size: 2rem;
+  }
+
+  .verela-logo img {
+    max-width: 112px;
+    max-height: 48px;
+  }
+
+  .verela-icons {
+    gap: 4px;
+  }
+
+  .verela-menu-state:checked ~ .verela-mobile-menu {
+    display: block;
+  }
+
+  .verela-mobile-menu {
+    padding: 0 20px 20px;
+    background: var(--verela-bg);
+    border-top: 1px solid var(--verela-border);
+  }
+
+  .verela-mobile-menu a {
+    display: block;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--verela-border);
+  }
+
+  .banner {
+    min-height: 520px;
+  }
+
+  .banner__box {
+    padding: 2.4rem !important;
+  }
+
+  .image-with-text,
+  .rich-text,
+  .multicolumn,
+  .collection,
+  .featured-collection,
+  .collection-list-wrapper,
+  .verela-ritual {
+    padding-top: 4.8rem;
+    padding-bottom: 4.8rem;
+  }
+
+  .verela-trust-bar__list,
+  .verela-ritual__grid,
+  .verela-buy-reassurance,
+  .verela-product-confidence__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .product {
+    gap: 2.8rem !important;
+  }
+
+  .product__info-container {
+    padding: 2rem !important;
+  }
+
+  .verela-led-hero,
+  .verela-led-banner {
+    min-height: 590px;
+  }
+
+  .verela-led-hero::after,
+  .verela-led-banner::after {
+    background: linear-gradient(180deg, rgba(247, 245, 240, 0.92) 0%, rgba(247, 245, 240, 0.58) 52%, rgba(247, 245, 240, 0.1) 100%);
+  }
+
+  .verela-led-hero__content,
+  .verela-led-banner__content {
+    padding: 2.4rem;
+  }
+
+  .verela-led-proof__list,
+  .verela-led-split {
+    grid-template-columns: 1fr;
+  }
+
+  .verela-led-products {
+    padding-top: 5.2rem;
+    padding-bottom: 5.2rem;
+  }
+
+  .verela-led-split {
+    padding-bottom: 5.2rem;
+  }
+
+  .verela-led-split__media {
+    min-height: 360px;
+  }
+
+  .verela-led-split__content {
+    padding: 2.4rem;
+  }
+
+  .verela-led-guide__hero {
+    min-height: 560px;
+  }
+
+  .verela-led-guide__hero::after {
+    background: linear-gradient(180deg, rgba(247, 245, 240, 0.95) 0%, rgba(247, 245, 240, 0.72) 58%, rgba(247, 245, 240, 0.18) 100%);
+  }
+
+  .verela-led-guide__wrap {
+    padding-top: 4.8rem;
+    padding-bottom: 5.6rem;
+  }
+
+  .verela-led-guide__grid,
+  .verela-led-guide__choice,
+  .verela-led-guide__safety {
+    grid-template-columns: 1fr;
+  }
+
+  .verela-led-guide__choice {
+    padding: 2.2rem;
+  }
+}

@@ -1,0 +1,134 @@
+{
+  "sections": {
+    "verela_led_home_main": {
+      "type": "verela-led-home",
+      "settings": {
+        "hero_image": "shopify://shop_images/ChatGPT_Image_18._5._2026_20_19_29.png",
+        "kicker": "LED masky a domácí beauty péče",
+        "heading": "Dostupná LED péče o pleť doma",
+        "price_label": "LED masky od 2 990 Kč",
+        "text": "<p>Vyberte si LED masku a beauty pomůcky pro pravidelnou domácí rutinu. Jasná cena, jednoduchý výběr a produkty, které dávají smysl na českém trhu.</p>",
+        "primary_label": "Nakupovat LED masky",
+        "primary_link": "/collections/led-terapie",
+        "secondary_label": "Zobrazit bestsellery",
+        "secondary_link": "/collections/bestsellery",
+        "collection": "led-terapie",
+        "products_heading": "Nejoblíbenější LED masky Verela",
+        "products_text": "Hlavní výběr LED produktů s viditelnou cenou, čistou kartou a rychlou cestou do košíku.",
+        "products_to_show": 4,
+        "ritual_image": "shopify://shop_images/ChatGPT_Image_18._5._2026_17_40_18.png",
+        "bottom_image": "shopify://shop_images/ChatGPT_Image_18._5._2026_17_40_18.png"
+      }
+    },
+    "verela_trust_bar_home": {
+      "type": "verela-trust-bar",
+      "blocks": {
+        "trust_payment": {
+          "type": "item",
+          "settings": {
+            "title": "Bezpečná platba",
+            "text": "Kartou nebo podporovanou platební metodou"
+          }
+        },
+        "trust_delivery": {
+          "type": "item",
+          "settings": {
+            "title": "Doručení 5-12 dnů",
+            "text": "Jasně uvedeno před nákupem"
+          }
+        },
+        "trust_returns": {
+          "type": "item",
+          "settings": {
+            "title": "Vrácení do 14 dnů",
+            "text": "U nepoužitého zboží podle podmínek"
+          }
+        },
+        "trust_contact": {
+          "type": "item",
+          "settings": {
+            "title": "Český kontakt",
+            "text": "Podpora pro dotazy k objednávce"
+          }
+        }
+      },
+      "block_order": [
+        "trust_payment",
+        "trust_delivery",
+        "trust_returns",
+        "trust_contact"
+      ],
+      "settings": {
+        "color_scheme": "scheme-2",
+        "heading": "Nákup, který působí jistě",
+        "text": "U beauty technologií zákazník potřebuje hlavně cenu, doručení, kontakt a jednoduché vrácení. Proto jsou tyto informace vidět hned."
+      }
+    },
+    "collapsible_content_home": {
+      "type": "collapsible-content",
+      "blocks": {
+        "faq_delivery": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Jak dlouho trvá doručení?",
+            "icon": "truck",
+            "row_content": "<p>Většina objednávek je doručena během 5-12 pracovních dnů podle konkrétního produktu a dodavatele. Po objednávce přijde potvrzení e-mailem.</p>",
+            "page": ""
+          }
+        },
+        "faq_returns": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Mohu zboží vrátit?",
+            "icon": "return",
+            "row_content": "<p>Ano, nepoužité zboží můžete vrátit do 14 dnů od doručení podle obchodních podmínek.</p>",
+            "page": ""
+          }
+        },
+        "faq_led": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Pro koho jsou LED masky vhodné?",
+            "icon": "heart",
+            "row_content": "<p>LED masky jsou určené pro běžnou kosmetickou domácí péči. Vždy se řiďte návodem u konkrétního produktu a nepoužívejte je jako zdravotnickou léčbu.</p>",
+            "page": ""
+          }
+        },
+        "faq_contact": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Jak vás kontaktuji?",
+            "icon": "chat_bubble",
+            "row_content": "<p>Napište nám přes kontaktní formulář nebo na info@verela.cz.</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "faq_delivery",
+        "faq_returns",
+        "faq_led",
+        "faq_contact"
+      ],
+      "settings": {
+        "caption": "",
+        "heading": "Často kladené otázky",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "layout": "section",
+        "container_color_scheme": "",
+        "color_scheme": "",
+        "open_first_collapsible_row": true,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
+    }
+  },
+  "order": [
+    "verela_led_home_main",
+    "verela_trust_bar_home",
+    "collapsible_content_home"
+  ]
+}

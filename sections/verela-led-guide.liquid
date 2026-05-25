@@ -1,0 +1,652 @@
+{%- style -%}
+  .verela-led-page {
+    --verela-ink: #2f2924;
+    --verela-muted: #6f6258;
+    --verela-line: rgba(118, 92, 62, 0.16);
+    --verela-champagne: #fbf4ea;
+    --verela-ivory: #fffdf8;
+    --verela-sand: #ead9c3;
+    background: var(--verela-ivory);
+    color: var(--verela-ink);
+  }
+
+  .verela-led-page__inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 1.6rem;
+  }
+
+  .verela-led-hero {
+    padding: clamp(4.8rem, 8vw, 8.8rem) 0 4rem;
+    background: linear-gradient(180deg, #fbf1e6 0%, #fffdf8 100%);
+    border-bottom: 1px solid var(--verela-line);
+    overflow: hidden;
+  }
+
+  .verela-led-hero__grid {
+    display: grid;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .verela-led-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin: 0 0 1.4rem;
+    font-size: 1.2rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--verela-muted);
+  }
+
+  .verela-led-eyebrow::before {
+    content: "";
+    width: 3.2rem;
+    height: 1px;
+    background: rgba(118, 92, 62, 0.45);
+  }
+
+  .verela-led-hero h1,
+  .verela-led-section h2,
+  .verela-led-card h3,
+  .verela-led-cta h2 {
+    margin: 0;
+    color: var(--verela-ink);
+    letter-spacing: 0;
+  }
+
+  .verela-led-hero h1 {
+    max-width: 760px;
+    font-size: clamp(3.8rem, 6vw, 7.2rem);
+    line-height: 1.02;
+  }
+
+  .verela-led-lead {
+    max-width: 680px;
+    margin: 1.8rem 0 0;
+    color: var(--verela-muted);
+    font-size: 1.75rem;
+    line-height: 1.72;
+  }
+
+  .verela-led-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2.6rem;
+  }
+
+  .verela-led-button {
+    display: inline-flex;
+    min-height: 4.8rem;
+    align-items: center;
+    justify-content: center;
+    padding: 0 2.4rem;
+    border-radius: 6px;
+    border: 1px solid rgba(47, 41, 36, 0.18);
+    text-decoration: none;
+    transition: transform var(--duration-short) ease, opacity var(--duration-short) ease;
+  }
+
+  .verela-led-button:hover {
+    transform: translateY(-1px);
+    opacity: 0.9;
+  }
+
+  .verela-led-button--primary {
+    background: var(--verela-ink);
+    color: #fffaf2;
+  }
+
+  .verela-led-button--secondary {
+    background: rgba(255, 253, 248, 0.72);
+    color: var(--verela-ink);
+  }
+
+  .verela-led-visual {
+    position: relative;
+    min-height: 440px;
+    border: 1px solid var(--verela-line);
+    border-radius: 10px;
+    background:
+      linear-gradient(145deg, rgba(255, 255, 255, 0.72), rgba(245, 232, 215, 0.58)),
+      #fbf4ea;
+    box-shadow: 0 28px 70px rgba(67, 53, 38, 0.12);
+    overflow: hidden;
+  }
+
+  .verela-led-visual__device {
+    position: absolute;
+    inset: 3rem 3rem 8.5rem;
+    border: 1px solid rgba(118, 92, 62, 0.18);
+    border-radius: 12px;
+    background: rgba(255, 253, 248, 0.86);
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1.1rem;
+    padding: 2rem;
+  }
+
+  .verela-led-dot {
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: radial-gradient(circle, #fff9ee 0%, #f3ceb9 46%, #c97765 100%);
+    box-shadow: 0 0 18px rgba(201, 119, 101, 0.28);
+  }
+
+  .verela-led-visual__label {
+    position: absolute;
+    left: 3rem;
+    right: 3rem;
+    bottom: 2.4rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    align-items: center;
+    padding-top: 1.6rem;
+    border-top: 1px solid rgba(118, 92, 62, 0.14);
+    color: var(--verela-muted);
+    font-size: 1.35rem;
+  }
+
+  .verela-led-visual__label strong {
+    display: block;
+    color: var(--verela-ink);
+    font-size: 1.6rem;
+  }
+
+  .verela-led-mini {
+    padding: 0.8rem 1rem;
+    border-radius: 999px;
+    background: #fffdf8;
+    border: 1px solid var(--verela-line);
+    white-space: nowrap;
+  }
+
+  .verela-led-trust {
+    margin-top: 3rem;
+    display: grid;
+    gap: 1rem;
+  }
+
+  .verela-led-trust__item {
+    padding: 1.4rem 1.6rem;
+    border: 1px solid var(--verela-line);
+    border-radius: 8px;
+    background: rgba(255, 253, 248, 0.78);
+    color: var(--verela-muted);
+  }
+
+  .verela-led-trust__item strong {
+    display: block;
+    margin-bottom: 0.2rem;
+    color: var(--verela-ink);
+  }
+
+  .verela-led-section {
+    padding: 5.8rem 0;
+  }
+
+  .verela-led-section--soft {
+    background: var(--verela-champagne);
+    border-block: 1px solid var(--verela-line);
+  }
+
+  .verela-led-section__heading {
+    max-width: 780px;
+    margin-bottom: 3rem;
+  }
+
+  .verela-led-section h2,
+  .verela-led-cta h2 {
+    font-size: clamp(2.8rem, 4vw, 4.8rem);
+    line-height: 1.1;
+  }
+
+  .verela-led-section__text {
+    margin: 1.2rem 0 0;
+    color: var(--verela-muted);
+    font-size: 1.62rem;
+    line-height: 1.72;
+  }
+
+  .verela-led-grid {
+    display: grid;
+    gap: 1.4rem;
+  }
+
+  .verela-led-card {
+    min-height: 100%;
+    padding: 2.2rem;
+    border: 1px solid var(--verela-line);
+    border-radius: 8px;
+    background: var(--verela-ivory);
+  }
+
+  .verela-led-card--warm {
+    background: #fbf6ee;
+  }
+
+  .verela-led-card__number {
+    display: inline-flex;
+    width: 3rem;
+    height: 3rem;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    border-radius: 50%;
+    background: var(--verela-sand);
+    color: var(--verela-ink);
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+
+  .verela-led-card h3 {
+    font-size: 2rem;
+    line-height: 1.25;
+  }
+
+  .verela-led-card p {
+    margin: 1rem 0 0;
+    color: var(--verela-muted);
+    line-height: 1.68;
+  }
+
+  .verela-led-split {
+    display: grid;
+    gap: 1.4rem;
+    align-items: stretch;
+  }
+
+  .verela-led-feature {
+    padding: clamp(2.2rem, 4vw, 3.4rem);
+    border-radius: 10px;
+    background: var(--verela-ink);
+    color: #fffaf2;
+  }
+
+  .verela-led-feature h2,
+  .verela-led-feature p {
+    color: inherit;
+  }
+
+  .verela-led-feature p {
+    margin: 1.4rem 0 0;
+    opacity: 0.78;
+    line-height: 1.75;
+  }
+
+  .verela-led-steps {
+    margin: 0;
+    padding: 0;
+    counter-reset: verela-step;
+    list-style: none;
+    display: grid;
+    gap: 1rem;
+  }
+
+  .verela-led-steps li {
+    counter-increment: verela-step;
+    display: grid;
+    grid-template-columns: 3.2rem 1fr;
+    gap: 1.2rem;
+    align-items: start;
+    padding: 1.6rem;
+    border: 1px solid var(--verela-line);
+    border-radius: 8px;
+    background: var(--verela-ivory);
+    color: var(--verela-muted);
+    line-height: 1.62;
+  }
+
+  .verela-led-steps li::before {
+    content: counter(verela-step);
+    display: inline-flex;
+    width: 3.2rem;
+    height: 3.2rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--verela-sand);
+    color: var(--verela-ink);
+    font-weight: 700;
+  }
+
+  .verela-led-note {
+    margin-top: 1.8rem;
+    padding: 1.6rem;
+    border: 1px solid var(--verela-line);
+    border-radius: 8px;
+    background: rgba(255, 253, 248, 0.72);
+    color: var(--verela-muted);
+    line-height: 1.65;
+  }
+
+  .verela-led-faq {
+    border: 1px solid var(--verela-line);
+    border-radius: 8px;
+    background: var(--verela-ivory);
+    overflow: hidden;
+  }
+
+  .verela-led-faq details + details {
+    border-top: 1px solid var(--verela-line);
+  }
+
+  .verela-led-faq summary {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    gap: 1.2rem;
+    padding: 1.7rem 2rem;
+    color: var(--verela-ink);
+    font-weight: 700;
+    list-style: none;
+  }
+
+  .verela-led-faq summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .verela-led-faq summary::after {
+    content: "";
+    width: 0.8rem;
+    height: 0.8rem;
+    flex: 0 0 auto;
+    margin-top: 0.5rem;
+    border: solid rgba(47, 41, 36, 0.55);
+    border-width: 0 0.12rem 0.12rem 0;
+    transform: rotate(45deg);
+  }
+
+  .verela-led-faq details[open] summary::after {
+    transform: rotate(225deg);
+  }
+
+  .verela-led-faq__answer {
+    padding: 0 2rem 1.8rem;
+    color: var(--verela-muted);
+    line-height: 1.7;
+  }
+
+  .verela-led-cta {
+    padding: 5rem 0 6.4rem;
+    background: #fbf1e6;
+    border-top: 1px solid var(--verela-line);
+  }
+
+  .verela-led-cta__box {
+    padding: clamp(2.6rem, 5vw, 4.6rem);
+    border: 1px solid var(--verela-line);
+    border-radius: 10px;
+    background: var(--verela-ivory);
+    text-align: center;
+    box-shadow: 0 18px 52px rgba(67, 53, 38, 0.08);
+  }
+
+  .verela-led-cta p {
+    max-width: 760px;
+    margin: 1.2rem auto 0;
+    color: var(--verela-muted);
+    line-height: 1.72;
+  }
+
+  .verela-led-cta .verela-led-actions {
+    justify-content: center;
+  }
+
+  @media screen and (min-width: 750px) {
+    .verela-led-page__inner {
+      padding: 0 3rem;
+    }
+
+    .verela-led-hero__grid {
+      grid-template-columns: minmax(0, 1.18fr) minmax(360px, 0.82fr);
+    }
+
+    .verela-led-trust,
+    .verela-led-grid--three {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .verela-led-grid--two,
+    .verela-led-split {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .verela-led-hero {
+      padding-top: 4.2rem;
+    }
+
+    .verela-led-actions,
+    .verela-led-button {
+      width: 100%;
+    }
+
+    .verela-led-visual {
+      min-height: 330px;
+    }
+
+    .verela-led-visual__device {
+      inset: 2rem 2rem 8rem;
+      gap: 0.7rem;
+      padding: 1.4rem;
+    }
+
+    .verela-led-visual__label {
+      left: 2rem;
+      right: 2rem;
+      grid-template-columns: 1fr;
+    }
+
+    .verela-led-section {
+      padding: 4.2rem 0;
+    }
+  }
+{%- endstyle -%}
+
+<div class="verela-led-page">
+  <section class="verela-led-hero">
+    <div class="verela-led-page__inner verela-led-hero__grid">
+      <div>
+        <p class="verela-led-eyebrow">Průvodce Verela</p>
+        <h1>Proč LED terapie dává smysl pro domácí beauty a wellness rutinu</h1>
+        <p class="verela-led-lead">
+          Moderní LED pomůcky jsou navržené pro pravidelnou, neinvazivní domácí péči. Pomáhají vytvořit rituál, který je
+          jednoduchý, příjemný a snadno se vejde do večera po dlouhém dni.
+        </p>
+        <div class="verela-led-actions">
+          <a class="verela-led-button verela-led-button--primary" href="/collections/all">Vybrat LED produkty</a>
+          <a class="verela-led-button verela-led-button--secondary" href="/collections/bestsellery">Zobrazit bestsellery</a>
+        </div>
+        <div class="verela-led-trust">
+          <div class="verela-led-trust__item"><strong>Beauty rutina doma</strong>Bez objednávání salonu a složité přípravy.</div>
+          <div class="verela-led-trust__item"><strong>Pro pleť i tělo</strong>Masky, pásy a pomůcky pro namáhané partie.</div>
+          <div class="verela-led-trust__item"><strong>Bez přehnaných slibů</strong>Realistická očekávání a důraz na pravidelnost.</div>
+        </div>
+      </div>
+
+      <div class="verela-led-visual" aria-label="Ilustrační LED panel">
+        <div class="verela-led-visual__device" aria-hidden="true">
+          {%- for i in (1..35) -%}
+            <span class="verela-led-dot"></span>
+          {%- endfor -%}
+        </div>
+        <div class="verela-led-visual__label">
+          <span><strong>LED self-care technologie</strong>Pro chvíle, kdy chcete péči držet ve vlastních rukou.</span>
+          <span class="verela-led-mini">Doma • večer • pravidelně</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="verela-led-section">
+    <div class="verela-led-page__inner">
+      <div class="verela-led-section__heading">
+        <h2>Proč si LED pomůcku pořídit</h2>
+        <p class="verela-led-section__text">
+          Nejde o zázrak přes noc. Síla LED péče je v jednoduchosti, komfortu a pravidelnosti. Právě proto se hodí pro
+          ženy i muže, kteří chtějí mít svou domácí rutinu pod kontrolou.
+        </p>
+      </div>
+      <div class="verela-led-grid verela-led-grid--three">
+        <div class="verela-led-card">
+          <span class="verela-led-card__number">01</span>
+          <h3>Péče bez návštěvy salonu</h3>
+          <p>Stačí pár minut klidu, čistá pleť nebo vybraná partie těla a pravidelný režim podle návodu.</p>
+        </div>
+        <div class="verela-led-card">
+          <span class="verela-led-card__number">02</span>
+          <h3>Rituál, který se lépe dodržuje</h3>
+          <p>Když je péče příjemná a jednoduchá, snáze se z ní stane večerní zvyk místo další povinnosti.</p>
+        </div>
+        <div class="verela-led-card">
+          <span class="verela-led-card__number">03</span>
+          <h3>Prémiový pocit doma</h3>
+          <p>LED pomůcka dodá rutině moderní, čistý a profesionální charakter bez zbytečně složitých kroků.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="verela-led-section verela-led-section--soft">
+    <div class="verela-led-page__inner">
+      <div class="verela-led-split">
+        <div class="verela-led-feature">
+          <h2>LED masky pro pleťovou rutinu</h2>
+          <p>
+            LED maska je elegantní beauty pomůcka pro každého, kdo chce svoji skincare povýšit na klidný domácí rituál.
+            Hodí se po vyčištění pleti a před běžnou následnou péčí, například sérem nebo hydratačním krémem.
+          </p>
+        </div>
+        <div class="verela-led-grid">
+          <div class="verela-led-card verela-led-card--warm">
+            <h3>Večerní self-care moment</h3>
+            <p>Pár minut, kdy zpomalíte, odložíte telefon a věnujete se jen péči o sebe.</p>
+          </div>
+          <div class="verela-led-card verela-led-card--warm">
+            <h3>Stylový beauty dárek</h3>
+            <p>LED maska působí prémiově a je ideální pro zákazníky, kteří milují skincare, wellness a nové technologie.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="verela-led-section">
+    <div class="verela-led-page__inner">
+      <div class="verela-led-section__heading">
+        <h2>LED wellness pro záda, kolena i namáhané partie</h2>
+        <p class="verela-led-section__text">
+          LED péče není jen o pleti. Tělové pomůcky dávají smysl pro domácí wellness komfort po sezení, pohybu,
+          cestování nebo náročném dni, kdy chcete cíleně zvolnit.
+        </p>
+      </div>
+      <div class="verela-led-grid verela-led-grid--three">
+        <div class="verela-led-card">
+          <h3>Záda po dlouhém dni</h3>
+          <p>Pro chvíle, kdy chcete doma zpomalit a dopřát si cílený komfort po práci, cestování nebo delším sezení.</p>
+        </div>
+        <div class="verela-led-card">
+          <h3>Kolena a pohybová rutina</h3>
+          <p>Praktická součást wellness péče po procházce, sportu nebo aktivním dni. Bez nahrazování odborné péče.</p>
+        </div>
+        <div class="verela-led-card">
+          <h3>Krk, ramena a další partie</h3>
+          <p>Pro oblasti, kterým chcete pravidelně věnovat klidnou domácí péči a příjemný self-care režim.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="verela-led-section verela-led-section--soft">
+    <div class="verela-led-page__inner">
+      <div class="verela-led-section__heading">
+        <h2>Jak začít bezpečně a bez přehnaných očekávání</h2>
+        <p class="verela-led-section__text">
+          Nejlepší rutina je ta, kterou opravdu dodržíte. Začněte jednoduše, řiďte se návodem konkrétního produktu a
+          sledujte, jak vám daný režim vyhovuje.
+        </p>
+      </div>
+      <ol class="verela-led-steps">
+        <li>Vyberte pomůcku podle oblasti: LED masku pro pleť, nebo tělovou LED pomůcku pro záda, kolena či další partie.</li>
+        <li>Začněte kratší dobou použití a vždy postupujte podle návodu v balení.</li>
+        <li>Zařaďte péči do chvíle, kdy máte klid, ideálně večer po vyčištění pleti nebo po sprše.</li>
+        <li>Držte se pravidelnosti a neslibujte si okamžité ani garantované výsledky. Domácí péče je rituál, ne zkratka.</li>
+      </ol>
+      <div class="verela-led-note">
+        LED beauty a wellness pomůcky nejsou zdravotnický prostředek a neslouží k diagnostice ani léčbě zdravotních
+        potíží. Pokud řešíte zdravotní obtíže, kožní onemocnění, těhotenství, citlivost na světlo nebo užíváte léky
+        ovlivňující citlivost pokožky, poraďte se před použitím s odborníkem.
+      </div>
+    </div>
+  </section>
+
+  <section class="verela-led-section">
+    <div class="verela-led-page__inner">
+      <div class="verela-led-section__heading">
+        <h2>Časté otázky</h2>
+        <p class="verela-led-section__text">Krátce, prakticky a bez složité teorie. Konkrétní doporučení se vždy řídí návodem produktu.</p>
+      </div>
+      <div class="verela-led-faq">
+        <details>
+          <summary>Je LED péče vhodná pro každodenní použití?</summary>
+          <div class="verela-led-faq__answer">Záleží na konkrétním produktu. Doporučujeme držet se návodu, začít kratší dobou použití a sledovat reakci pleti nebo těla.</div>
+        </details>
+        <details>
+          <summary>Jaký je rozdíl mezi LED maskou a tělovou LED pomůckou?</summary>
+          <div class="verela-led-faq__answer">LED maska je hlavně pro pleťovou skincare rutinu. Tělové LED pomůcky se zaměřují na větší nebo konkrétní partie, například záda, kolena, ramena nebo krk.</div>
+        </details>
+        <details>
+          <summary>Kdy LED pomůcku používat?</summary>
+          <div class="verela-led-faq__answer">Nejčastěji večer, kdy máte prostor na klidnou péči. U masky po vyčištění pleti, u tělových pomůcek například po sprše, sportu nebo náročném dni.</div>
+        </details>
+        <details>
+          <summary>Je LED pomůcka vhodná jako dárek?</summary>
+          <div class="verela-led-faq__answer">Ano. LED maska i tělová LED pomůcka jsou moderní dárky pro lidi, kteří mají rádi skincare, wellness a domácí self-care rituály.</div>
+        </details>
+        <details>
+          <summary>Co od LED péče očekávat?</summary>
+          <div class="verela-led-faq__answer">Očekávejte hlavně pravidelný, příjemný rituál a podporu domácí péče. Pocit z používání je individuální, proto neslibujeme okamžité ani garantované změny.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="verela-led-cta">
+    <div class="verela-led-page__inner">
+      <div class="verela-led-cta__box">
+        <h2>Vyberte si LED pomůcku pro svou rutinu</h2>
+        <p>
+          Ať už hledáte elegantní LED masku pro pleť, nebo wellness pomůcku pro záda, kolena či další namáhané partie,
+          Verela vybírá produkty pro jednoduchou, moderní a pravidelnou domácí péči.
+        </p>
+        <div class="verela-led-actions">
+          <a class="verela-led-button verela-led-button--primary" href="/collections/all">Vybrat LED produkty</a>
+          <a class="verela-led-button verela-led-button--secondary" href="/pages/contact">Potřebuji poradit</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "Verela LED guide",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero obrázek"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Verela LED guide"
+    }
+  ]
+}
+{% endschema %}

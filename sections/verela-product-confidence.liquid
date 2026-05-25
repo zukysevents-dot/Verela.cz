@@ -1,0 +1,65 @@
+<section class="verela-product-confidence color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width">
+    <div class="verela-product-confidence__head">
+      <p class="verela-led-kicker">{{ section.settings.kicker }}</p>
+      <h2>{{ section.settings.heading }}</h2>
+      <p>{{ section.settings.text }}</p>
+    </div>
+
+    <div class="verela-product-confidence__grid">
+      <article>
+        <strong>Jasné použití doma</strong>
+        <p>Produkt používejte podle návodu v balení. U LED pomůcek začněte kratší dobou a sledujte reakci pleti nebo těla.</p>
+      </article>
+      <article>
+        <strong>Doručení 5-12 dnů</strong>
+        <p>U každé objednávky počítáme s doručením podle konkrétního produktu a dodavatele. Informace držíme viditelně před nákupem.</p>
+      </article>
+      <article>
+        <strong>Vrácení do 14 dnů</strong>
+        <p>Nepoužité zboží můžete vrátit podle obchodních podmínek. Cílem je nákup bez zbytečného stresu.</p>
+      </article>
+      <article>
+        <strong>Bez léčebných slibů</strong>
+        <p>Produkty Verela prezentujeme jako beauty a wellness pomůcky. Nenahrazují lékaře, dermatologa ani fyzioterapii.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Verela product confidence",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Barevné schéma",
+      "default": "scheme-1"
+    },
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "Malý nadpis",
+      "default": "Před nákupem"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Nadpis",
+      "default": "Všechno důležité hned na očích"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Text",
+      "default": "U dražších beauty pomůcek rozhoduje důvěra. Proto produktová stránka ukazuje použití, doručení, vrácení a férové upozornění bez přehnaných slibů."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Verela product confidence"
+    }
+  ]
+}
+{% endschema %}

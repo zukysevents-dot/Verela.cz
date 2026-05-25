@@ -1,0 +1,925 @@
+<section class="verela-led-home">
+  <style>
+    .verela-led-home {
+      --verela-bg: #f7f1ea;
+      --verela-soft: #fbf7f2;
+      --verela-text: #171417;
+      --verela-muted: #6f6667;
+      --verela-accent: #8a4059;
+      --verela-green: #5f7f68;
+      --verela-border: rgba(23, 20, 23, 0.12);
+      --verela-card: #ffffff;
+      background: var(--verela-bg);
+      color: var(--verela-text);
+      overflow: hidden;
+    }
+
+    .verela-led-home * {
+      box-sizing: border-box;
+    }
+
+    .verela-led-kicker {
+      margin: 0 0 14px;
+      color: var(--verela-accent);
+      font-weight: 850;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-size: 1.35rem;
+      line-height: 1.3;
+    }
+
+    .verela-led-hero {
+      position: relative;
+      min-height: 680px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: var(--verela-bg);
+    }
+
+    .verela-led-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(247, 241, 234, 0.98) 0%,
+          rgba(247, 241, 234, 0.90) 38%,
+          rgba(247, 241, 234, 0.48) 62%,
+          rgba(247, 241, 234, 0.10) 100%
+        );
+      pointer-events: none;
+    }
+
+    .verela-led-hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      background:
+        radial-gradient(circle at 18% 35%, rgba(255, 255, 255, 0.70), transparent 34%),
+        radial-gradient(circle at 50% 55%, rgba(255, 255, 255, 0.35), transparent 35%);
+      pointer-events: none;
+    }
+
+    .verela-led-hero__image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 74% center;
+      z-index: 0;
+    }
+
+    .verela-led-hero__inner {
+      position: relative;
+      z-index: 3;
+      width: 100%;
+    }
+
+    .verela-led-hero__content {
+      max-width: 730px;
+      padding: 92px 0;
+    }
+
+    .verela-led-hero h1 {
+      margin: 0;
+      font-size: clamp(4.4rem, 5.4vw, 7.4rem);
+      line-height: 0.98;
+      letter-spacing: -0.055em;
+      font-weight: 900;
+      color: var(--verela-text);
+    }
+
+    .verela-led-hero__price {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin: 28px 0 0;
+      padding: 14px 28px;
+      min-height: 58px;
+      border: 2px solid rgba(138, 64, 89, 0.22);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.54);
+      color: var(--verela-accent);
+      font-weight: 850;
+      font-size: 1.9rem;
+      line-height: 1.2;
+      backdrop-filter: blur(6px);
+    }
+
+    .verela-led-hero__text {
+      margin-top: 30px;
+      max-width: 720px;
+      color: var(--verela-muted);
+      font-size: clamp(1.75rem, 1.7vw, 2.25rem);
+      line-height: 1.78;
+    }
+
+    .verela-led-hero__text p {
+      margin: 0;
+    }
+
+    .verela-led-hero__badges {
+      display: flex !important;
+      flex-wrap: wrap !important;
+      align-items: center !important;
+      gap: 12px !important;
+      margin: 28px 0 0 !important;
+      padding: 0 !important;
+      list-style: none !important;
+    }
+
+    .verela-led-hero__badges li {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: flex-start !important;
+      gap: 12px !important;
+      min-height: 46px !important;
+      padding: 0 20px !important;
+      border: 1px solid var(--verela-border) !important;
+      border-radius: 999px !important;
+      background: rgba(255, 255, 255, 0.78) !important;
+      color: var(--verela-text) !important;
+      font-weight: 800 !important;
+      font-size: 1.35rem !important;
+      line-height: 1.2 !important;
+      white-space: nowrap !important;
+      box-shadow: 0 10px 28px rgba(23, 20, 23, 0.05) !important;
+      backdrop-filter: blur(6px);
+    }
+
+    .verela-led-hero__badges li::before {
+      display: none !important;
+      content: none !important;
+    }
+
+    .verela-led-badge-dot {
+      display: inline-block !important;
+      width: 11px !important;
+      height: 11px !important;
+      min-width: 11px !important;
+      max-width: 11px !important;
+      flex: 0 0 11px !important;
+      border-radius: 999px !important;
+      background: var(--verela-green) !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    .verela-led-badge-text {
+      display: inline-block !important;
+      line-height: 1.2 !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    .verela-led-hero__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .verela-led-hero__actions .button {
+      min-height: 58px;
+      min-width: 230px;
+      border-radius: 9px;
+      font-weight: 850;
+    }
+
+    .verela-led-proof {
+      padding: 48px 0 24px;
+      background: #eef5f0;
+    }
+
+    .verela-led-proof__list {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .verela-led-proof__list li {
+      padding: 24px;
+      background: var(--verela-card);
+      border: 1px solid var(--verela-border);
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(23, 20, 23, 0.04);
+    }
+
+    .verela-led-proof__list strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 1.65rem;
+      line-height: 1.25;
+      color: var(--verela-text);
+    }
+
+    .verela-led-proof__list span {
+      display: block;
+      color: var(--verela-muted);
+      font-size: 1.45rem;
+      line-height: 1.65;
+    }
+
+    .verela-led-products {
+      padding-top: 72px;
+      padding-bottom: 72px;
+    }
+
+    .verela-led-section-head {
+      max-width: 780px;
+      margin-bottom: 30px;
+    }
+
+    .verela-led-section-head h2 {
+      margin: 0 0 14px;
+      font-size: clamp(3.2rem, 4vw, 5.4rem);
+      line-height: 1.05;
+      letter-spacing: -0.045em;
+      font-weight: 900;
+      color: var(--verela-text);
+    }
+
+    .verela-led-section-head p {
+      margin: 0;
+      color: var(--verela-muted);
+      font-size: 1.65rem;
+      line-height: 1.7;
+    }
+
+    .verela-led-empty {
+      padding: 24px;
+      border-radius: 16px;
+      background: #fff;
+      border: 1px dashed var(--verela-border);
+      color: var(--verela-muted);
+      font-weight: 700;
+    }
+
+    .verela-led-split {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 28px;
+      align-items: center;
+      padding-top: 72px;
+      padding-bottom: 72px;
+    }
+
+    .verela-led-split__media {
+      overflow: hidden;
+      border-radius: 28px;
+      background: var(--verela-soft);
+      border: 1px solid var(--verela-border);
+      min-height: 520px;
+      box-shadow: 0 18px 50px rgba(23, 20, 23, 0.07);
+    }
+
+    .verela-led-split__media img {
+      width: 100%;
+      height: 100%;
+      min-height: 520px;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    .verela-led-split__content {
+      padding: 40px;
+      background: rgba(255, 255, 255, 0.70);
+      border: 1px solid var(--verela-border);
+      border-radius: 28px;
+      box-shadow: 0 18px 50px rgba(23, 20, 23, 0.05);
+    }
+
+    .verela-led-split__content h2 {
+      margin: 0 0 18px;
+      font-size: clamp(3rem, 3.8vw, 5rem);
+      line-height: 1.05;
+      letter-spacing: -0.045em;
+      font-weight: 900;
+      color: var(--verela-text);
+    }
+
+    .verela-led-split__content p {
+      margin: 0 0 22px;
+      color: var(--verela-muted);
+      font-size: 1.65rem;
+      line-height: 1.75;
+    }
+
+    .verela-led-checks {
+      display: grid;
+      gap: 12px;
+      margin: 0 0 28px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .verela-led-checks li {
+      position: relative;
+      padding-left: 30px;
+      color: var(--verela-text);
+      font-size: 1.55rem;
+      line-height: 1.55;
+      font-weight: 750;
+    }
+
+    .verela-led-checks li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.55em;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--verela-green);
+    }
+
+    .verela-led-banner {
+      position: relative;
+      min-height: 560px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: var(--verela-bg);
+    }
+
+    .verela-led-banner::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(247, 241, 234, 0.96) 0%,
+          rgba(247, 241, 234, 0.86) 42%,
+          rgba(247, 241, 234, 0.30) 76%,
+          rgba(247, 241, 234, 0.10) 100%
+        );
+      pointer-events: none;
+    }
+
+    .verela-led-banner__image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      z-index: 0;
+    }
+
+    .verela-led-banner__inner {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+    }
+
+    .verela-led-banner__content {
+      max-width: 720px;
+      padding: 76px 0;
+    }
+
+    .verela-led-banner__content h2 {
+      margin: 0 0 18px;
+      font-size: clamp(3.4rem, 4.4vw, 6rem);
+      line-height: 1.04;
+      letter-spacing: -0.05em;
+      font-weight: 900;
+      color: var(--verela-text);
+    }
+
+    .verela-led-banner__content p {
+      margin: 0 0 28px;
+      color: var(--verela-muted);
+      font-size: 1.75rem;
+      line-height: 1.75;
+    }
+
+    @media screen and (max-width: 989px) {
+      .verela-led-hero {
+        min-height: 760px;
+        align-items: flex-start;
+      }
+
+      .verela-led-hero::before {
+        background:
+          linear-gradient(
+            90deg,
+            rgba(247, 241, 234, 0.98) 0%,
+            rgba(247, 241, 234, 0.94) 48%,
+            rgba(247, 241, 234, 0.72) 72%,
+            rgba(247, 241, 234, 0.38) 100%
+          );
+      }
+
+      .verela-led-hero::after {
+        background:
+          radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.78), transparent 38%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.20), rgba(247, 241, 234, 0.20));
+      }
+
+      .verela-led-hero__image {
+        object-position: 78% center;
+        opacity: 0.72;
+      }
+
+      .verela-led-hero__content {
+        max-width: 92%;
+        padding: 54px 0 56px;
+      }
+
+      .verela-led-hero h1 {
+        font-size: clamp(4.1rem, 11vw, 5.6rem);
+        line-height: 1.04;
+        max-width: 95%;
+      }
+
+      .verela-led-hero__price {
+        margin-top: 24px;
+        padding: 12px 22px;
+        min-height: 54px;
+        font-size: 1.75rem;
+      }
+
+      .verela-led-hero__text {
+        margin-top: 26px;
+        max-width: 94%;
+        font-size: 1.75rem;
+        line-height: 1.72;
+      }
+
+      .verela-led-hero__badges {
+        max-width: 95% !important;
+        gap: 10px !important;
+      }
+
+      .verela-led-hero__badges li {
+        min-height: 42px !important;
+        padding: 0 16px !important;
+        font-size: 1.28rem !important;
+      }
+
+      .verela-led-hero__actions {
+        max-width: 92%;
+        margin-top: 30px;
+      }
+
+      .verela-led-hero__actions .button {
+        width: 100%;
+        min-width: 0;
+      }
+
+      .verela-led-proof__list {
+        grid-template-columns: 1fr;
+      }
+
+      .verela-led-products {
+        padding-top: 52px;
+        padding-bottom: 52px;
+      }
+
+      .verela-led-split {
+        grid-template-columns: 1fr;
+        padding-top: 52px;
+        padding-bottom: 52px;
+      }
+
+      .verela-led-split__media,
+      .verela-led-split__media img {
+        min-height: 380px;
+      }
+
+      .verela-led-split__content {
+        padding: 28px;
+      }
+
+      .verela-led-banner {
+        min-height: 620px;
+        align-items: flex-start;
+      }
+
+      .verela-led-banner::before {
+        background:
+          linear-gradient(
+            90deg,
+            rgba(247, 241, 234, 0.98) 0%,
+            rgba(247, 241, 234, 0.92) 52%,
+            rgba(247, 241, 234, 0.60) 100%
+          );
+      }
+
+      .verela-led-banner__image {
+        object-position: 70% center;
+        opacity: 0.68;
+      }
+
+      .verela-led-banner__content {
+        max-width: 92%;
+        padding: 58px 0;
+      }
+    }
+
+    @media screen and (max-width: 749px) {
+      .verela-led-hero {
+        min-height: 790px;
+      }
+
+      .verela-led-hero__image {
+        object-position: 82% center;
+        opacity: 0.62;
+      }
+
+      .verela-led-hero::before {
+        background:
+          linear-gradient(
+            90deg,
+            rgba(247, 241, 234, 0.99) 0%,
+            rgba(247, 241, 234, 0.96) 58%,
+            rgba(247, 241, 234, 0.76) 82%,
+            rgba(247, 241, 234, 0.48) 100%
+          );
+      }
+
+      .verela-led-hero__content {
+        max-width: 100%;
+        padding-top: 50px;
+      }
+
+      .verela-led-kicker {
+        font-size: 1.15rem;
+        line-height: 1.35;
+      }
+
+      .verela-led-hero h1 {
+        font-size: clamp(3.85rem, 12vw, 5.1rem);
+        line-height: 1.05;
+        letter-spacing: -0.052em;
+        max-width: 92%;
+      }
+
+      .verela-led-hero__price {
+        font-size: 1.6rem;
+      }
+
+      .verela-led-hero__text {
+        font-size: 1.62rem;
+        line-height: 1.68;
+        max-width: 94%;
+      }
+
+      .verela-led-hero__badges {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        max-width: 100% !important;
+        gap: 10px !important;
+      }
+
+      .verela-led-hero__badges li {
+        width: fit-content !important;
+        max-width: 100% !important;
+        min-height: 44px !important;
+        padding: 0 18px !important;
+        font-size: 1.28rem !important;
+      }
+
+      .verela-led-hero__actions {
+        max-width: 100%;
+      }
+
+      .verela-led-proof {
+        padding-top: 38px;
+      }
+
+      .verela-led-proof__list li {
+        padding: 20px;
+      }
+
+      .verela-led-section-head h2,
+      .verela-led-split__content h2,
+      .verela-led-banner__content h2 {
+        font-size: 3.2rem;
+      }
+
+      .verela-led-split__content {
+        padding: 24px;
+      }
+    }
+
+    @media screen and (max-width: 430px) {
+      .verela-led-hero {
+        min-height: 820px;
+      }
+
+      .verela-led-hero__image {
+        object-position: 86% center;
+        opacity: 0.58;
+      }
+
+      .verela-led-hero h1 {
+        max-width: 96%;
+      }
+
+      .verela-led-hero__badges,
+      .verela-led-hero__actions {
+        max-width: 100% !important;
+      }
+    }
+  </style>
+
+  <div class="verela-led-hero">
+    {%- if section.settings.hero_image != blank -%}
+      {{
+        section.settings.hero_image
+        | image_url: width: 2400
+        | image_tag:
+          class: 'verela-led-hero__image',
+          loading: 'eager',
+          widths: '750, 1100, 1500, 2000, 2400',
+          sizes: '100vw'
+      }}
+    {%- endif -%}
+
+    <div class="page-width verela-led-hero__inner">
+      <div class="verela-led-hero__content">
+        <p class="verela-led-kicker">{{ section.settings.kicker }}</p>
+        <h1>{{ section.settings.heading }}</h1>
+
+        {%- if section.settings.price_label != blank -%}
+          <p class="verela-led-hero__price">{{ section.settings.price_label }}</p>
+        {%- endif -%}
+
+        <div class="verela-led-hero__text rte">{{ section.settings.text }}</div>
+
+        <ul class="verela-led-hero__badges" role="list">
+          <li>
+            <span class="verela-led-badge-dot" aria-hidden="true"></span>
+            <span class="verela-led-badge-text">Bezpečná platba</span>
+          </li>
+          <li>
+            <span class="verela-led-badge-dot" aria-hidden="true"></span>
+            <span class="verela-led-badge-text">Doručení 5–12 dnů</span>
+          </li>
+          <li>
+            <span class="verela-led-badge-dot" aria-hidden="true"></span>
+            <span class="verela-led-badge-text">Vrácení do 14 dnů</span>
+          </li>
+        </ul>
+
+        <div class="verela-led-hero__actions">
+          <a class="button" href="{{ section.settings.primary_link | default: '/collections/led-terapie' }}">
+            {{ section.settings.primary_label }}
+          </a>
+          <a class="button button--secondary" href="{{ section.settings.secondary_link | default: '/collections/bestsellery' }}">
+            {{ section.settings.secondary_label }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="verela-led-proof">
+    <div class="page-width">
+      <ul class="verela-led-proof__list" role="list">
+        <li>
+          <strong>Dostupnější než salon</strong>
+          <span>Domácí LED rutina bez placení každé návštěvy zvlášť.</span>
+        </li>
+        <li>
+          <strong>Bez přehnaných slibů</strong>
+          <span>Beauty a wellness pomůcky komunikujeme čistě, ne jako léčbu.</span>
+        </li>
+        <li>
+          <strong>Český nákup</strong>
+          <span>Jasná cena, bezpečná platba, doručení a vrácení podle podmínek.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="page-width verela-led-products">
+    <div class="verela-led-section-head">
+      <p class="verela-led-kicker">Nejrychlejší volba</p>
+      <h2>{{ section.settings.products_heading }}</h2>
+      <p>{{ section.settings.products_text }}</p>
+    </div>
+
+    {%- assign rendered_products = 0 -%}
+
+    {%- if section.settings.collection != blank -%}
+      <ul class="grid product-grid grid--2-col-tablet-down grid--4-col-desktop" role="list">
+        {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
+          {%- assign rendered_products = rendered_products | plus: 1 -%}
+          <li class="grid__item">
+            {% render 'card-product',
+              card_product: product,
+              media_aspect_ratio: 'square',
+              image_shape: 'default',
+              show_secondary_image: false,
+              show_vendor: false,
+              show_rating: false,
+              lazy_load: false,
+              quick_add: 'standard',
+              section_id: section.id
+            %}
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- else -%}
+      {%- assign homepage_handles = 'led-skin-mask,verela-light-led-maska-cervene-svetlo,verela-eye-led-pece-ocni-okoli,led-pece-krk-dekolt' | split: ',' -%}
+      <ul class="grid product-grid grid--2-col-tablet-down grid--4-col-desktop" role="list">
+        {%- for product_handle in homepage_handles limit: section.settings.products_to_show -%}
+          {%- assign product = all_products[product_handle] -%}
+          {%- if product != blank -%}
+            {%- assign rendered_products = rendered_products | plus: 1 -%}
+            <li class="grid__item">
+              {% render 'card-product',
+                card_product: product,
+                media_aspect_ratio: 'square',
+                image_shape: 'default',
+                show_secondary_image: false,
+                show_vendor: false,
+                show_rating: false,
+                lazy_load: false,
+                quick_add: 'standard',
+                section_id: section.id
+              %}
+            </li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+
+    {%- if rendered_products == 0 -%}
+      <div class="verela-led-empty">
+        Produkty pro hlavní výběr zatím nejsou dostupné. V editoru sekce vyberte kolekci produktů.
+      </div>
+    {%- endif -%}
+  </div>
+
+  <div class="verela-led-split page-width">
+    <div class="verela-led-split__media">
+      {%- if section.settings.ritual_image != blank -%}
+        {{
+          section.settings.ritual_image
+          | image_url: width: 1400
+          | image_tag:
+            loading: 'lazy',
+            widths: '550, 750, 1000, 1400',
+            sizes: '(min-width: 990px) 50vw, 100vw'
+        }}
+      {%- endif -%}
+    </div>
+
+    <div class="verela-led-split__content">
+      <p class="verela-led-kicker">Proč Verela</p>
+      <h2>LED masky, které dávají smysl cenou i rutinou</h2>
+      <p>
+        Na českém trhu stojí známé LED masky často přes 5 000 Kč a prémiové modely ještě výrazně víc.
+        Verela staví nabídku tak, aby zákazník rychle pochopil rozdíl, viděl cenu hned a mohl začít s dostupnější domácí péčí.
+      </p>
+
+      <ul class="verela-led-checks" role="list">
+        <li>LED masky od 2 990 Kč</li>
+        <li>Jasné varianty bez skrytých dodavatelských názvů</li>
+        <li>Popisky bez zbytečných slibů a nejasností</li>
+      </ul>
+
+      <a class="button" href="/collections/led-terapie">Vybrat LED masku</a>
+    </div>
+  </div>
+
+  <div class="verela-led-banner">
+    {%- if section.settings.bottom_image != blank -%}
+      {{
+        section.settings.bottom_image
+        | image_url: width: 2400
+        | image_tag:
+          class: 'verela-led-banner__image',
+          loading: 'lazy',
+          widths: '750, 1100, 1500, 2000, 2400',
+          sizes: '100vw'
+      }}
+    {%- endif -%}
+
+    <div class="page-width verela-led-banner__inner">
+      <div class="verela-led-banner__content">
+        <p class="verela-led-kicker">Dostupná beauty technologie</p>
+        <h2>Začněte s LED péčí, která působí prémiově a nestojí jako salonní kúry</h2>
+        <p>
+          Vyberte si masku podle ceny, typu péče a jednoduchosti použití. K tomu můžete přidat Gua Sha,
+          roller nebo další drobnosti pro kompletní domácí rituál.
+        </p>
+        <a class="button" href="/collections/bestsellery">Nakupovat bestsellery</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Verela LED homepage",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hlavní banner"
+    },
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "Malý nadpis",
+      "default": "LED masky a domácí beauty péče"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Hlavní nadpis",
+      "default": "Dostupná LED péče o pleť doma"
+    },
+    {
+      "type": "text",
+      "id": "price_label",
+      "label": "Cenové zvýraznění",
+      "default": "LED masky od 2 990 Kč"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>Vyberte si LED masku a beauty pomůcky pro pravidelnou domácí rutinu. Jasná cena, jednoduchý výběr a produkty, které dávají smysl na českém trhu.</p>"
+    },
+    {
+      "type": "text",
+      "id": "primary_label",
+      "label": "Hlavní tlačítko",
+      "default": "Nakupovat LED masky"
+    },
+    {
+      "type": "url",
+      "id": "primary_link",
+      "label": "Odkaz hlavního tlačítka"
+    },
+    {
+      "type": "text",
+      "id": "secondary_label",
+      "label": "Druhé tlačítko",
+      "default": "Zobrazit bestsellery"
+    },
+    {
+      "type": "url",
+      "id": "secondary_link",
+      "label": "Odkaz druhého tlačítka"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Kolekce produktů"
+    },
+    {
+      "type": "text",
+      "id": "products_heading",
+      "label": "Nadpis produktů",
+      "default": "Nejoblíbenější LED masky Verela"
+    },
+    {
+      "type": "text",
+      "id": "products_text",
+      "label": "Text produktů",
+      "default": "Hlavní výběr produktů s viditelnou cenou, čistou kartou a rychlou cestou do košíku."
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 4,
+      "max": 8,
+      "step": 1,
+      "label": "Počet produktů",
+      "default": 4
+    },
+    {
+      "type": "image_picker",
+      "id": "ritual_image",
+      "label": "Obrázek rituálu"
+    },
+    {
+      "type": "image_picker",
+      "id": "bottom_image",
+      "label": "Spodní banner"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Verela LED homepage"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,19 @@
+{
+  "sections": {
+    "main": {
+      "type": "verela-led-therapy-page",
+      "settings": {
+        "eyebrow": "Průvodce Verela",
+        "heading": "Proč LED terapie dává smysl pro domácí beauty rutinu",
+        "lead": "LED světlo se v kosmetice a wellness používá pro pravidelnou, neinvazivní péči. U pleti se nejčastěji řeší vzhled jemných linek, textura, začervenání a aknózní pleť. U těla se fotobiomodulace zkoumá hlavně jako doplněk péče o namáhané partie, například kolena nebo záda.",
+        "primary_label": "Vybrat LED produkty",
+        "primary_link": "/collections/all",
+        "secondary_label": "Zobrazit bestsellery",
+        "secondary_link": "/collections/bestsellery"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

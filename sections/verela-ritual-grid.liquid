@@ -1,0 +1,103 @@
+<section class="verela-ritual color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width">
+    <div class="verela-ritual__header">
+      {%- if section.settings.kicker != blank -%}
+        <p class="verela-kicker">{{ section.settings.kicker }}</p>
+      {%- endif -%}
+      <h2>{{ section.settings.heading }}</h2>
+      {%- if section.settings.text != blank -%}
+        <div class="verela-ritual__text rte">{{ section.settings.text }}</div>
+      {%- endif -%}
+    </div>
+
+    <div class="verela-ritual__grid">
+      {%- for block in section.blocks -%}
+        <article class="verela-ritual__item" {{ block.shopify_attributes }}>
+          <span class="verela-ritual__number">{{ forloop.index | prepend: '0' }}</span>
+          <h3>{{ block.settings.title }}</h3>
+          <div class="rte">{{ block.settings.text }}</div>
+        </article>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Verela ritual grid",
+  "settings": [
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "Malý nadpis",
+      "default": "Jednoduchý rituál"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Nadpis",
+      "default": "Péče, která se vejde do běžného dne"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>Vyberte si pomůcky a beauty technologie, které podpoří večerní rutinu doma bez složitého salonního procesu.</p>"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Barevné schéma",
+      "default": "scheme-1"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Krok",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "title",
+          "label": "Nadpis",
+          "default": "Vyčistit a připravit"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Začněte čistou pletí a krátkým momentem klidu. Rutina potom působí přirozeně a snadno se drží.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Verela ritual grid",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "title": "Vyčistit a připravit",
+            "text": "<p>Začněte čistou pletí a krátkým momentem klidu. Rutina potom působí přirozeně a snadno se drží.</p>"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Dopřát si technologii",
+            "text": "<p>LED maska, masážní pomůcka nebo aromaterapie vytvoří doma pocit promyšlené beauty péče.</p>"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Udržet pravidelnost",
+            "text": "<p>Nejlepší rutina je ta, ke které se rádi vracíte. Produkty Verela jsou vybrané pro jednoduché každodenní použití.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

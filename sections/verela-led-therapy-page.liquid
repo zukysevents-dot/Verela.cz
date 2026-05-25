@@ -1,0 +1,703 @@
+{% comment %}
+  Verela - Proč LED terapie?
+  File: sections/verela-led-therapy-page.liquid
+  Use with template: templates/page.proc-led-terapie.json
+{% endcomment %}
+
+<section class="verela-led-page">
+  <style>
+    .verela-led-page {
+      --vl-bg: #f7f1ea;
+      --vl-card: #ffffff;
+      --vl-text: #171417;
+      --vl-muted: #6f6667;
+      --vl-border: rgba(23, 20, 23, 0.12);
+      --vl-accent: #8a4059;
+      --vl-accent-soft: #f2e1e7;
+      --vl-dark: #171417;
+      --vl-radius: 22px;
+      --vl-shadow: 0 18px 50px rgba(23, 20, 23, 0.08);
+      background: var(--vl-bg);
+      color: var(--vl-text);
+      font-family: inherit;
+    }
+
+    .verela-led-page * {
+      box-sizing: border-box;
+    }
+
+    .vl-container {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .vl-hero {
+      position: relative;
+      overflow: hidden;
+      min-height: 650px;
+      display: flex;
+      align-items: center;
+      background:
+        linear-gradient(90deg, rgba(247,241,234,0.98) 0%, rgba(247,241,234,0.86) 42%, rgba(247,241,234,0.22) 68%, rgba(247,241,234,0.08) 100%),
+        var(--vl-bg);
+    }
+
+    .vl-hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 18% 40%, rgba(255,255,255,0.85), transparent 32%),
+        radial-gradient(circle at 65% 52%, rgba(255,255,255,0.55), transparent 28%);
+      pointer-events: none;
+    }
+
+    .vl-hero-bg {
+      position: absolute;
+      inset: 0 0 0 auto;
+      width: 58%;
+      height: 100%;
+      background-image: var(--vl-hero-image);
+      background-size: cover;
+      background-position: center;
+      opacity: 0.92;
+    }
+
+    .vl-hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 760px;
+      padding: 90px 0;
+    }
+
+    .vl-eyebrow {
+      color: var(--vl-accent);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 1.3rem;
+      margin-bottom: 16px;
+    }
+
+    .vl-hero h1 {
+      font-size: clamp(4rem, 5vw, 7.2rem);
+      line-height: 0.98;
+      letter-spacing: -0.05em;
+      margin: 0 0 26px;
+      font-weight: 850;
+    }
+
+    .vl-lead {
+      color: var(--vl-muted);
+      font-size: clamp(1.7rem, 1.6vw, 2.15rem);
+      line-height: 1.75;
+      max-width: 760px;
+      margin: 0;
+    }
+
+    .vl-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 34px;
+    }
+
+    .vl-btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 56px;
+      padding: 0 28px;
+      border-radius: 9px;
+      font-weight: 800;
+      text-decoration: none;
+      transition: transform 180ms ease, opacity 180ms ease, background 180ms ease;
+    }
+
+    .vl-btn:hover {
+      transform: translateY(-1px);
+      opacity: 0.92;
+    }
+
+    .vl-btn-primary {
+      background: var(--vl-dark);
+      color: #fff;
+    }
+
+    .vl-btn-secondary {
+      background: rgba(255,255,255,0.58);
+      color: var(--vl-dark);
+      border: 1px solid var(--vl-border);
+    }
+
+    .vl-section {
+      padding: 64px 0;
+    }
+
+    .vl-note {
+      background: rgba(255,255,255,0.72);
+      border: 1px solid var(--vl-border);
+      border-radius: 14px;
+      padding: 24px 28px;
+      font-weight: 800;
+      line-height: 1.7;
+      box-shadow: 0 10px 35px rgba(23, 20, 23, 0.04);
+    }
+
+    .vl-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .vl-grid-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .vl-grid-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .vl-card {
+      background: var(--vl-card);
+      border: 1px solid var(--vl-border);
+      border-radius: var(--vl-radius);
+      padding: 30px;
+      box-shadow: 0 12px 34px rgba(23, 20, 23, 0.04);
+    }
+
+    .vl-card-number {
+      color: var(--vl-accent);
+      font-weight: 850;
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+
+    .vl-card h2,
+    .vl-card h3 {
+      margin: 0 0 16px;
+      letter-spacing: -0.03em;
+      line-height: 1.12;
+    }
+
+    .vl-card h2 {
+      font-size: clamp(2.5rem, 3vw, 4.4rem);
+    }
+
+    .vl-card h3 {
+      font-size: clamp(2rem, 2vw, 2.9rem);
+    }
+
+    .vl-card p,
+    .vl-card li {
+      color: var(--vl-muted);
+      font-size: 1.55rem;
+      line-height: 1.75;
+    }
+
+    .vl-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .vl-card ul {
+      margin: 16px 0 0;
+      padding-left: 20px;
+    }
+
+    .vl-section-head {
+      max-width: 850px;
+      margin-bottom: 26px;
+    }
+
+    .vl-section-head h2 {
+      font-size: clamp(3.2rem, 4vw, 5.6rem);
+      line-height: 1.03;
+      letter-spacing: -0.045em;
+      margin: 0 0 16px;
+    }
+
+    .vl-section-head p {
+      color: var(--vl-muted);
+      font-size: 1.7rem;
+      line-height: 1.75;
+      margin: 0;
+    }
+
+    .vl-split {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+
+    .vl-feature {
+      background: #fff;
+      border-radius: 30px;
+      overflow: hidden;
+      border: 1px solid var(--vl-border);
+      box-shadow: var(--vl-shadow);
+    }
+
+    .vl-feature-image {
+      min-height: 100%;
+      background-image: var(--vl-feature-image);
+      background-position: center;
+      background-size: cover;
+    }
+
+    .vl-table {
+      display: grid;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .vl-table-row {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 16px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--vl-border);
+    }
+
+    .vl-table-row strong {
+      color: var(--vl-text);
+    }
+
+    .vl-table-row span {
+      color: var(--vl-muted);
+      line-height: 1.65;
+    }
+
+    .vl-steps {
+      counter-reset: steps;
+    }
+
+    .vl-step {
+      position: relative;
+      padding-left: 58px;
+    }
+
+    .vl-step::before {
+      counter-increment: steps;
+      content: counter(steps);
+      position: absolute;
+      left: 0;
+      top: 2px;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--vl-accent-soft);
+      color: var(--vl-accent);
+      font-weight: 900;
+    }
+
+    .vl-faq details {
+      background: #fff;
+      border: 1px solid var(--vl-border);
+      border-radius: 16px;
+      padding: 0 22px;
+    }
+
+    .vl-faq details + details {
+      margin-top: 12px;
+    }
+
+    .vl-faq summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 21px 0;
+      font-size: 1.75rem;
+      font-weight: 850;
+      letter-spacing: -0.02em;
+    }
+
+    .vl-faq summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .vl-faq summary::after {
+      content: "+";
+      float: right;
+      color: var(--vl-accent);
+      font-weight: 900;
+    }
+
+    .vl-faq details[open] summary::after {
+      content: "−";
+    }
+
+    .vl-faq p {
+      color: var(--vl-muted);
+      font-size: 1.55rem;
+      line-height: 1.75;
+      margin: 0 0 22px;
+      max-width: 900px;
+    }
+
+    .vl-cta {
+      text-align: center;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255,255,255,0.92), transparent 42%),
+        #efe3da;
+      border: 1px solid var(--vl-border);
+      border-radius: 32px;
+      padding: 54px 28px;
+    }
+
+    .vl-cta h2 {
+      font-size: clamp(3rem, 4vw, 5.6rem);
+      line-height: 1.05;
+      letter-spacing: -0.045em;
+      margin: 0 0 16px;
+    }
+
+    .vl-cta p {
+      color: var(--vl-muted);
+      font-size: 1.7rem;
+      line-height: 1.75;
+      max-width: 760px;
+      margin: 0 auto 28px;
+    }
+
+    @media screen and (max-width: 989px) {
+      .vl-hero {
+        min-height: auto;
+      }
+
+      .vl-hero-bg {
+        position: relative;
+        width: 100%;
+        min-height: 430px;
+        order: 2;
+      }
+
+      .vl-hero {
+        display: block;
+      }
+
+      .vl-hero-content {
+        padding: 58px 0 34px;
+      }
+
+      .vl-grid-3,
+      .vl-grid-2,
+      .vl-split {
+        grid-template-columns: 1fr;
+      }
+
+      .vl-feature-image {
+        min-height: 360px;
+      }
+
+      .vl-section {
+        padding: 44px 0;
+      }
+
+      .vl-table-row {
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }
+    }
+
+    @media screen and (max-width: 640px) {
+      .vl-container {
+        padding: 0 16px;
+      }
+
+      .vl-hero h1 {
+        font-size: 4rem;
+      }
+
+      .vl-btn {
+        width: 100%;
+      }
+
+      .vl-card {
+        padding: 24px;
+      }
+
+      .vl-note {
+        padding: 20px;
+      }
+    }
+  </style>
+
+  <div class="vl-hero" style="--vl-hero-image: url({{ section.settings.hero_image | image_url: width: 1800 }});">
+    <div class="vl-hero-bg"></div>
+    <div class="vl-container">
+      <div class="vl-hero-content">
+        <div class="vl-eyebrow">{{ section.settings.eyebrow }}</div>
+        <h1>{{ section.settings.heading }}</h1>
+        <p class="vl-lead">{{ section.settings.lead }}</p>
+        <div class="vl-actions">
+          <a class="vl-btn vl-btn-primary" href="{{ section.settings.primary_link | default: '/collections/all' }}">{{ section.settings.primary_label }}</a>
+          <a class="vl-btn vl-btn-secondary" href="{{ section.settings.secondary_link | default: '/collections/all' }}">{{ section.settings.secondary_label }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="vl-section">
+    <div class="vl-container">
+      <div class="vl-note">
+        Verela komunikuje LED produkty jako beauty a wellness pomůcky. Nejde o zdravotnickou léčbu. Výsledky se liší podle typu produktu, výkonu, pravidelnosti, pleti, partie těla a správného použití.
+      </div>
+    </div>
+  </div>
+
+  <div class="vl-section">
+    <div class="vl-container">
+      <div class="vl-grid vl-grid-3">
+        <article class="vl-card">
+          <div class="vl-card-number">01</div>
+          <h3>Pleť a jemné linky</h3>
+          <p>Červené LED světlo se v kosmetice používá hlavně u vzhledu pleti, jemných linek, textury a celkové vitality pokožky. Nejlepší výsledky dává jako pravidelná rutina, ne jako jednorázový trik.</p>
+        </article>
+
+        <article class="vl-card">
+          <div class="vl-card-number">02</div>
+          <h3>Aknózní pleť</h3>
+          <p>Modré a červené světlo se používá také u mírného až středního akné. LED péče může být součástí rutiny, sama o sobě ale obvykle nenahrazuje dermatologickou léčbu.</p>
+        </article>
+
+        <article class="vl-card">
+          <div class="vl-card-number">03</div>
+          <h3>Krk a dekolt</h3>
+          <p>Krk a dekolt bývají často opomíjené, přitom vizuálně navazují na pleť obličeje. LED pomůcky se hodí pro zákazníky, kteří chtějí rozšířit beauty rutinu i mimo obličej.</p>
+        </article>
+
+        <article class="vl-card">
+          <div class="vl-card-number">04</div>
+          <h3>Kolena a klouby</h3>
+          <p>Fotobiomodulace se zkoumá i u namáhaných kloubů. Pro e-shop je bezpečnější mluvit o domácí wellness péči, komfortu a regeneraci, nikoliv o léčbě bolesti nebo diagnóz.</p>
+        </article>
+
+        <article class="vl-card">
+          <div class="vl-card-number">05</div>
+          <h3>Záda a namáhané partie</h3>
+          <p>U zad, ramen, krku a dalších namáhaných partií dává smysl LED terapii prezentovat jako doplněk regenerační rutiny. Dlouhodobá bolest patří vždy k odborníkovi.</p>
+        </article>
+
+        <article class="vl-card">
+          <div class="vl-card-number">06</div>
+          <h3>Pravidelnost místo zázraku</h3>
+          <p>LED péče není okamžitý zázrak. U domácích zařízení je klíčové pravidelné používání podle návodu, realistická očekávání a ochrana očí podle doporučení výrobce.</p>
+        </article>
+      </div>
+    </div>
+  </div>
+
+  <div class="vl-section">
+    <div class="vl-container">
+      <div class="vl-split">
+        <div class="vl-feature" style="--vl-feature-image: url({{ section.settings.feature_image | image_url: width: 1200 }});">
+          <div class="vl-feature-image"></div>
+        </div>
+
+        <div class="vl-card">
+          <h2>Jak vybrat LED terapii podle potřeby?</h2>
+          <p>Ne každý LED produkt je určený ke stejnému použití. Při výběru je důležité myslet na to, jakou oblast chcete ošetřovat nejčastěji – pleť, krk, dekolt, kolena, záda nebo celé tělo.</p>
+
+          <div class="vl-table">
+            <div class="vl-table-row">
+              <strong>Obličej</strong>
+              <span>LED masky pro beauty rutinu, texturu pleti, jemné linky a celkový vzhled pokožky.</span>
+            </div>
+            <div class="vl-table-row">
+              <strong>Krk a dekolt</strong>
+              <span>Doplňková péče pro partie, které vizuálně navazují na obličej.</span>
+            </div>
+            <div class="vl-table-row">
+              <strong>Záda a ramena</strong>
+              <span>Větší LED panely nebo pomůcky pro širší namáhané oblasti.</span>
+            </div>
+            <div class="vl-table-row">
+              <strong>Kolena a klouby</strong>
+              <span>Domácí wellness doplněk pro pravidelnou péči o zatěžované partie.</span>
+            </div>
+          </div>
+
+          <p style="margin-top: 24px;">
+            <a class="vl-btn vl-btn-primary" href="{{ section.settings.primary_link | default: '/collections/all' }}">{{ section.settings.primary_label }}</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="vl-section">
+    <div class="vl-container">
+      <div class="vl-section-head">
+        <h2>Jak často LED terapii používat?</h2>
+        <p>U LED terapie je důležitější pravidelnost než jednorázové dlouhé použití. Vždy se řiďte návodem konkrétního produktu, doporučenou vzdáleností a délkou použití.</p>
+      </div>
+
+      <div class="vl-grid vl-grid-3 vl-steps">
+        <article class="vl-card vl-step">
+          <h3>Dodržte návod</h3>
+          <p>Každý produkt může mít jiný výkon, vzdálenost a doporučený čas použití. Nepřekračujte doporučení výrobce.</p>
+        </article>
+        <article class="vl-card vl-step">
+          <h3>Buďte konzistentní</h3>
+          <p>Domácí LED péče se nejčastěji zařazuje několikrát týdně jako součást beauty nebo wellness rutiny.</p>
+        </article>
+        <article class="vl-card vl-step">
+          <h3>Chraňte oči</h3>
+          <p>Pokud výrobce doporučuje ochranu očí, používejte ji. Nedívejte se přímo do intenzivního světelného zdroje.</p>
+        </article>
+      </div>
+    </div>
+  </div>
+
+  {% if section.settings.collection != blank %}
+    <div class="vl-section">
+      <div class="vl-container">
+        <div class="vl-section-head">
+          <h2>Vyberte si LED terapii pro domácí použití</h2>
+          <p>Začněte produktem, který odpovídá oblasti, kterou chcete řešit nejčastěji. Pro pleť se hodí maska, pro větší partie spíše větší LED pomůcka nebo panel.</p>
+        </div>
+
+        <div class="vl-grid vl-grid-3">
+          {% for product in section.settings.collection.products limit: 6 %}
+            <article class="vl-card">
+              <a href="{{ product.url }}" style="display:block;text-decoration:none;color:inherit;">
+                {% if product.featured_image %}
+                  <img
+                    src="{{ product.featured_image | image_url: width: 700 }}"
+                    alt="{{ product.featured_image.alt | escape }}"
+                    loading="lazy"
+                    width="700"
+                    height="700"
+                    style="width:100%;height:auto;border-radius:16px;margin-bottom:18px;background:#f6f1ed;"
+                  >
+                {% endif %}
+                <h3>{{ product.title }}</h3>
+                <p>{{ product.price | money }}</p>
+              </a>
+            </article>
+          {% endfor %}
+        </div>
+
+        <p style="margin-top: 26px;">
+          <a class="vl-btn vl-btn-primary" href="{{ section.settings.primary_link | default: '/collections/all' }}">Zobrazit všechny LED produkty</a>
+        </p>
+      </div>
+    </div>
+  {% endif %}
+
+  <div class="vl-section">
+    <div class="vl-container">
+      <div class="vl-section-head">
+        <h2>Nejčastější otázky</h2>
+        <p>Krátké odpovědi na otázky, které zákazníci řeší před nákupem LED beauty a wellness pomůcek.</p>
+      </div>
+
+      <div class="vl-faq">
+        <details>
+          <summary>Je LED terapie bezpečná?</summary>
+          <p>Při správném používání je LED terapie obecně považována za dobře snášenou. Je důležité dodržovat návod, nepřekračovat doporučený čas použití a chránit oči podle doporučení výrobce.</p>
+        </details>
+
+        <details>
+          <summary>Za jak dlouho uvidím výsledky?</summary>
+          <p>Výsledky se liší podle typu produktu, pravidelnosti používání, oblasti použití i individuální reakce pokožky nebo těla. Obvykle je potřeba několik týdnů konzistentního používání.</p>
+        </details>
+
+        <details>
+          <summary>Pomáhá LED terapie na pleť?</summary>
+          <p>Červené LED světlo se v kosmetice používá jako podpůrná péče pro vzhled pleti, jemné linky, texturu a celkovou kvalitu pokožky. Nenahrazuje dermatologickou léčbu ani každodenní péči o pleť.</p>
+        </details>
+
+        <details>
+          <summary>Pomáhá LED terapie na kolena a záda?</summary>
+          <p>LED terapie může být součástí domácí wellness rutiny pro namáhané partie, jako jsou kolena, záda, ramena nebo krk. Pokud řešíte bolest, úraz, zánět nebo dlouhodobý problém, je vhodné se poradit s lékařem nebo fyzioterapeutem.</p>
+        </details>
+
+        <details>
+          <summary>Je LED terapie UV záření?</summary>
+          <p>Ne. LED terapie využívá červené nebo blízké infračervené světlo, nikoliv UV záření. Cílem není opalování ani poškození pokožky.</p>
+        </details>
+      </div>
+    </div>
+  </div>
+
+  <div class="vl-section">
+    <div class="vl-container">
+      <div class="vl-cta">
+        <h2>Začněte s LED terapií doma</h2>
+        <p>Vyberte si LED pomůcku podle toho, zda chcete pečovat hlavně o pleť, krk, dekolt, klouby, záda nebo celé tělo. Při pravidelném používání se LED terapie může stát jednoduchou součástí domácí beauty a wellness rutiny.</p>
+        <a class="vl-btn vl-btn-primary" href="{{ section.settings.primary_link | default: '/collections/all' }}">{{ section.settings.primary_label }}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Verela LED therapy page",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Malý nadpis",
+      "default": "Průvodce Verela"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Hlavní nadpis",
+      "default": "Proč LED terapie dává smysl pro domácí beauty rutinu"
+    },
+    {
+      "type": "textarea",
+      "id": "lead",
+      "label": "Úvodní text",
+      "default": "LED světlo se v kosmetice a wellness používá pro pravidelnou, neinvazivní péči. U pleti se nejčastěji řeší vzhled jemných linek, textura, začervenání a aknózní pleť. U těla se fotobiomodulace zkoumá hlavně jako doplněk péče o namáhané partie, například kolena nebo záda."
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero obrázek"
+    },
+    {
+      "type": "image_picker",
+      "id": "feature_image",
+      "label": "Obrázek v sekci Jak vybrat"
+    },
+    {
+      "type": "text",
+      "id": "primary_label",
+      "label": "Text hlavního tlačítka",
+      "default": "Vybrat LED produkty"
+    },
+    {
+      "type": "url",
+      "id": "primary_link",
+      "label": "Odkaz hlavního tlačítka"
+    },
+    {
+      "type": "text",
+      "id": "secondary_label",
+      "label": "Text druhého tlačítka",
+      "default": "Zobrazit bestsellery"
+    },
+    {
+      "type": "url",
+      "id": "secondary_link",
+      "label": "Odkaz druhého tlačítka"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Kolekce produktů"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Verela LED therapy page"
+    }
+  ]
+}
+{% endschema %}

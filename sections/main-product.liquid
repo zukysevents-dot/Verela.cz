@@ -352,6 +352,10 @@
             if verela_is_led_product
               if verela_product_signal contains 'kolen' or verela_product_signal contains 'knee'
                 assign verela_product_focus = 'knee'
+              elsif verela_product_signal contains 'krk' or verela_product_signal contains 'dekolt' or verela_product_signal contains 'neck' or verela_product_signal contains 'decollet'
+                assign verela_product_focus = 'neck'
+              elsif verela_product_signal contains 'ocni' or verela_product_signal contains 'oční' or verela_product_signal contains 'oko' or verela_product_signal contains 'eye'
+                assign verela_product_focus = 'eye'
               elsif verela_product_signal contains 'zad' or verela_product_signal contains 'zád' or verela_product_signal contains 'back' or verela_product_signal contains 'pas'
                 assign verela_product_focus = 'back'
               elsif verela_product_signal contains 'bandaz' or verela_product_signal contains 'bandáž' or verela_product_signal contains 'body' or verela_product_signal contains 'elbow'
@@ -810,6 +814,16 @@
                             LED pás na záda je praktická volba pro domácí wellness po práci, sezení, cestování nebo náročném
                             dni. Je vhodný pro klidný rituál zaměřený na větší oblast zad, ramen nebo beder.
                           </p>
+                        {%- elsif verela_product_focus == 'neck' -%}
+                          <p>
+                            LED pomůcka na krk a dekolt je určená pro jemnou domácí beauty rutinu v oblasti, na kterou se
+                            při běžné skincare často zapomíná. Hodí se jako klidný večerní krok po vyčištění pleti.
+                          </p>
+                        {%- elsif verela_product_focus == 'eye' -%}
+                          <p>
+                            LED pomůcka pro oční okolí je kompaktní beauty doplněk pro jemnou večerní péči. Hodí se pro
+                            zákazníky, kteří chtějí věnovat pozornost detailům své skincare rutiny.
+                          </p>
                         {%- elsif verela_product_focus == 'body' -%}
                           <p>
                             Tělová LED pomůcka je vhodná pro pravidelnou domácí wellness péči o konkrétní partii. Hodí se
@@ -890,6 +904,40 @@
                             <li>
                               <span class="verela-check" aria-hidden="true"></span>
                               <span>Jednoduchý rituál pro chvíle klidu doma</span>
+                            </li>
+                          {%- elsif verela_product_focus == 'neck' -%}
+                            <li>
+                              <span class="verela-check" aria-hidden="true"></span>
+                              <span>Cílená beauty péče o krk a dekolt</span>
+                            </li>
+                            <li>
+                              <span class="verela-check" aria-hidden="true"></span>
+                              <span>Vhodná jako doplněk večerní skincare rutiny</span>
+                            </li>
+                            <li>
+                              <span class="verela-check" aria-hidden="true"></span>
+                              <span>Jemný rituál pro oblast, která bývá často opomíjená</span>
+                            </li>
+                            <li>
+                              <span class="verela-check" aria-hidden="true"></span>
+                              <span>Pohodlné použití doma bez návštěvy salonu</span>
+                            </li>
+                          {%- elsif verela_product_focus == 'eye' -%}
+                            <li>
+                              <span class="verela-check" aria-hidden="true"></span>
+                              <span>Cílená beauty péče pro oční okolí</span>
+                            </li>
+                            <li>
+                              <span class="verela-check" aria-hidden="true"></span>
+                              <span>Kompaktní pomůcka pro krátký večerní rituál</span>
+                            </li>
+                            <li>
+                              <span class="verela-check" aria-hidden="true"></span>
+                              <span>Snadné zařazení po vyčištění pleti</span>
+                            </li>
+                            <li>
+                              <span class="verela-check" aria-hidden="true"></span>
+                              <span>Elegantní beauty doplněk pro domácí péči</span>
                             </li>
                           {%- elsif verela_product_focus == 'body' -%}
                             <li>
@@ -1071,6 +1119,18 @@
                             LED pás zařaďte do večerní wellness rutiny po práci, dlouhém sezení nebo cestování. Vyberte si
                             klidné místo, začněte kratší dobou použití a používejte pomůcku podle návodu v balení.
                           </p>
+                        {%- elsif verela_product_focus == 'neck' -%}
+                          <h3>Jak ji zařadit do péče o krk a dekolt</h3>
+                          <p>
+                            LED pomůcku použijte večer po vyčištění pleti v oblasti krku a dekoltu. Začněte kratší dobou
+                            použití, postupujte jemně a poté pokračujte běžnou péčí, například sérem nebo krémem.
+                          </p>
+                        {%- elsif verela_product_focus == 'eye' -%}
+                          <h3>Jak ji zařadit do péče o oční okolí</h3>
+                          <p>
+                            Pomůcku zařaďte do jemné večerní skincare rutiny po vyčištění pleti. Používejte ji podle návodu
+                            a v okolí očí postupujte vždy šetrně a bez zbytečného tlaku.
+                          </p>
                         {%- elsif verela_product_focus == 'body' -%}
                           <h3>Jak ji zařadit do tělové wellness rutiny</h3>
                           <p>
@@ -1139,6 +1199,18 @@
                             <li>Začněte kratší dobou použití.</li>
                             <li>Zařaďte jej po práci, cestování nebo dlouhém sezení.</li>
                             <li>Po použití pokračujte běžnou relaxační rutinou.</li>
+                          {%- elsif verela_product_focus == 'neck' -%}
+                            <li>Vyčistěte oblast krku a dekoltu.</li>
+                            <li>Použijte pomůcku podle návodu v balení.</li>
+                            <li>Začněte kratší dobou použití.</li>
+                            <li>Zařaďte ji do pravidelné večerní skincare rutiny.</li>
+                            <li>Po použití pokračujte sérem, krémem nebo běžnou péčí.</li>
+                          {%- elsif verela_product_focus == 'eye' -%}
+                            <li>Vyčistěte pleť a oblast očního okolí.</li>
+                            <li>Použijte pomůcku podle návodu v balení.</li>
+                            <li>Začněte kratší a jemnou rutinou.</li>
+                            <li>Zařaďte ji do večerní péče o pleť.</li>
+                            <li>Po použití pokračujte běžnou péčí pro oční okolí.</li>
                           {%- elsif verela_product_focus == 'body' -%}
                             <li>Zvolte konkrétní partii těla, na kterou se chcete zaměřit.</li>
                             <li>Použijte pomůcku podle návodu v balení.</li>
@@ -1230,6 +1302,18 @@
                             LED pás na záda se hodí pro chvíle po práci, dlouhém sezení nebo cestování. Stačí pár minut
                             klidu, pohodlné místo a pravidelný rituál zaměřený na větší partii těla.
                           </p>
+                        {%- elsif verela_product_focus == 'neck' -%}
+                          <h3>Péče o krk a dekolt bez komplikací</h3>
+                          <p>
+                            Krk a dekolt si zaslouží vlastní místo ve skincare rutině. LED pomůcka je praktický způsob,
+                            jak této oblasti věnovat pár minut pravidelné domácí beauty péče.
+                          </p>
+                        {%- elsif verela_product_focus == 'eye' -%}
+                          <h3>Jemná péče o oční okolí doma</h3>
+                          <p>
+                            Oční okolí vyžaduje šetrný přístup. Kompaktní LED pomůcka pomáhá vytvořit krátký a klidný
+                            beauty rituál zaměřený na detail, ne na složité kroky.
+                          </p>
                         {%- elsif verela_product_focus == 'body' -%}
                           <h3>Cílená tělová péče bez komplikací</h3>
                           <p>
@@ -1300,6 +1384,10 @@
                               Je LED pomůcka vhodná pro pravidelnou péči o koleno?
                             {%- elsif verela_product_focus == 'back' -%}
                               Je LED pás vhodný pro pravidelnou péči o záda?
+                            {%- elsif verela_product_focus == 'neck' -%}
+                              Je LED pomůcka vhodná pro péči o krk a dekolt?
+                            {%- elsif verela_product_focus == 'eye' -%}
+                              Je LED pomůcka vhodná pro oční okolí?
                             {%- elsif verela_product_focus == 'body' -%}
                               Je tělová LED pomůcka vhodná pro pravidelné použití?
                             {%- elsif verela_product_focus == 'massage' -%}
@@ -1328,6 +1416,10 @@
                               Nejčastěji dává smysl večer, po pohybu nebo po dni, kdy byla oblast kolena více namáhaná.
                             {%- elsif verela_product_focus == 'back' -%}
                               Nejčastěji se hodí večer po práci, dlouhém sezení, cestování nebo ve chvíli, kdy chcete doma zvolnit.
+                            {%- elsif verela_product_focus == 'neck' -%}
+                              Nejčastěji večer po vyčištění pleti, kdy můžete krku a dekoltu věnovat vlastní skincare krok.
+                            {%- elsif verela_product_focus == 'eye' -%}
+                              Nejčastěji večer po vyčištění pleti jako jemný doplněk péče o oční okolí.
                             {%- elsif verela_product_focus == 'body' -%}
                               Zařaďte ji ve chvíli, kdy máte klid a chcete se zaměřit na konkrétní partii těla.
                             {%- elsif verela_product_focus == 'massage' -%}

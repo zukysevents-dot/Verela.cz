@@ -12,6 +12,11 @@
   elsif request.page_type == 'password'
     assign og_url = request.origin
   endif
+
+  if request.page_type == 'index'
+    assign og_title = 'Verela.cz'
+    assign og_description = 'Beauty a wellness pomucky pro moderni domaci peci. LED masky, skincare doplnky a self-care produkty pro kazdodenni rutinu.'
+  endif
 %}
 
 <meta property="og:site_name" content="{{ shop.name }}">

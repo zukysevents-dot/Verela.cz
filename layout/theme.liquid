@@ -7,13 +7,8 @@
     <meta name="theme-color" content="">
     <link rel="canonical" href="{{ canonical_url }}">
 
-    {%- if settings.favicon != blank -%}
-      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
-      <link rel="apple-touch-icon" href="{{ settings.favicon | image_url: width: 180, height: 180 }}">
-    {%- else -%}
-      <link rel="icon" type="image/png" sizes="32x32" href="{{ 'verela-favicon-v3.png' | asset_url }}">
-      <link rel="apple-touch-icon" href="{{ 'verela-favicon-v3.png' | asset_url }}">
-    {%- endif -%}
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ 'verela-favicon-v3.png' | asset_url }}">
+    <link rel="apple-touch-icon" href="{{ 'verela-favicon-v3.png' | asset_url }}">
 
     {%- unless settings.type_header_font.system? and settings.type_body_font.system? -%}
       <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
@@ -21,7 +16,7 @@
 
     <title>
       {%- if request.page_type == 'index' -%}
-        Verela – dostupné LED masky a beauty pomůcky pro domácí péči
+        Verela - dostupne LED masky a beauty pomucky pro domaci peci
       {%- else -%}
         {{ page_title }}
         {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
@@ -31,7 +26,7 @@
     </title>
 
     {% if request.page_type == 'index' %}
-      <meta name="description" content="Dostupné LED masky, Gua Sha, rollery a beauty pomůcky pro domácí péči. Jasné ceny, bezpečná platba, doručení 5-12 dnů a vrácení do 14 dnů.">
+      <meta name="description" content="Dostupne LED masky, Gua Sha, rollery a beauty pomucky pro domaci peci. Jasne ceny, bezpecna platba, doruceni 5-12 dnu a vraceni do 14 dnu.">
     {% elsif page_description %}
       <meta name="description" content="{{ page_description | escape }}">
     {% endif %}

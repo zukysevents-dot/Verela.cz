@@ -339,6 +339,16 @@
                 assign led_education_url = '/pages/proc-led-terapie'
               endif
             endif
+
+            assign verela_product_signal = product.handle | append: ' ' | append: product.title | downcase
+            assign verela_product_focus = 'face'
+            if verela_product_signal contains 'kolen' or verela_product_signal contains 'knee'
+              assign verela_product_focus = 'knee'
+            elsif verela_product_signal contains 'zad' or verela_product_signal contains 'zád' or verela_product_signal contains 'back' or verela_product_signal contains 'pas'
+              assign verela_product_focus = 'back'
+            elsif verela_product_signal contains 'bandaz' or verela_product_signal contains 'bandáž' or verela_product_signal contains 'body' or verela_product_signal contains 'elbow'
+              assign verela_product_focus = 'body'
+            endif
           -%}
 
           {%- for block in section.blocks -%}
@@ -750,28 +760,98 @@
                   <div class="verela-product-story quick-add-hidden" aria-label="Doplňující informace k produktu">
                     {%- if section.settings.show_premium_benefits -%}
                       <div class="verela-premium-card verela-premium-card--soft">
-                        <h2>Proč si ji zákaznice vybírají</h2>
-                        <p>
-                          LED pomůcka je moderní upgrade domácí péče: pár minut klidu, jednoduché použití a rituál,
-                          který zvládnete zařadit do běžného večera bez návštěvy salonu.
-                        </p>
+                        <h2>Proč si LED pomůcku vybrat</h2>
+                        {%- if verela_product_focus == 'knee' -%}
+                          <p>
+                            LED pomůcka na koleno je určená pro domácí wellness rutinu po aktivním dni, sportu nebo delším
+                            zatížení. Dává smysl ve chvíli, kdy chcete pár minut cílené péče o namáhanou oblast bez salonu.
+                          </p>
+                        {%- elsif verela_product_focus == 'back' -%}
+                          <p>
+                            LED pás na záda je praktická volba pro domácí wellness po práci, sezení, cestování nebo náročném
+                            dni. Je vhodný pro klidný rituál zaměřený na větší oblast zad, ramen nebo beder.
+                          </p>
+                        {%- elsif verela_product_focus == 'body' -%}
+                          <p>
+                            Tělová LED pomůcka je vhodná pro pravidelnou domácí wellness péči o konkrétní partii. Hodí se
+                            pro zákazníky, kteří chtějí cílený rituál pro záda, kolena, ramena nebo lokální oblast.
+                          </p>
+                        {%- else -%}
+                          <p>
+                            LED maska je moderní upgrade domácí skincare rutiny: pár minut klidu, jednoduché použití a
+                            beauty rituál, který zvládnete zařadit do běžného večera bez návštěvy salonu.
+                          </p>
+                        {%- endif -%}
                         <ul class="verela-benefit-list">
-                          <li>
-                            <span class="verela-check" aria-hidden="true"></span>
-                            <span>Prémiový self-care rituál v pohodlí domova</span>
-                          </li>
-                          <li>
-                            <span class="verela-check" aria-hidden="true"></span>
-                            <span>Elegantní beauty pomůcka pro pravidelnou péči o pleť</span>
-                          </li>
-                          <li>
-                            <span class="verela-check" aria-hidden="true"></span>
-                            <span>U tělových variant vhodná pro wellness péči o záda, kolena nebo ramena</span>
-                          </li>
-                          <li>
-                            <span class="verela-check" aria-hidden="true"></span>
-                            <span>Skvělá volba jako stylový beauty dárek</span>
-                          </li>
+                          {%- if verela_product_focus == 'knee' -%}
+                            <li>
+                              <span class="verela-check" aria-hidden="true"></span>
+                              <span>Cílená domácí wellness péče o oblast kolena</span>
+                            </li>
+                            <li>
+                              <span class="verela-check" aria-hidden="true"></span>
+                              <span>Praktická po pohybu, sportu nebo dni na nohou</span>
+                            </li>
+                            <li>
+                              <span class="verela-check" aria-hidden="true"></span>
+                              <span>Pohodlné použití doma bez objednávání termínu</span>
+                            </li>
+                            <li>
+                              <span class="verela-check" aria-hidden="true"></span>
+                              <span>Vhodná pro pravidelný večerní wellness rituál</span>
+                            </li>
+                          {%- elsif verela_product_focus == 'back' -%}
+                            <li>
+                              <span class="verela-check" aria-hidden="true"></span>
+                              <span>Domácí wellness péče pro záda, bedra nebo ramena</span>
+                            </li>
+                            <li>
+                              <span class="verela-check" aria-hidden="true"></span>
+                              <span>Praktická po práci, sezení nebo cestování</span>
+                            </li>
+                            <li>
+                              <span class="verela-check" aria-hidden="true"></span>
+                              <span>Větší plocha pro pohodlné použití na těle</span>
+                            </li>
+                            <li>
+                              <span class="verela-check" aria-hidden="true"></span>
+                              <span>Jednoduchý rituál pro chvíle klidu doma</span>
+                            </li>
+                          {%- elsif verela_product_focus == 'body' -%}
+                            <li>
+                              <span class="verela-check" aria-hidden="true"></span>
+                              <span>Cílená wellness péče o vybranou partii těla</span>
+                            </li>
+                            <li>
+                              <span class="verela-check" aria-hidden="true"></span>
+                              <span>Vhodná pro záda, kolena, ramena nebo lokální oblast</span>
+                            </li>
+                            <li>
+                              <span class="verela-check" aria-hidden="true"></span>
+                              <span>Snadné zařazení do domácí večerní rutiny</span>
+                            </li>
+                            <li>
+                              <span class="verela-check" aria-hidden="true"></span>
+                              <span>Praktická pomůcka pro pravidelný self-care</span>
+                            </li>
+                          {%- else -%}
+                            <li>
+                              <span class="verela-check" aria-hidden="true"></span>
+                              <span>Prémiový self-care rituál v pohodlí domova</span>
+                            </li>
+                            <li>
+                              <span class="verela-check" aria-hidden="true"></span>
+                              <span>Elegantní beauty pomůcka pro pravidelnou péči o pleť</span>
+                            </li>
+                            <li>
+                              <span class="verela-check" aria-hidden="true"></span>
+                              <span>Skincare rutina bez návštěvy salonu</span>
+                            </li>
+                            <li>
+                              <span class="verela-check" aria-hidden="true"></span>
+                              <span>Skvělá volba jako stylový beauty dárek</span>
+                            </li>
+                          {%- endif -%}
                           <li>
                             <span class="verela-check" aria-hidden="true"></span>
                             <span>Bezpečná platba a doručení 5–12 pracovních dnů</span>
@@ -786,17 +866,57 @@
 
                     {%- if section.settings.show_routine_steps -%}
                       <div class="verela-premium-card">
-                        <h3>Jak ji zařadit do své rutiny</h3>
-                        <p>
-                          Zařaďte LED masku do své večerní skincare rutiny po vyčištění pleti. Začněte kratší dobou
-                          použití, sledujte reakci své pleti a pokračujte oblíbeným sérem nebo hydratačním krémem.
-                        </p>
+                        {%- if verela_product_focus == 'knee' -%}
+                          <h3>Jak ji zařadit do péče o koleno</h3>
+                          <p>
+                            Použijte LED pomůcku ve chvíli, kdy máte klid po pohybu, sportu nebo náročném dni. Začněte
+                            kratší dobou použití, držte se návodu v balení a vnímejte, jak vám pravidelný rituál vyhovuje.
+                          </p>
+                        {%- elsif verela_product_focus == 'back' -%}
+                          <h3>Jak ji zařadit do péče o záda</h3>
+                          <p>
+                            LED pás zařaďte do večerní wellness rutiny po práci, dlouhém sezení nebo cestování. Vyberte si
+                            klidné místo, začněte kratší dobou použití a používejte pomůcku podle návodu v balení.
+                          </p>
+                        {%- elsif verela_product_focus == 'body' -%}
+                          <h3>Jak ji zařadit do tělové wellness rutiny</h3>
+                          <p>
+                            Vyberte si konkrétní partii, kde chcete mít pravidelný self-care rituál. Pomůcku používejte v
+                            klidu domova, začněte pozvolna a vždy se řiďte návodem konkrétního produktu.
+                          </p>
+                        {%- else -%}
+                          <h3>Jak ji zařadit do své skincare rutiny</h3>
+                          <p>
+                            Zařaďte LED masku do své večerní skincare rutiny po vyčištění pleti. Začněte kratší dobou
+                            použití, sledujte reakci své pleti a pokračujte oblíbeným sérem nebo hydratačním krémem.
+                          </p>
+                        {%- endif -%}
                         <ol class="verela-routine-list">
-                          <li>Vyčistěte a osušte pleť.</li>
-                          <li>Použijte masku podle návodu v balení.</li>
-                          <li>Začněte kratší dobou použití.</li>
-                          <li>Zařaďte ji do pravidelné večerní rutiny.</li>
-                          <li>Po použití pokračujte běžnou skincare péčí.</li>
+                          {%- if verela_product_focus == 'knee' -%}
+                            <li>Vyberte si klidnou chvíli po aktivitě nebo večer doma.</li>
+                            <li>Umístěte pomůcku na oblast kolena podle návodu v balení.</li>
+                            <li>Začněte kratší dobou použití.</li>
+                            <li>Zařaďte ji do pravidelné wellness rutiny.</li>
+                            <li>Po použití dopřejte tělu klid a běžnou péči.</li>
+                          {%- elsif verela_product_focus == 'back' -%}
+                            <li>Použijte pás na záda, bedra nebo ramena podle typu produktu.</li>
+                            <li>Začněte v klidu domova a řiďte se návodem v balení.</li>
+                            <li>Začněte kratší dobou použití.</li>
+                            <li>Zařaďte jej po práci, cestování nebo dlouhém sezení.</li>
+                            <li>Po použití pokračujte běžnou relaxační rutinou.</li>
+                          {%- elsif verela_product_focus == 'body' -%}
+                            <li>Zvolte konkrétní partii těla, na kterou se chcete zaměřit.</li>
+                            <li>Použijte pomůcku podle návodu v balení.</li>
+                            <li>Začněte kratší dobou použití.</li>
+                            <li>Zařaďte ji do pravidelné večerní wellness rutiny.</li>
+                            <li>Po použití pokračujte běžnou péčí o tělo.</li>
+                          {%- else -%}
+                            <li>Vyčistěte a osušte pleť.</li>
+                            <li>Použijte masku podle návodu v balení.</li>
+                            <li>Začněte kratší dobou použití.</li>
+                            <li>Zařaďte ji do pravidelné večerní rutiny.</li>
+                            <li>Po použití pokračujte běžnou skincare péčí.</li>
+                          {%- endif -%}
                         </ol>
                         <p class="verela-note">
                           LED masky a tělové LED pomůcky jsou beauty a wellness produkty pro domácí rutinu, ne zdravotnické prostředky.
@@ -817,12 +937,32 @@
 
                     {%- if section.settings.show_premium_care_block -%}
                       <div class="verela-premium-card">
-                        <h3>Prémiová domácí péče bez komplikací</h3>
-                        <p>
-                          Verela vybírá beauty pomůcky pro ženy, které chtějí mít svou skincare rutinu pod kontrolou.
-                          Bez složitých procedur, bez zbytečných kroků a bez návštěvy salonu. Stačí pár minut klidu,
-                          čistá pleť a pravidelnost.
-                        </p>
+                        {%- if verela_product_focus == 'knee' -%}
+                          <h3>Domácí wellness pro namáhaná kolena</h3>
+                          <p>
+                            LED pomůcka na koleno je určená pro zákazníky, kteří chtějí mít péči o namáhanou oblast po ruce
+                            doma. Bez složité přípravy, bez návštěvy salonu a s důrazem na pravidelnost.
+                          </p>
+                        {%- elsif verela_product_focus == 'back' -%}
+                          <h3>Domácí wellness pro záda bez komplikací</h3>
+                          <p>
+                            LED pás na záda se hodí pro chvíle po práci, dlouhém sezení nebo cestování. Stačí pár minut
+                            klidu, pohodlné místo a pravidelný rituál zaměřený na větší partii těla.
+                          </p>
+                        {%- elsif verela_product_focus == 'body' -%}
+                          <h3>Cílená tělová péče bez komplikací</h3>
+                          <p>
+                            Tělové LED pomůcky dávají smysl tam, kde chcete pravidelnou domácí péči o konkrétní oblast.
+                            Jsou praktické pro večerní wellness rutinu a nevyžadují složité kroky.
+                          </p>
+                        {%- else -%}
+                          <h3>Prémiová domácí péče bez komplikací</h3>
+                          <p>
+                            Verela vybírá beauty pomůcky pro ženy, které chtějí mít svou skincare rutinu pod kontrolou.
+                            Bez složitých procedur, bez zbytečných kroků a bez návštěvy salonu. Stačí pár minut klidu,
+                            čistá pleť a pravidelnost.
+                          </p>
+                        {%- endif -%}
                       </div>
                     {%- endif -%}
 
@@ -832,17 +972,35 @@
                           <h3>Časté otázky</h3>
                         </div>
                         <details class="verela-faq-item">
-                          <summary>Je LED maska vhodná pro každodenní použití?</summary>
+                          <summary>
+                            {%- if verela_product_focus == 'knee' -%}
+                              Je LED pomůcka vhodná pro pravidelnou péči o koleno?
+                            {%- elsif verela_product_focus == 'back' -%}
+                              Je LED pás vhodný pro pravidelnou péči o záda?
+                            {%- elsif verela_product_focus == 'body' -%}
+                              Je tělová LED pomůcka vhodná pro pravidelné použití?
+                            {%- else -%}
+                              Je LED maska vhodná pro každodenní použití?
+                            {%- endif -%}
+                          </summary>
                           <div class="verela-faq-item__answer">
-                            Vždy doporučujeme řídit se návodem konkrétního produktu. Pokud s LED maskou začínáte,
-                            zvolte kratší dobu použití a sledujte reakci své pleti.
+                            Vždy doporučujeme řídit se návodem konkrétního produktu. Pokud s LED pomůckou začínáte,
+                            zvolte kratší dobu použití a sledujte, jak vám pravidelný domácí rituál vyhovuje.
                           </div>
                         </details>
                         <details class="verela-faq-item">
-                          <summary>Kdy ji mám používat?</summary>
+                          <summary>Kdy ji používat?</summary>
                           <div class="verela-faq-item__answer">
-                            Nejčastěji se hodí jako součást večerní skincare rutiny po vyčištění pleti. Po použití
-                            můžete pokračovat běžnou péčí, například sérem nebo hydratačním krémem.
+                            {%- if verela_product_focus == 'knee' -%}
+                              Nejčastěji dává smysl večer, po pohybu nebo po dni, kdy byla oblast kolena více namáhaná.
+                            {%- elsif verela_product_focus == 'back' -%}
+                              Nejčastěji se hodí večer po práci, dlouhém sezení, cestování nebo ve chvíli, kdy chcete doma zvolnit.
+                            {%- elsif verela_product_focus == 'body' -%}
+                              Zařaďte ji ve chvíli, kdy máte klid a chcete se zaměřit na konkrétní partii těla.
+                            {%- else -%}
+                              Nejčastěji se hodí jako součást večerní skincare rutiny po vyčištění pleti. Po použití
+                              můžete pokračovat běžnou péčí, například sérem nebo hydratačním krémem.
+                            {%- endif -%}
                           </div>
                         </details>
                         <details class="verela-faq-item">
@@ -850,14 +1008,19 @@
                           <div class="verela-faq-item__answer">
                             Více informací najdete na stránce
                             <a href="{{ led_education_url }}">Proč LED?</a>, kde vysvětlujeme, jak LED beauty pomůcky
-                            zařadit do domácí skincare rutiny.
+                            zařadit do domácí beauty a wellness rutiny.
                           </div>
                         </details>
                         <details class="verela-faq-item">
                           <summary>Je vhodná jako dárek?</summary>
                           <div class="verela-faq-item__answer">
-                            Ano. LED maska je elegantní beauty dárek pro každého, kdo má rád skincare, self-care a
-                            domácí péči.
+                            {%- if verela_product_focus == 'face' -%}
+                              Ano. LED maska je elegantní beauty dárek pro každého, kdo má rád skincare, self-care a
+                              domácí péči.
+                            {%- else -%}
+                              Ano. Tělová LED pomůcka je praktický wellness dárek pro každého, kdo má rád domácí péči,
+                              pohyb, relaxaci a chytré self-care pomůcky.
+                            {%- endif -%}
                           </div>
                         </details>
                         <details class="verela-faq-item">

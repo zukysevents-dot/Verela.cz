@@ -3,7 +3,7 @@
   assign og_url = canonical_url | default: request.origin
   assign og_type = 'website'
   assign og_description = page_description | default: shop.description | default: shop.name
-  assign fallback_og_image = 'verela-social-preview-v2.png' | asset_url
+  assign fallback_og_image = 'verela-social-preview-v3.png' | asset_url
 
   if request.page_type == 'product'
     assign og_type = 'product'

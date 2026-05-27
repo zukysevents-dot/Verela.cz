@@ -340,14 +340,37 @@
               endif
             endif
 
-            assign verela_product_signal = product.handle | append: ' ' | append: product.title | downcase
-            assign verela_product_focus = 'face'
-            if verela_product_signal contains 'kolen' or verela_product_signal contains 'knee'
-              assign verela_product_focus = 'knee'
-            elsif verela_product_signal contains 'zad' or verela_product_signal contains 'zád' or verela_product_signal contains 'back' or verela_product_signal contains 'pas'
-              assign verela_product_focus = 'back'
-            elsif verela_product_signal contains 'bandaz' or verela_product_signal contains 'bandáž' or verela_product_signal contains 'body' or verela_product_signal contains 'elbow'
-              assign verela_product_focus = 'body'
+            assign verela_product_tags = product.tags | join: ' '
+            assign verela_product_collections = product.collections | map: 'handle' | join: ' '
+            assign verela_product_signal = product.handle | append: ' ' | append: product.title | append: ' ' | append: product.type | append: ' ' | append: verela_product_tags | append: ' ' | append: verela_product_collections | downcase
+            assign verela_product_focus = 'general'
+            assign verela_is_led_product = false
+            if verela_product_signal contains 'led' or verela_product_signal contains 'light therapy' or verela_product_signal contains 'red light' or verela_product_signal contains 'infrared'
+              assign verela_is_led_product = true
+            endif
+
+            if verela_is_led_product
+              if verela_product_signal contains 'kolen' or verela_product_signal contains 'knee'
+                assign verela_product_focus = 'knee'
+              elsif verela_product_signal contains 'zad' or verela_product_signal contains 'zád' or verela_product_signal contains 'back' or verela_product_signal contains 'pas'
+                assign verela_product_focus = 'back'
+              elsif verela_product_signal contains 'bandaz' or verela_product_signal contains 'bandáž' or verela_product_signal contains 'body' or verela_product_signal contains 'elbow'
+                assign verela_product_focus = 'body'
+              else
+                assign verela_product_focus = 'face'
+              endif
+            elsif verela_product_signal contains 'massage' or verela_product_signal contains 'massager' or verela_product_signal contains 'masaz' or verela_product_signal contains 'masáž' or verela_product_signal contains 'cupping' or verela_product_signal contains 'calmagner'
+              assign verela_product_focus = 'massage'
+            elsif verela_product_signal contains 'essential oil' or verela_product_signal contains 'aroma' or verela_product_signal contains 'candle' or verela_product_signal contains 'diffuser' or verela_product_signal contains 'floral water' or verela_product_signal contains 'hydrosol' or verela_product_signal contains 'sage' or verela_product_signal contains 'spray'
+              assign verela_product_focus = 'aroma'
+            elsif verela_product_signal contains 'gua sha' or verela_product_signal contains 'jade' or verela_product_signal contains 'roller' or verela_product_signal contains 'facial massager' or verela_product_signal contains 'ice roller'
+              assign verela_product_focus = 'skincare_tool'
+            elsif verela_product_signal contains 'serum' or verela_product_signal contains 'cleanser' or verela_product_signal contains 'cream' or verela_product_signal contains 'toner' or verela_product_signal contains 'moisturizer' or verela_product_signal contains 'skin care' or verela_product_signal contains 'skincare'
+              assign verela_product_focus = 'skincare'
+            elsif verela_product_signal contains 'soap' or verela_product_signal contains 'bath' or verela_product_signal contains 'lotion' or verela_product_signal contains 'body oil' or verela_product_signal contains 'body powder'
+              assign verela_product_focus = 'bath_body'
+            elsif verela_product_signal contains 'beard'
+              assign verela_product_focus = 'beard'
             endif
           -%}
 
@@ -760,7 +783,23 @@
                   <div class="verela-product-story quick-add-hidden" aria-label="Doplňující informace k produktu">
                     {%- if section.settings.show_premium_benefits -%}
                       <div class="verela-premium-card verela-premium-card--soft">
-                        <h2>Proč si LED pomůcku vybrat</h2>
+                        <h2>
+                          {%- if verela_is_led_product -%}
+                            Proč si LED pomůcku vybrat
+                          {%- elsif verela_product_focus == 'massage' -%}
+                            Proč si masážní pomůcku vybrat
+                          {%- elsif verela_product_focus == 'aroma' -%}
+                            Proč si ji zařadit do domácí atmosféry
+                          {%- elsif verela_product_focus == 'skincare_tool' or verela_product_focus == 'skincare' -%}
+                            Proč si ji zařadit do skincare rutiny
+                          {%- elsif verela_product_focus == 'bath_body' -%}
+                            Proč si ji dopřát v tělové péči
+                          {%- elsif verela_product_focus == 'beard' -%}
+                            Proč si ji zařadit do péče o vousy
+                          {%- else -%}
+                            Proč si produkt vybrat
+                          {%- endif -%}
+                        </h2>
                         {%- if verela_product_focus == 'knee' -%}
                           <p>
                             LED pomůcka na koleno je určená pro domácí wellness rutinu po aktivním dni, sportu nebo delším
@@ -776,10 +815,45 @@
                             Tělová LED pomůcka je vhodná pro pravidelnou domácí wellness péči o konkrétní partii. Hodí se
                             pro zákazníky, kteří chtějí cílený rituál pro záda, kolena, ramena nebo lokální oblast.
                           </p>
-                        {%- else -%}
+                        {%- elsif verela_product_focus == 'face' -%}
                           <p>
                             LED maska je moderní upgrade domácí skincare rutiny: pár minut klidu, jednoduché použití a
                             beauty rituál, který zvládnete zařadit do běžného večera bez návštěvy salonu.
+                          </p>
+                        {%- elsif verela_product_focus == 'massage' -%}
+                          <p>
+                            Masážní pomůcka je praktická pro domácí wellness po práci, sportu nebo dlouhém dni. Pomáhá
+                            vytvořit klidný rituál bez objednávání termínu a bez složité přípravy.
+                          </p>
+                        {%- elsif verela_product_focus == 'aroma' -%}
+                          <p>
+                            Aromaterapie, svíčky a vůně pomáhají vytvořit doma příjemnou atmosféru pro odpočinek, koupel
+                            nebo večerní self-care. Stačí pár kapek, zapálená svíčka nebo jemná vůně v prostoru.
+                          </p>
+                        {%- elsif verela_product_focus == 'skincare_tool' -%}
+                          <p>
+                            Skincare nástroje jako roller, gua sha nebo masážní pomůcka doplňují běžnou péči o pleť a
+                            pomáhají udělat z rutiny pomalejší, příjemnější rituál.
+                          </p>
+                        {%- elsif verela_product_focus == 'skincare' -%}
+                          <p>
+                            Skincare produkt zapadne do každodenní péče o pleť jako jednoduchý krok navíc. Hodí se pro
+                            zákazníky, kteří chtějí čistou a pravidelnou rutinu bez zbytečné složitosti.
+                          </p>
+                        {%- elsif verela_product_focus == 'bath_body' -%}
+                          <p>
+                            Produkt pro tělo, koupel nebo ruce je určený pro malé chvíle péče během dne. Hodí se do sprchy,
+                            po koupeli nebo kdykoliv chcete pokožce dopřát příjemný rituál.
+                          </p>
+                        {%- elsif verela_product_focus == 'beard' -%}
+                          <p>
+                            Péče o vousy dává smysl pro upravený vzhled i příjemnější každodenní rutinu. Produkt se hodí
+                            pro muže, kteří chtějí vousy čisté, upravené a snadno udržované.
+                          </p>
+                        {%- else -%}
+                          <p>
+                            Produkt je vybraný jako praktická pomůcka pro domácí beauty, wellness nebo osobní péči. Hodí se
+                            pro zákazníky, kteří chtějí jednoduchý rituál bez složitých kroků.
                           </p>
                         {%- endif -%}
                         <ul class="verela-benefit-list">
@@ -834,7 +908,7 @@
                               <span class="verela-check" aria-hidden="true"></span>
                               <span>Praktická pomůcka pro pravidelný self-care</span>
                             </li>
-                          {%- else -%}
+                          {%- elsif verela_product_focus == 'face' -%}
                             <li>
                               <span class="verela-check" aria-hidden="true"></span>
                               <span>Prémiový self-care rituál v pohodlí domova</span>
@@ -850,6 +924,125 @@
                             <li>
                               <span class="verela-check" aria-hidden="true"></span>
                               <span>Skvělá volba jako stylový beauty dárek</span>
+                            </li>
+                          {%- elsif verela_product_focus == 'massage' -%}
+                            <li>
+                              <span class="verela-check" aria-hidden="true"></span>
+                              <span>Domácí wellness po práci, sportu nebo dlouhém dni</span>
+                            </li>
+                            <li>
+                              <span class="verela-check" aria-hidden="true"></span>
+                              <span>Jednoduché použití bez návštěvy studia</span>
+                            </li>
+                            <li>
+                              <span class="verela-check" aria-hidden="true"></span>
+                              <span>Praktická pomůcka pro pravidelný relaxační rituál</span>
+                            </li>
+                            <li>
+                              <span class="verela-check" aria-hidden="true"></span>
+                              <span>Vhodná pro chvíle klidu v pohodlí domova</span>
+                            </li>
+                          {%- elsif verela_product_focus == 'aroma' -%}
+                            <li>
+                              <span class="verela-check" aria-hidden="true"></span>
+                              <span>Pomáhá vytvořit příjemnou atmosféru doma</span>
+                            </li>
+                            <li>
+                              <span class="verela-check" aria-hidden="true"></span>
+                              <span>Ideální pro koupel, večerní rituál nebo relaxaci</span>
+                            </li>
+                            <li>
+                              <span class="verela-check" aria-hidden="true"></span>
+                              <span>Elegantní doplněk domácího wellness</span>
+                            </li>
+                            <li>
+                              <span class="verela-check" aria-hidden="true"></span>
+                              <span>Vhodná volba jako drobný voňavý dárek</span>
+                            </li>
+                          {%- elsif verela_product_focus == 'skincare_tool' -%}
+                            <li>
+                              <span class="verela-check" aria-hidden="true"></span>
+                              <span>Doplněk ke každodenní skincare rutině</span>
+                            </li>
+                            <li>
+                              <span class="verela-check" aria-hidden="true"></span>
+                              <span>Příjemné použití se sérem, olejem nebo krémem</span>
+                            </li>
+                            <li>
+                              <span class="verela-check" aria-hidden="true"></span>
+                              <span>Prémiový beauty rituál bez návštěvy salonu</span>
+                            </li>
+                            <li>
+                              <span class="verela-check" aria-hidden="true"></span>
+                              <span>Skvělý doplněk pro pomalou večerní péči</span>
+                            </li>
+                          {%- elsif verela_product_focus == 'skincare' -%}
+                            <li>
+                              <span class="verela-check" aria-hidden="true"></span>
+                              <span>Jednoduchý krok pro pravidelnou péči o pleť</span>
+                            </li>
+                            <li>
+                              <span class="verela-check" aria-hidden="true"></span>
+                              <span>Hodí se do ranní nebo večerní skincare rutiny</span>
+                            </li>
+                            <li>
+                              <span class="verela-check" aria-hidden="true"></span>
+                              <span>Čistý beauty produkt pro domácí použití</span>
+                            </li>
+                            <li>
+                              <span class="verela-check" aria-hidden="true"></span>
+                              <span>Vhodný doplněk k dalším krokům péče</span>
+                            </li>
+                          {%- elsif verela_product_focus == 'bath_body' -%}
+                            <li>
+                              <span class="verela-check" aria-hidden="true"></span>
+                              <span>Příjemná péče o tělo, ruce nebo koupelový rituál</span>
+                            </li>
+                            <li>
+                              <span class="verela-check" aria-hidden="true"></span>
+                              <span>Vhodné pro každodenní domácí použití</span>
+                            </li>
+                            <li>
+                              <span class="verela-check" aria-hidden="true"></span>
+                              <span>Skvělá volba pro chvíle klidu a self-care</span>
+                            </li>
+                            <li>
+                              <span class="verela-check" aria-hidden="true"></span>
+                              <span>Praktický dárek pro milovníky tělové péče</span>
+                            </li>
+                          {%- elsif verela_product_focus == 'beard' -%}
+                            <li>
+                              <span class="verela-check" aria-hidden="true"></span>
+                              <span>Péče pro čisté a upravené vousy</span>
+                            </li>
+                            <li>
+                              <span class="verela-check" aria-hidden="true"></span>
+                              <span>Jednoduchý krok do každodenní rutiny</span>
+                            </li>
+                            <li>
+                              <span class="verela-check" aria-hidden="true"></span>
+                              <span>Vhodné pro domácí grooming bez komplikací</span>
+                            </li>
+                            <li>
+                              <span class="verela-check" aria-hidden="true"></span>
+                              <span>Praktický dárek pro muže</span>
+                            </li>
+                          {%- else -%}
+                            <li>
+                              <span class="verela-check" aria-hidden="true"></span>
+                              <span>Praktický produkt pro domácí péči</span>
+                            </li>
+                            <li>
+                              <span class="verela-check" aria-hidden="true"></span>
+                              <span>Jednoduché použití bez složitých kroků</span>
+                            </li>
+                            <li>
+                              <span class="verela-check" aria-hidden="true"></span>
+                              <span>Vhodný pro pravidelný beauty nebo wellness rituál</span>
+                            </li>
+                            <li>
+                              <span class="verela-check" aria-hidden="true"></span>
+                              <span>Dobrá volba jako praktický dárek</span>
                             </li>
                           {%- endif -%}
                           <li>
@@ -884,11 +1077,53 @@
                             Vyberte si konkrétní partii, kde chcete mít pravidelný self-care rituál. Pomůcku používejte v
                             klidu domova, začněte pozvolna a vždy se řiďte návodem konkrétního produktu.
                           </p>
-                        {%- else -%}
+                        {%- elsif verela_product_focus == 'face' -%}
                           <h3>Jak ji zařadit do své skincare rutiny</h3>
                           <p>
                             Zařaďte LED masku do své večerní skincare rutiny po vyčištění pleti. Začněte kratší dobou
                             použití, sledujte reakci své pleti a pokračujte oblíbeným sérem nebo hydratačním krémem.
+                          </p>
+                        {%- elsif verela_product_focus == 'massage' -%}
+                          <h3>Jak ji zařadit do domácího wellness</h3>
+                          <p>
+                            Použijte masážní pomůcku ve chvíli, kdy chcete doma zvolnit po práci, sportu nebo dlouhém dni.
+                            Začněte pozvolna a vždy se řiďte návodem konkrétního produktu.
+                          </p>
+                        {%- elsif verela_product_focus == 'aroma' -%}
+                          <h3>Jak ji zařadit do večerní atmosféry</h3>
+                          <p>
+                            Aromaterapii nebo vůni použijte při koupeli, odpočinku, úklidu prostoru nebo večerním self-care.
+                            Začněte jemně a zvolte intenzitu, která je vám příjemná.
+                          </p>
+                        {%- elsif verela_product_focus == 'skincare_tool' -%}
+                          <h3>Jak ji zařadit do skincare rutiny</h3>
+                          <p>
+                            Skincare nástroj používejte na čistou pleť, ideálně s produktem, který umožní příjemný skluz.
+                            Postupujte jemně a bez tlaku, aby rutina působila komfortně.
+                          </p>
+                        {%- elsif verela_product_focus == 'skincare' -%}
+                          <h3>Jak ji zařadit do péče o pleť</h3>
+                          <p>
+                            Produkt zařaďte podle typu do ranní nebo večerní rutiny. Začněte čistou pletí, nanášejte
+                            přiměřené množství a kombinujte ho s kroky, které už běžně používáte.
+                          </p>
+                        {%- elsif verela_product_focus == 'bath_body' -%}
+                          <h3>Jak ji zařadit do péče o tělo</h3>
+                          <p>
+                            Produkt používejte ve sprše, po koupeli nebo kdykoliv během dne podle jeho typu. Cílem je
+                            jednoduchý rituál, který se dá snadno zopakovat.
+                          </p>
+                        {%- elsif verela_product_focus == 'beard' -%}
+                          <h3>Jak ji zařadit do péče o vousy</h3>
+                          <p>
+                            Produkt používejte při běžné grooming rutině podle návodu. Zaměřte se na pravidelnost, čistotu
+                            a jednoduchý postup, který zvládnete každý den.
+                          </p>
+                        {%- else -%}
+                          <h3>Jak ji zařadit do své rutiny</h3>
+                          <p>
+                            Produkt používejte podle návodu a typu péče, pro kterou je určený. Nejlépe funguje jako
+                            jednoduchý pravidelný krok, který se snadno vejde do běžného dne.
                           </p>
                         {%- endif -%}
                         <ol class="verela-routine-list">
@@ -910,21 +1145,67 @@
                             <li>Začněte kratší dobou použití.</li>
                             <li>Zařaďte ji do pravidelné večerní wellness rutiny.</li>
                             <li>Po použití pokračujte běžnou péčí o tělo.</li>
-                          {%- else -%}
+                          {%- elsif verela_product_focus == 'face' -%}
                             <li>Vyčistěte a osušte pleť.</li>
                             <li>Použijte masku podle návodu v balení.</li>
                             <li>Začněte kratší dobou použití.</li>
                             <li>Zařaďte ji do pravidelné večerní rutiny.</li>
                             <li>Po použití pokračujte běžnou skincare péčí.</li>
+                          {%- elsif verela_product_focus == 'massage' -%}
+                            <li>Vyberte si oblast těla, na kterou se chcete zaměřit.</li>
+                            <li>Použijte pomůcku podle návodu v balení.</li>
+                            <li>Začněte jemně a kratší dobou použití.</li>
+                            <li>Zařaďte ji po práci, pohybu nebo večer doma.</li>
+                            <li>Po použití dopřejte tělu klid a běžnou péči.</li>
+                          {%- elsif verela_product_focus == 'aroma' -%}
+                            <li>Vyberte si chvíli, kdy chcete doma zpomalit.</li>
+                            <li>Použijte vůni, olej nebo svíčku podle návodu.</li>
+                            <li>Začněte jemnější intenzitou.</li>
+                            <li>Zařaďte ji ke koupeli, relaxaci nebo večerní rutině.</li>
+                            <li>Po použití prostor vyvětrejte podle potřeby.</li>
+                          {%- elsif verela_product_focus == 'skincare_tool' -%}
+                            <li>Vyčistěte pleť a naneste vhodné sérum, olej nebo krém.</li>
+                            <li>Používejte nástroj jemnými tahy bez tlaku.</li>
+                            <li>Začněte krátkou rutinou.</li>
+                            <li>Zařaďte jej pravidelně večer nebo ráno.</li>
+                            <li>Po použití nástroj očistěte.</li>
+                          {%- elsif verela_product_focus == 'skincare' -%}
+                            <li>Vyčistěte pleť.</li>
+                            <li>Naneste produkt podle návodu a typu produktu.</li>
+                            <li>Začněte menším množstvím.</li>
+                            <li>Zařaďte jej do ranní nebo večerní rutiny.</li>
+                            <li>Pokračujte další běžnou péčí podle potřeby.</li>
+                          {%- elsif verela_product_focus == 'bath_body' -%}
+                            <li>Použijte produkt ve sprše, koupeli nebo po umytí.</li>
+                            <li>Naneste přiměřené množství podle typu produktu.</li>
+                            <li>Věnujte pár minut klidné péči.</li>
+                            <li>Zařaďte jej do pravidelné tělové rutiny.</li>
+                            <li>Po použití pokračujte běžnou péčí o pokožku.</li>
+                          {%- elsif verela_product_focus == 'beard' -%}
+                            <li>Použijte produkt na vousy podle návodu.</li>
+                            <li>Začněte menším množstvím.</li>
+                            <li>Zapracujte jej rovnoměrně do vousů.</li>
+                            <li>Zařaďte jej do pravidelné grooming rutiny.</li>
+                            <li>Upravte vousy podle preferovaného stylu.</li>
+                          {%- else -%}
+                            <li>Přečtěte si návod konkrétního produktu.</li>
+                            <li>Začněte jednoduchým použitím v klidu domova.</li>
+                            <li>Zařaďte produkt do rutiny, která vám dává smysl.</li>
+                            <li>Používejte jej pravidelně a bez zbytečného spěchu.</li>
+                            <li>Po použití pokračujte běžnou péčí.</li>
                           {%- endif -%}
                         </ol>
                         <p class="verela-note">
-                          LED masky a tělové LED pomůcky jsou beauty a wellness produkty pro domácí rutinu, ne zdravotnické prostředky.
+                          {%- if verela_is_led_product -%}
+                            LED masky a tělové LED pomůcky jsou beauty a wellness produkty pro domácí rutinu, ne zdravotnické prostředky.
+                          {%- else -%}
+                            Produkt je určený pro domácí beauty, wellness nebo osobní péči. Nejedná se o zdravotnický prostředek.
+                          {%- endif -%}
                         </p>
                       </div>
                     {%- endif -%}
 
-                    {%- if section.settings.show_led_education_link -%}
+                    {%- if section.settings.show_led_education_link and verela_is_led_product -%}
                       <div class="verela-premium-card verela-premium-card--education">
                         <h3>Chcete vědět, proč LED péče patří do moderní skincare rutiny?</h3>
                         <p>
@@ -955,12 +1236,54 @@
                             Tělové LED pomůcky dávají smysl tam, kde chcete pravidelnou domácí péči o konkrétní oblast.
                             Jsou praktické pro večerní wellness rutinu a nevyžadují složité kroky.
                           </p>
-                        {%- else -%}
+                        {%- elsif verela_product_focus == 'face' -%}
                           <h3>Prémiová domácí péče bez komplikací</h3>
                           <p>
                             Verela vybírá beauty pomůcky pro ženy, které chtějí mít svou skincare rutinu pod kontrolou.
                             Bez složitých procedur, bez zbytečných kroků a bez návštěvy salonu. Stačí pár minut klidu,
                             čistá pleť a pravidelnost.
+                          </p>
+                        {%- elsif verela_product_focus == 'massage' -%}
+                          <h3>Domácí relaxace bez složitých kroků</h3>
+                          <p>
+                            Masážní pomůcky Verela jsou určené pro chvíle, kdy chcete doma vypnout a věnovat pár minut
+                            tělu. Praktické použití, jasný rituál a klid bez objednávání termínu.
+                          </p>
+                        {%- elsif verela_product_focus == 'aroma' -%}
+                          <h3>Atmosféra, která změní běžný večer</h3>
+                          <p>
+                            Vůně, svíčky a oleje dokážou z obyčejného prostoru udělat příjemnější místo pro odpočinek.
+                            Hodí se ke koupeli, péči o tělo, úklidu i večernímu zklidnění.
+                          </p>
+                        {%- elsif verela_product_focus == 'skincare_tool' -%}
+                          <h3>Skincare rituál, který působí prémiově</h3>
+                          <p>
+                            Beauty nástroje dodají běžné péči o pleť pomalejší a příjemnější rytmus. Stačí čistá pleť,
+                            oblíbený produkt a pár minut vědomé péče.
+                          </p>
+                        {%- elsif verela_product_focus == 'skincare' -%}
+                          <h3>Čistá skincare rutina bez komplikací</h3>
+                          <p>
+                            Péče o pleť nemusí být složitá. Důležité je vybrat produkt, který zapadne do rutiny a budete
+                            ho používat pravidelně, bez přehnaného množství kroků.
+                          </p>
+                        {%- elsif verela_product_focus == 'bath_body' -%}
+                          <h3>Každodenní tělová péče jako malý rituál</h3>
+                          <p>
+                            Produkty pro tělo, ruce a koupel jsou jednoduchý způsob, jak si během dne dopřát chvíli klidu.
+                            Hodí se pro každodenní použití i jako drobný dárek.
+                          </p>
+                        {%- elsif verela_product_focus == 'beard' -%}
+                          <h3>Upravené vousy bez komplikací</h3>
+                          <p>
+                            Péče o vousy funguje nejlépe, když je jednoduchá a pravidelná. Produkt snadno zařadíte do
+                            ranní nebo večerní rutiny.
+                          </p>
+                        {%- else -%}
+                          <h3>Domácí péče bez komplikací</h3>
+                          <p>
+                            Vybraný produkt je určený pro jednoduchou beauty, wellness nebo osobní rutinu doma. Bez
+                            složitých kroků, s důrazem na pravidelnost a příjemný pocit z péče.
                           </p>
                         {%- endif -%}
                       </div>
@@ -979,13 +1302,23 @@
                               Je LED pás vhodný pro pravidelnou péči o záda?
                             {%- elsif verela_product_focus == 'body' -%}
                               Je tělová LED pomůcka vhodná pro pravidelné použití?
+                            {%- elsif verela_product_focus == 'massage' -%}
+                              Je masážní pomůcka vhodná pro pravidelné použití?
+                            {%- elsif verela_product_focus == 'aroma' -%}
+                              Jak často ji můžu používat?
+                            {%- elsif verela_product_focus == 'skincare_tool' or verela_product_focus == 'skincare' -%}
+                              Je vhodná pro pravidelnou skincare rutinu?
+                            {%- elsif verela_product_focus == 'bath_body' -%}
+                              Je vhodná pro každodenní tělovou péči?
+                            {%- elsif verela_product_focus == 'beard' -%}
+                              Je vhodná pro pravidelnou péči o vousy?
                             {%- else -%}
-                              Je LED maska vhodná pro každodenní použití?
+                              Je produkt vhodný pro pravidelné použití?
                             {%- endif -%}
                           </summary>
                           <div class="verela-faq-item__answer">
-                            Vždy doporučujeme řídit se návodem konkrétního produktu. Pokud s LED pomůckou začínáte,
-                            zvolte kratší dobu použití a sledujte, jak vám pravidelný domácí rituál vyhovuje.
+                            Vždy doporučujeme řídit se návodem konkrétního produktu. Začněte pozvolna, používejte produkt
+                            přiměřeně a sledujte, jak vám zapadá do běžné domácí rutiny.
                           </div>
                         </details>
                         <details class="verela-faq-item">
@@ -997,29 +1330,49 @@
                               Nejčastěji se hodí večer po práci, dlouhém sezení, cestování nebo ve chvíli, kdy chcete doma zvolnit.
                             {%- elsif verela_product_focus == 'body' -%}
                               Zařaďte ji ve chvíli, kdy máte klid a chcete se zaměřit na konkrétní partii těla.
+                            {%- elsif verela_product_focus == 'massage' -%}
+                              Nejčastěji večer, po práci, pohybu nebo ve chvíli, kdy chcete doma zvolnit.
+                            {%- elsif verela_product_focus == 'aroma' -%}
+                              Při koupeli, večerním odpočinku, úklidu prostoru nebo kdykoliv chcete doma vytvořit příjemnější atmosféru.
+                            {%- elsif verela_product_focus == 'skincare_tool' -%}
+                              Nejčastěji při ranní nebo večerní skincare rutině na čistou pleť.
+                            {%- elsif verela_product_focus == 'skincare' -%}
+                              Podle typu produktu ráno nebo večer jako součást běžné péče o pleť.
+                            {%- elsif verela_product_focus == 'bath_body' -%}
+                              Ve sprše, po koupeli, po umytí rukou nebo kdykoliv během dne podle typu produktu.
+                            {%- elsif verela_product_focus == 'beard' -%}
+                              Při ranní nebo večerní grooming rutině podle typu produktu a potřeby vousů.
                             {%- else -%}
-                              Nejčastěji se hodí jako součást večerní skincare rutiny po vyčištění pleti. Po použití
-                              můžete pokračovat běžnou péčí, například sérem nebo hydratačním krémem.
+                              Podle typu produktu jako jednoduchý krok v domácí beauty, wellness nebo osobní péči.
                             {%- endif -%}
                           </div>
                         </details>
-                        <details class="verela-faq-item">
-                          <summary>Kde se dozvím více o LED péči?</summary>
-                          <div class="verela-faq-item__answer">
-                            Více informací najdete na stránce
-                            <a href="{{ led_education_url }}">Proč LED?</a>, kde vysvětlujeme, jak LED beauty pomůcky
-                            zařadit do domácí beauty a wellness rutiny.
-                          </div>
-                        </details>
+                        {%- if verela_is_led_product -%}
+                          <details class="verela-faq-item">
+                            <summary>Kde se dozvím více o LED péči?</summary>
+                            <div class="verela-faq-item__answer">
+                              Více informací najdete na stránce
+                              <a href="{{ led_education_url }}">Proč LED?</a>, kde vysvětlujeme, jak LED beauty pomůcky
+                              zařadit do domácí beauty a wellness rutiny.
+                            </div>
+                          </details>
+                        {%- endif -%}
                         <details class="verela-faq-item">
                           <summary>Je vhodná jako dárek?</summary>
                           <div class="verela-faq-item__answer">
                             {%- if verela_product_focus == 'face' -%}
                               Ano. LED maska je elegantní beauty dárek pro každého, kdo má rád skincare, self-care a
                               domácí péči.
+                            {%- elsif verela_product_focus == 'aroma' -%}
+                              Ano. Aromaterapie, svíčky a vůně jsou příjemný dárek pro každého, kdo má rád klidnou domácí atmosféru.
+                            {%- elsif verela_product_focus == 'skincare_tool' or verela_product_focus == 'skincare' -%}
+                              Ano. Skincare produkt nebo beauty nástroj je elegantní dárek pro milovníky péče o pleť.
+                            {%- elsif verela_product_focus == 'bath_body' -%}
+                              Ano. Produkty do koupele a tělové péče jsou praktický dárek pro každodenní self-care.
+                            {%- elsif verela_product_focus == 'beard' -%}
+                              Ano. Péče o vousy je praktický dárek pro muže, kteří mají rádi upravený vzhled.
                             {%- else -%}
-                              Ano. Tělová LED pomůcka je praktický wellness dárek pro každého, kdo má rád domácí péči,
-                              pohyb, relaxaci a chytré self-care pomůcky.
+                              Ano. Produkt je praktický dárek pro každého, kdo má rád domácí péči, wellness a jednoduché rituály.
                             {%- endif -%}
                           </div>
                         </details>

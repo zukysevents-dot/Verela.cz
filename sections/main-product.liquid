@@ -170,22 +170,24 @@
       margin: 1.4rem 0 0;
       padding: 0;
       display: grid;
-      gap: 0;
+      gap: 0.9rem;
       list-style: none;
     }
 
     .verela-tech-list li {
-      display: grid;
-      grid-template-columns: minmax(10rem, 34%) 1fr;
-      gap: 0.9rem;
-      padding: 0.85rem 0;
-      border-top: 1px solid rgba(129, 105, 72, 0.14);
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      padding: 1rem;
+      border: 1px solid rgba(129, 105, 72, 0.14);
+      border-radius: 8px;
+      background: rgba(255, 250, 243, 0.72);
       line-height: 1.45;
     }
 
     .verela-tech-list li:first-child {
-      border-top: 0;
-      padding-top: 0;
+      border-top: 1px solid rgba(129, 105, 72, 0.14);
+      padding-top: 1rem;
     }
 
     .verela-tech-label {
@@ -277,6 +279,10 @@
       .verela-benefit-list {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
+
+      .verela-tech-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
     }
 
     @media screen and (max-width: 749px) {
@@ -304,11 +310,6 @@
       .verela-routine-list li::before {
         width: 2.5rem;
         height: 2.5rem;
-      }
-
-      .verela-tech-list li {
-        grid-template-columns: 1fr;
-        gap: 0.3rem;
       }
 
       .verela-led-link {

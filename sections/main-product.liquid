@@ -167,33 +167,55 @@
     }
 
     .verela-tech-list {
-      margin: 1.4rem 0 0;
+      margin: 1.2rem 0 0;
       padding: 0;
       display: grid;
-      gap: 0.9rem;
+      gap: 0.7rem;
       list-style: none;
     }
 
     .verela-tech-list li {
       display: flex;
       flex-direction: column;
-      gap: 0.35rem;
-      padding: 1rem;
+      gap: 0.25rem;
+      min-height: 8.8rem;
+      padding: 0.9rem;
       border: 1px solid rgba(129, 105, 72, 0.14);
       border-radius: 8px;
       background: rgba(255, 250, 243, 0.72);
-      line-height: 1.45;
+      line-height: 1.35;
     }
 
     .verela-tech-list li:first-child {
       border-top: 1px solid rgba(129, 105, 72, 0.14);
-      padding-top: 1rem;
+      padding-top: 0.9rem;
     }
 
     .verela-tech-label {
       color: rgba(var(--color-foreground), 0.62);
-      font-size: 1.28rem;
+      font-size: 1.18rem;
       font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .verela-tech-list li span:last-child {
+      font-size: 1.38rem;
+    }
+
+    .verela-product-story > .verela-premium-card:first-child {
+      padding: 1.55rem;
+    }
+
+    .verela-product-story > .verela-premium-card:first-child h2 {
+      margin-bottom: 0.75rem;
+      font-size: clamp(1.9rem, 1.8vw, 2.35rem);
+      line-height: 1.15;
+    }
+
+    .verela-product-story > .verela-premium-card:first-child > p:not(.verela-note) {
+      font-size: 1.42rem;
+      line-height: 1.55;
     }
 
     .verela-led-link {
@@ -281,7 +303,7 @@
       }
 
       .verela-tech-list {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: repeat(3, minmax(0, 1fr));
       }
     }
 
@@ -292,6 +314,10 @@
       }
 
       .verela-premium-card {
+        padding: 1.5rem;
+      }
+
+      .verela-product-story > .verela-premium-card:first-child {
         padding: 1.5rem;
       }
 
@@ -310,6 +336,10 @@
       .verela-routine-list li::before {
         width: 2.5rem;
         height: 2.5rem;
+      }
+
+      .verela-tech-list li {
+        min-height: 0;
       }
 
       .verela-led-link {

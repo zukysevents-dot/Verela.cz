@@ -378,6 +378,21 @@
     }
 
     @media screen and (min-width: 750px) {
+      .verela-product-story {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        align-items: start;
+      }
+
+      .verela-product-story > .verela-premium-card {
+        height: 100%;
+      }
+
+      .verela-product-story > .verela-tech-card,
+      .verela-product-story > .verela-product-faq {
+        grid-column: 1 / -1;
+        height: auto;
+      }
+
       .verela-benefit-list {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
@@ -2081,6 +2096,9 @@
         body.className = 'verela-tech-card__body';
         body.hidden = true;
 
+        const titleText = title.textContent.trim();
+        title.remove();
+
         const bodyNodes = Array.from(card.childNodes);
         bodyNodes.forEach((node) => body.appendChild(node));
 
@@ -2090,7 +2108,7 @@
         toggle.setAttribute('aria-expanded', 'false');
         toggle.innerHTML = `
           <span>
-            <span class="verela-tech-toggle__title">${title.textContent.trim()}</span>
+            <span class="verela-tech-toggle__title">${titleText}</span>
             <span class="verela-tech-toggle__hint">Zobrazit popis a technické parametry</span>
           </span>
           <span class="verela-tech-toggle__icon" aria-hidden="true"></span>

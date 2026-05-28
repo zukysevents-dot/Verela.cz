@@ -166,6 +166,34 @@
       color: rgba(var(--color-foreground), 0.68);
     }
 
+    .verela-tech-list {
+      margin: 1.4rem 0 0;
+      padding: 0;
+      display: grid;
+      gap: 0;
+      list-style: none;
+    }
+
+    .verela-tech-list li {
+      display: grid;
+      grid-template-columns: minmax(10rem, 34%) 1fr;
+      gap: 0.9rem;
+      padding: 0.85rem 0;
+      border-top: 1px solid rgba(129, 105, 72, 0.14);
+      line-height: 1.45;
+    }
+
+    .verela-tech-list li:first-child {
+      border-top: 0;
+      padding-top: 0;
+    }
+
+    .verela-tech-label {
+      color: rgba(var(--color-foreground), 0.62);
+      font-size: 1.28rem;
+      font-weight: 600;
+    }
+
     .verela-led-link {
       margin-top: 1.4rem;
       display: inline-flex;
@@ -276,6 +304,11 @@
       .verela-routine-list li::before {
         width: 2.5rem;
         height: 2.5rem;
+      }
+
+      .verela-tech-list li {
+        grid-template-columns: 1fr;
+        gap: 0.3rem;
       }
 
       .verela-led-link {
@@ -785,6 +818,186 @@
                   or section.settings.show_product_faq
                 -%}
                   <div class="verela-product-story quick-add-hidden" aria-label="Doplňující informace k produktu">
+                    {%- if verela_is_led_product -%}
+                      {%- case product.handle -%}
+                        {%- when 'megelin-led-maska' -%}
+                          <div class="verela-premium-card verela-premium-card--soft">
+                            <h2>Technické parametry MEGELIN masky</h2>
+                            <p>
+                              Flexibilní LED sada pro pleť, krk a dekolt. Kombinuje samostatnou část na obličej a doplněk pro
+                              oblast krku, takže se hodí pro širší večerní beauty rutinu.
+                            </p>
+                            <ul class="verela-tech-list">
+                              <li><span class="verela-tech-label">LED diody</span><span>288 LED diod pro obličej + 198 LED diod pro krk a dekolt</span></li>
+                              <li><span class="verela-tech-label">Režimy světla</span><span>7 barevných režimů v rozsahu přibližně 420-850 nm</span></li>
+                              <li><span class="verela-tech-label">Materiál</span><span>Měkký flexibilní silikon s nastavitelnými pásky pro pohodlné usazení</span></li>
+                              <li><span class="verela-tech-label">Použití</span><span>Doporučený rituál 10-20 minut, přibližně 3-4x týdně podle návodu</span></li>
+                              <li><span class="verela-tech-label">Napájení</span><span>Dobíjecí provedení; nepoužívejte během nabíjení</span></li>
+                            </ul>
+                            <p class="verela-note">Beauty pomůcka pro domácí skincare rutinu. Nejedná se o zdravotnický prostředek.</p>
+                          </div>
+                        {%- when 'led-beauty-maska' -%}
+                          <div class="verela-premium-card verela-premium-card--soft">
+                            <h2>Technické parametry Verela Mini LED masky</h2>
+                            <p>
+                              Lehká bezdrátová LED maska pro domácí péči o pleť. Hodí se pro zákazníky, kteří chtějí
+                              jednoduchou masku s jasnými režimy a pohodlným večerním používáním.
+                            </p>
+                            <ul class="verela-tech-list">
+                              <li><span class="verela-tech-label">LED diody</span><span>336 LED čipů v ploše masky</span></li>
+                              <li><span class="verela-tech-label">Vlnové délky</span><span>Červené světlo 620 nm, near-infrared 850 nm a modré světlo 460 nm</span></li>
+                              <li><span class="verela-tech-label">Režimy</span><span>3 režimy světelné péče pro domácí skincare rutinu</span></li>
+                              <li><span class="verela-tech-label">Rozměry</span><span>Přibližně 12.60 x 10.63 x 1.97 in; hmotnost cca 1.8 lb</span></li>
+                              <li><span class="verela-tech-label">Ovládání</span><span>Bezdrátové provedení s ovladačem, paměťovou funkcí a časovačem</span></li>
+                            </ul>
+                            <p class="verela-note">Beauty pomůcka pro domácí skincare rutinu. Nejedná se o zdravotnický prostředek.</p>
+                          </div>
+                        {%- when 'led-bandaz' -%}
+                          <div class="verela-premium-card verela-premium-card--soft">
+                            <h2>Technické parametry LED bandáže</h2>
+                            <p>
+                              Kompaktní LED bandáž pro cílenou domácí wellness péči o koleno a další lokální partie. Praktická
+                              volba pro zákazníky, kteří chtějí jednoduchý večerní rituál bez velkého zařízení.
+                            </p>
+                            <ul class="verela-tech-list">
+                              <li><span class="verela-tech-label">LED diody</span><span>96 LED diod typu 2-in-1 pro červené a near-infrared světlo</span></li>
+                              <li><span class="verela-tech-label">Použití</span><span>Vhodná pro koleno, loket, rameno nebo kotník podle usazení bandáže</span></li>
+                              <li><span class="verela-tech-label">Napájení</span><span>USB-C připojení, možnost použití s adaptérem nebo powerbankou</span></li>
+                              <li><span class="verela-tech-label">Časovač</span><span>Automatické vypnutí po přibližně 20 minutách</span></li>
+                              <li><span class="verela-tech-label">Konstrukce</span><span>Měkký textilní návlek s nastavitelným uchycením pro pohodlné domácí použití</span></li>
+                            </ul>
+                            <p class="verela-note">Wellness pomůcka pro domácí rutinu. Nejedná se o zdravotnický prostředek.</p>
+                          </div>
+                        {%- when 'led-pece-krk-dekolt' -%}
+                          <div class="verela-premium-card verela-premium-card--soft">
+                            <h2>Technické parametry LED péče na krk a dekolt</h2>
+                            <p>
+                              LED pomůcka navržená pro oblast krku a dekoltu, která často potřebuje vlastní místo ve skincare
+                              rutině. Hodí se jako samostatný večerní krok po vyčištění pleti.
+                            </p>
+                            <ul class="verela-tech-list">
+                              <li><span class="verela-tech-label">Typ produktu</span><span>LED beauty pomůcka pro krk a dekolt</span></li>
+                              <li><span class="verela-tech-label">Oblast použití</span><span>Krk, spodní linie obličeje a dekolt podle usazení pomůcky</span></li>
+                              <li><span class="verela-tech-label">Konstrukce</span><span>Tvarované provedení pro pohodlnější přiložení k oblasti krku</span></li>
+                              <li><span class="verela-tech-label">Rutina</span><span>Použití večer po vyčištění pleti, následně sérum nebo krém</span></li>
+                              <li><span class="verela-tech-label">Pro koho</span><span>Pro zákazníky, kteří chtějí rozšířit skincare rutinu i mimo samotný obličej</span></li>
+                            </ul>
+                            <p class="verela-note">Beauty pomůcka pro domácí skincare rutinu. Nejedná se o zdravotnický prostředek.</p>
+                          </div>
+                        {%- when 'led-pletova-maska-180' -%}
+                          <div class="verela-premium-card verela-premium-card--soft">
+                            <h2>Technické parametry LED masky 180</h2>
+                            <p>
+                              Prémiově působící silikonová LED maska s dálkovým ovládáním a více časovými volbami. Hodí se pro
+                              pravidelnou domácí skincare rutinu, kde chcete jednoduché nastavení bez složitých kroků.
+                            </p>
+                            <ul class="verela-tech-list">
+                              <li><span class="verela-tech-label">LED diody</span><span>83 near-infrared diod 850 nm + 93 červených LED diod 630 nm</span></li>
+                              <li><span class="verela-tech-label">Režimy</span><span>7 barevných režimů pro různé kroky domácí beauty rutiny</span></li>
+                              <li><span class="verela-tech-label">Časovač</span><span>Výchozí 10 minut, volby přibližně 15 / 20 / 30 minut</span></li>
+                              <li><span class="verela-tech-label">Ovládání</span><span>Dálkové ovládání pro pohodlné přepínání režimů a času</span></li>
+                              <li><span class="verela-tech-label">Materiál</span><span>Měkký silikon, nastavitelné pásky a oční polštářky pro komfortnější nošení</span></li>
+                            </ul>
+                            <p class="verela-note">Beauty pomůcka pro domácí skincare rutinu. Nejedná se o zdravotnický prostředek.</p>
+                          </div>
+                        {%- when 'niceus-red-light-therapy-for-face-8-colors-led-face-mask-with-rechargeable-remote-timer-infrared-red-light-therapy-mask-for-facial-skin-care-at-home-black' -%}
+                          <div class="verela-premium-card verela-premium-card--soft">
+                            <h2>Technické parametry NICEUS LED masky</h2>
+                            <p>
+                              Tenká a lehká LED maska v černém provedení pro domácí skincare rutinu. Díky nízké hmotnosti a
+                              rolovatelnému designu se hodí i pro zákazníky, kteří chtějí skladnou masku bez robustní konstrukce.
+                            </p>
+                            <ul class="verela-tech-list">
+                              <li><span class="verela-tech-label">LED diody</span><span>280 LED diod</span></li>
+                              <li><span class="verela-tech-label">Režimy</span><span>8 barevných režimů pro domácí beauty použití</span></li>
+                              <li><span class="verela-tech-label">Intenzita</span><span>Udávaná intenzita až 30 mW/cm2</span></li>
+                              <li><span class="verela-tech-label">Hmotnost</span><span>Přibližně 145 g, tenké provedení cca 2.8 mm</span></li>
+                              <li><span class="verela-tech-label">Ovládání</span><span>Dobíjecí ovladač, časové programy 5 / 10 minut</span></li>
+                            </ul>
+                            <p class="verela-note">Beauty pomůcka pro domácí skincare rutinu. Nejedná se o zdravotnický prostředek.</p>
+                          </div>
+                        {%- when 'viconor-red-light-therapy-for-knee-infrared-light-660nm-850nm-knee-brace-heating-pad-for-elbow-joint' -%}
+                          <div class="verela-premium-card verela-premium-card--soft">
+                            <h2>Technické parametry Viconor bandáže</h2>
+                            <p>
+                              LED bandáž Viconor je určená pro cílenou domácí wellness péči o koleno a další namáhané partie.
+                              Je vhodná pro zákazníky, kteří chtějí pevnější návlek s více režimy a flexibilním napájením.
+                            </p>
+                            <ul class="verela-tech-list">
+                              <li><span class="verela-tech-label">Vlnové délky</span><span>Červené světlo 660 nm + near-infrared světlo 850 nm</span></li>
+                              <li><span class="verela-tech-label">Režimy</span><span>3 režimy: intenzivní červený 16 W, bílý 8 W a modrý 2 W</span></li>
+                              <li><span class="verela-tech-label">Použití</span><span>Koleno, loket, rameno nebo jiná menší partie podle uchycení</span></li>
+                              <li><span class="verela-tech-label">Napájení</span><span>Možnost připojení k adaptéru nebo powerbance</span></li>
+                              <li><span class="verela-tech-label">Konstrukce</span><span>Nastavitelné pásky pro stabilní a pohodlné nošení</span></li>
+                            </ul>
+                            <p class="verela-note">Wellness pomůcka pro domácí rutinu. Nejedná se o zdravotnický prostředek.</p>
+                          </div>
+                        {%- when 'verela-light-led-maska-cervene-svetlo' -%}
+                          <div class="verela-premium-card verela-premium-card--soft">
+                            <h2>Technické parametry INTEO LED masky</h2>
+                            <p>
+                              Lehká silikonová LED maska s několika vlnovými délkami a časovačem. Dobrá volba pro zákazníky,
+                              kteří chtějí dostupnější masku s jasně oddělenými světelnými režimy.
+                            </p>
+                            <ul class="verela-tech-list">
+                              <li><span class="verela-tech-label">LED diody</span><span>180 vysokoenergetických světelných bodů</span></li>
+                              <li><span class="verela-tech-label">Vlnové délky</span><span>Červené 630 nm, near-infrared 830 nm, modré 460 nm a žluté 590 nm</span></li>
+                              <li><span class="verela-tech-label">Režimy</span><span>3 úrovně jasu a více barevných režimů</span></li>
+                              <li><span class="verela-tech-label">Časovač</span><span>Výchozí 10 minut, volby přibližně 15 / 20 / 25 / 30 minut</span></li>
+                              <li><span class="verela-tech-label">Materiál</span><span>Měkký silikon, omyvatelný povrch a ochranné oční prvky</span></li>
+                            </ul>
+                            <p class="verela-note">Beauty pomůcka pro domácí skincare rutinu. Nejedná se o zdravotnický prostředek.</p>
+                          </div>
+                        {%- when 'verela-eye-led-pece-ocni-okoli' -%}
+                          <div class="verela-premium-card verela-premium-card--soft">
+                            <h2>Technické parametry LED péče o oční okolí</h2>
+                            <p>
+                              Kompaktní LED pomůcka pro jemnou péči o oční okolí. Je navržená jako krátký beauty rituál pro
+                              oblast pod očima a hodí se pro večerní použití po vyčištění pleti.
+                            </p>
+                            <ul class="verela-tech-list">
+                              <li><span class="verela-tech-label">Balení</span><span>Zařízení + 3 páry flexibilních podočních patchů</span></li>
+                              <li><span class="verela-tech-label">Technologie</span><span>Červené LED světlo kombinované s jemnou mikro-vibrací</span></li>
+                              <li><span class="verela-tech-label">Časovač</span><span>Automatické vypnutí po přibližně 10 minutách</span></li>
+                              <li><span class="verela-tech-label">Použití</span><span>Doporučené krátké použití až 3x týdně podle návodu</span></li>
+                              <li><span class="verela-tech-label">Design</span><span>Dobíjecí kompaktní pouzdro a tvar určený pro oblast pod očima</span></li>
+                            </ul>
+                            <p class="verela-note">Beauty pomůcka pro domácí skincare rutinu. Nejedná se o zdravotnický prostředek.</p>
+                          </div>
+                        {%- when 'luxrenew-max-multifunction-red-light-therapy-for-body-and-face-850nm-near-infrared-light-therapy-led-mask-facial-body-beauty-equipment-for-skin-care-at-home-with-stand' -%}
+                          <div class="verela-premium-card verela-premium-card--soft">
+                            <h2>Technické parametry LuxRenew Max panelu</h2>
+                            <p>
+                              Větší LED panel se stojanem pro domácí beauty a wellness rutinu. Oproti maskám pokrývá širší
+                              oblast a hodí se pro zákazníky, kteří chtějí univerzální světelnou pomůcku pro pleť i tělo.
+                            </p>
+                            <ul class="verela-tech-list">
+                              <li><span class="verela-tech-label">LED diody</span><span>528 LED světelných bodů</span></li>
+                              <li><span class="verela-tech-label">Světlo</span><span>Kombinace jantarového, červeného, hlubokého červeného a infračerveného světla</span></li>
+                              <li><span class="verela-tech-label">Použití</span><span>Pleť, krk, dekolt a vybrané tělové partie podle nastavení panelu</span></li>
+                              <li><span class="verela-tech-label">Konstrukce</span><span>Stabilní nastavitelný stojan pro pohodlné použití doma</span></li>
+                              <li><span class="verela-tech-label">Výhoda</span><span>Větší plocha než běžná maska, vhodná i pro sdílenou rodinnou wellness rutinu</span></li>
+                            </ul>
+                            <p class="verela-note">Beauty a wellness pomůcka pro domácí rutinu. Nejedná se o zdravotnický prostředek.</p>
+                          </div>
+                        {%- when 'led-skin-mask' -%}
+                          <div class="verela-premium-card verela-premium-card--soft">
+                            <h2>Technické parametry HODIHUN LED masky</h2>
+                            <p>
+                              Dostupná LED maska pro základní domácí skincare rutinu. Je vhodná pro zákazníky, kteří chtějí
+                              začít s LED péčí jednoduše a bez prémiové ceny.
+                            </p>
+                            <ul class="verela-tech-list">
+                              <li><span class="verela-tech-label">Režimy</span><span>7 barevných světelných režimů</span></li>
+                              <li><span class="verela-tech-label">Provedení</span><span>Dostupná v černé a bílé variantě podle nabídky produktu</span></li>
+                              <li><span class="verela-tech-label">Použití</span><span>Domácí skincare rituál pro pleť a oblast obličeje</span></li>
+                              <li><span class="verela-tech-label">Ovládání</span><span>Jednoduché přepínání režimů podle návodu v balení</span></li>
+                              <li><span class="verela-tech-label">Pozice</span><span>Lehčí základní model, vhodný i pro budoucí akční nabídky</span></li>
+                            </ul>
+                            <p class="verela-note">Beauty pomůcka pro domácí skincare rutinu. Nejedná se o zdravotnický prostředek.</p>
+                          </div>
+                      {%- endcase -%}
+                    {%- endif -%}
                     {%- if section.settings.show_premium_benefits -%}
                       <div class="verela-premium-card verela-premium-card--soft">
                         <h2>

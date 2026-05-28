@@ -218,6 +218,86 @@
       line-height: 1.55;
     }
 
+    .verela-tech-card.is-enhanced {
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .verela-tech-toggle {
+      width: 100%;
+      min-height: 6.4rem;
+      padding: 1.35rem 1.55rem;
+      border: 0;
+      background: transparent;
+      color: rgb(var(--color-foreground));
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      text-align: left;
+      font: inherit;
+    }
+
+    .verela-tech-toggle__title {
+      display: block;
+      font-size: 1.7rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .verela-tech-toggle__hint {
+      display: block;
+      margin-top: 0.25rem;
+      color: rgba(var(--color-foreground), 0.58);
+      font-size: 1.24rem;
+      line-height: 1.35;
+    }
+
+    .verela-tech-toggle__icon {
+      width: 2.8rem;
+      height: 2.8rem;
+      flex: 0 0 auto;
+      border-radius: 50%;
+      border: 1px solid rgba(129, 105, 72, 0.2);
+      background: #fffaf1;
+      position: relative;
+    }
+
+    .verela-tech-toggle__icon::before,
+    .verela-tech-toggle__icon::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 1rem;
+      height: 0.12rem;
+      background: rgba(var(--color-foreground), 0.72);
+      transform: translate(-50%, -50%);
+      transition: transform var(--duration-short) ease;
+    }
+
+    .verela-tech-toggle__icon::after {
+      transform: translate(-50%, -50%) rotate(90deg);
+    }
+
+    .verela-tech-card.is-open .verela-tech-toggle__icon::after {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    .verela-tech-card__body {
+      display: none;
+      padding: 0 1.55rem 1.55rem;
+    }
+
+    .verela-tech-card.is-open .verela-tech-card__body {
+      display: block;
+    }
+
+    .verela-tech-card.is-enhanced .verela-note {
+      margin-bottom: 0;
+    }
+
     .verela-led-link {
       margin-top: 1.4rem;
       display: inline-flex;
@@ -319,6 +399,10 @@
 
       .verela-product-story > .verela-premium-card:first-child {
         padding: 1.5rem;
+      }
+
+      .verela-product-story > .verela-premium-card:first-child.is-enhanced {
+        padding: 0;
       }
 
       .verela-premium-card h2 {
@@ -1981,6 +2065,57 @@
     </script>
   </div>
 </product-info>
+
+<script>
+  (() => {
+    const enhanceVerelaTechCards = (root = document) => {
+      root.querySelectorAll('.verela-tech-list').forEach((list) => {
+        const card = list.closest('.verela-premium-card');
+        if (!card || card.classList.contains('is-enhanced')) return;
+
+        const title = card.querySelector('h2');
+        const lead = card.querySelector('p:not(.verela-note)');
+        if (!title || !lead) return;
+
+        const body = document.createElement('div');
+        body.className = 'verela-tech-card__body';
+        body.hidden = true;
+
+        const bodyNodes = Array.from(card.childNodes);
+        bodyNodes.forEach((node) => body.appendChild(node));
+
+        const toggle = document.createElement('button');
+        toggle.className = 'verela-tech-toggle';
+        toggle.type = 'button';
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.innerHTML = `
+          <span>
+            <span class="verela-tech-toggle__title">${title.textContent.trim()}</span>
+            <span class="verela-tech-toggle__hint">Zobrazit popis a technické parametry</span>
+          </span>
+          <span class="verela-tech-toggle__icon" aria-hidden="true"></span>
+        `;
+
+        toggle.addEventListener('click', () => {
+          const isOpen = card.classList.toggle('is-open');
+          toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+          body.hidden = !isOpen;
+        });
+
+        card.classList.add('verela-tech-card', 'is-enhanced');
+        card.append(toggle, body);
+      });
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => enhanceVerelaTechCards());
+    } else {
+      enhanceVerelaTechCards();
+    }
+
+    document.addEventListener('shopify:section:load', (event) => enhanceVerelaTechCards(event.target));
+  })();
+</script>
 
 {% schema %}
 {

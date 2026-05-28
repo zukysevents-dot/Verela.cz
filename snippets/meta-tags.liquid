@@ -3,44 +3,54 @@
   assign og_url = canonical_url | default: request.origin
   assign og_type = 'website'
   assign og_description = page_description | default: shop.description | default: shop.name
-  assign fallback_og_image = 'verela-social-preview-v3.png' | asset_url
+  assign fallback_og_image = 'verela-social-preview-v3.png' | asset_url | prepend: 'https:'
+  assign og_image = fallback_og_image
+  assign og_image_width = 1200
+  assign og_image_height = 630
 
   if request.page_type == 'product'
     assign og_type = 'product'
+    if product.featured_image
+      assign og_image = product.featured_image | image_url: width: 1200 | prepend: 'https:'
+      assign og_image_width = product.featured_image.width
+      assign og_image_height = product.featured_image.height
+    elsif page_image
+      assign og_image = page_image | image_url: width: 1200 | prepend: 'https:'
+      assign og_image_width = page_image.width
+      assign og_image_height = page_image.height
+    endif
   elsif request.page_type == 'article'
     assign og_type = 'article'
+    if page_image
+      assign og_image = page_image | image_url: width: 1200 | prepend: 'https:'
+      assign og_image_width = page_image.width
+      assign og_image_height = page_image.height
+    endif
   elsif request.page_type == 'password'
     assign og_url = request.origin
+  elsif request.page_type != 'index' and page_image
+    assign og_image = page_image | image_url: width: 1200 | prepend: 'https:'
+    assign og_image_width = page_image.width
+    assign og_image_height = page_image.height
   endif
 
   if request.page_type == 'index'
     assign og_title = 'Verela.cz'
     assign og_description = 'Beauty a wellness pomucky pro moderni domaci peci. LED masky, skincare doplnky a self-care produkty pro kazdodenni rutinu.'
   endif
-%}
+-%}
 
-<meta property="og:site_name" content="{{ shop.name }}">
+<meta property="og:site_name" content="{{ shop.name | escape }}">
 <meta property="og:url" content="{{ og_url }}">
 <meta property="og:title" content="{{ og_title | escape }}">
 <meta property="og:type" content="{{ og_type }}">
 <meta property="og:description" content="{{ og_description | escape }}">
-
-{%- if request.page_type == 'index' -%}
-  <meta property="og:image" content="https:{{ fallback_og_image }}">
-  <meta property="og:image:secure_url" content="https:{{ fallback_og_image }}">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-{%- elsif page_image -%}
-  <meta property="og:image" content="http:{{ page_image | image_url }}">
-  <meta property="og:image:secure_url" content="https:{{ page_image | image_url }}">
-  <meta property="og:image:width" content="{{ page_image.width }}">
-  <meta property="og:image:height" content="{{ page_image.height }}">
-{%- else -%}
-  <meta property="og:image" content="https:{{ fallback_og_image }}">
-  <meta property="og:image:secure_url" content="https:{{ fallback_og_image }}">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-{%- endif -%}
+<meta property="og:image" content="{{ og_image }}">
+<meta property="og:image:secure_url" content="{{ og_image }}">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="{{ og_image_width }}">
+<meta property="og:image:height" content="{{ og_image_height }}">
+<meta property="og:image:alt" content="Verela.cz - beauty a wellness pomucky pro domaci peci">
 
 {%- if request.page_type == 'product' -%}
   <meta property="og:price:amount" content="{{ product.price | money_without_currency | strip_html }}">
@@ -53,10 +63,5 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{ og_title | escape }}">
 <meta name="twitter:description" content="{{ og_description | escape }}">
-{%- if request.page_type == 'index' -%}
-  <meta name="twitter:image" content="https:{{ fallback_og_image }}">
-{%- elsif page_image -%}
-  <meta name="twitter:image" content="https:{{ page_image | image_url }}">
-{%- else -%}
-  <meta name="twitter:image" content="https:{{ fallback_og_image }}">
-{%- endif -%}
+<meta name="twitter:image" content="{{ og_image }}">
+<meta name="twitter:image:alt" content="Verela.cz - beauty a wellness pomucky pro domaci peci">

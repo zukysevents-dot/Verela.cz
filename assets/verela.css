@@ -131,33 +131,102 @@ p,
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 0.8rem 1.4rem;
+  gap: 0.9rem;
   font-size: 1.25rem;
   line-height: 1.35;
   letter-spacing: 0 !important;
 }
 
 .verela-contact-links__label {
+  margin-right: 0.5rem;
   color: var(--verela-muted);
-  font-weight: 600;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 1.05rem;
+  letter-spacing: 0.08em !important;
 }
 
 .verela-contact-links__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  min-height: 4rem;
+  padding: 0.65rem 1.1rem;
+  border: 1px solid rgba(157, 134, 99, 0.22);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.62);
   color: var(--verela-ink);
   text-decoration: none;
   font-weight: 700;
+  box-shadow: 0 10px 24px rgba(38, 32, 26, 0.05);
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, color 180ms ease;
 }
 
 .verela-contact-links__item:hover {
+  transform: translateY(-1px);
+  border-color: rgba(140, 82, 105, 0.34);
+  background: var(--verela-surface);
   color: var(--verela-rose);
+}
+
+.verela-contact-links__icon {
+  width: 2.4rem;
+  height: 2.4rem;
+  flex: 0 0 2.4rem;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 999px;
+  background: rgba(238, 228, 213, 0.82);
+  color: var(--verela-rose);
+}
+
+.verela-contact-links__icon svg {
+  width: 1.35rem;
+  height: 1.35rem;
+  display: block;
+  fill: currentColor;
+}
+
+.verela-contact-links__text {
+  display: grid;
+  gap: 0.05rem;
+}
+
+.verela-contact-links__eyebrow {
+  color: var(--verela-muted);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em !important;
 }
 
 .verela-contact-links--header {
   justify-content: center;
   min-height: 34px;
-  padding: 0.7rem 2rem;
+  padding: 0.8rem 2rem;
   border-bottom: 1px solid rgba(157, 134, 99, 0.16);
   background: rgba(255, 252, 247, 0.58);
+}
+
+.verela-contact-links--header .verela-contact-links__item {
+  min-height: 3.2rem;
+  padding: 0.45rem 0.9rem;
+  box-shadow: none;
+}
+
+.verela-contact-links--header .verela-contact-links__icon {
+  width: 2rem;
+  height: 2rem;
+  flex-basis: 2rem;
+}
+
+.verela-contact-links--header .verela-contact-links__icon svg {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.verela-contact-links--header .verela-contact-links__eyebrow {
+  display: none;
 }
 
 .verela-contact-links--mobile {
@@ -184,6 +253,20 @@ p,
 .footer .verela-contact-links--footer .verela-contact-links__label,
 .footer .verela-contact-links--footer .verela-contact-links__item {
   color: rgba(255, 255, 255, 0.88) !important;
+}
+
+.footer .verela-contact-links--footer .verela-contact-links__item {
+  border-color: rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.footer .verela-contact-links--footer .verela-contact-links__icon {
+  background: rgba(255, 255, 255, 0.12);
+  color: #f4e6d1;
+}
+
+.footer .verela-contact-links--footer .verela-contact-links__eyebrow {
+  color: rgba(255, 255, 255, 0.58);
 }
 
 .verela-menu {
@@ -1410,6 +1493,11 @@ button.shopify-payment-button__button--unbranded {
     justify-content: center;
     padding: 0.55rem 1.2rem;
     font-size: 1.1rem;
+  }
+
+  .verela-contact-links--header .verela-contact-links__item {
+    min-height: 3rem;
+    padding: 0.42rem 0.78rem;
   }
 
   .verela-contact-links--header .verela-contact-links__label {

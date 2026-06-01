@@ -3,7 +3,7 @@
   assign og_url = canonical_url | default: request.origin
   assign og_type = 'website'
   assign og_description = page_description | default: shop.description | default: shop.name
-  assign fallback_og_image = 'verela-social-preview-v3.png' | asset_url | prepend: 'https:'
+  assign fallback_og_image = 'verela-social-preview-v4.png' | asset_url | prepend: 'https:'
   assign og_image = fallback_og_image
   assign og_image_width = 1200
   assign og_image_height = 630
@@ -41,16 +41,20 @@
 -%}
 
 <meta property="og:site_name" content="{{ shop.name | escape }}">
+<meta property="og:locale" content="cs_CZ">
 <meta property="og:url" content="{{ og_url }}">
 <meta property="og:title" content="{{ og_title | escape }}">
 <meta property="og:type" content="{{ og_type }}">
 <meta property="og:description" content="{{ og_description | escape }}">
 <meta property="og:image" content="{{ og_image }}">
+<meta property="og:image:url" content="{{ og_image }}">
 <meta property="og:image:secure_url" content="{{ og_image }}">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="{{ og_image_width }}">
 <meta property="og:image:height" content="{{ og_image_height }}">
 <meta property="og:image:alt" content="Verela.cz - beauty a wellness pomůcky pro domácí péči">
+<link rel="image_src" href="{{ og_image }}">
+<meta itemprop="image" content="{{ og_image }}">
 
 {%- if request.page_type == 'product' -%}
   <meta property="og:price:amount" content="{{ product.price | money_without_currency | strip_html }}">

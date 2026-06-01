@@ -1,4 +1,10 @@
-{%- if request.path == '/pages/contact' or request.path == '/pages/contact/' -%}
+{%- if request.path == '/pages/kontakt' or request.path == '/pages/kontakt/' -%}
+  <section class="verela-contact-page-section">
+    <div class="page-width">
+      {% render 'verela-contact-page', id_suffix: section.id %}
+    </div>
+  </section>
+{%- elsif request.path == '/pages/contact' or request.path == '/pages/contact/' -%}
   <script>
     window.location.replace('/pages/kontakt');
   </script>

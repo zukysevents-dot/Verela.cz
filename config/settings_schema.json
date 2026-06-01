@@ -1301,6 +1301,23 @@
     ]
   },
   {
+    "name": "Kontakt Verela",
+    "settings": [
+      {
+        "type": "text",
+        "id": "verela_contact_phone",
+        "label": "Telefon",
+        "default": "774 318 382"
+      },
+      {
+        "type": "text",
+        "id": "verela_contact_email",
+        "label": "Kontaktní e-mail",
+        "info": "Když zůstane prázdný, motiv použije e-mail obchodu ze Shopify."
+      }
+    ]
+  },
+  {
     "name": "t:settings_schema.social-media.name",
     "settings": [
       {

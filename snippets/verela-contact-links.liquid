@@ -1,0 +1,40 @@
+{%- liquid
+  assign contact_phone = settings.verela_contact_phone | default: '774 318 382'
+  assign contact_phone_href = contact_phone | remove: ' ' | remove: '-' | remove: '.'
+  unless contact_phone_href contains '+'
+    assign contact_phone_href = contact_phone_href | prepend: '+420'
+  endunless
+
+  assign contact_email = settings.verela_contact_email | default: shop.email
+  assign contact_label = label | default: 'Kontakt'
+  assign contact_variant = variant | default: 'default'
+-%}
+
+<div class="verela-contact-links verela-contact-links--{{ contact_variant }}">
+  <span class="verela-contact-links__label">{{ contact_label }}</span>
+
+  {%- if contact_phone != blank -%}
+    <a class="verela-contact-links__item" href="tel:{{ contact_phone_href }}">
+      <span aria-hidden="true">Tel.</span>
+      {{ contact_phone }}
+    </a>
+  {%- endif -%}
+
+  {%- if contact_email != blank -%}
+    <a class="verela-contact-links__item" href="mailto:{{ contact_email }}">
+      {{ contact_email }}
+    </a>
+  {%- endif -%}
+
+  {%- if settings.social_instagram_link != blank -%}
+    <a class="verela-contact-links__item" href="{{ settings.social_instagram_link }}" target="_blank" rel="noopener">
+      Instagram
+    </a>
+  {%- endif -%}
+
+  {%- if settings.social_facebook_link != blank -%}
+    <a class="verela-contact-links__item" href="{{ settings.social_facebook_link }}" target="_blank" rel="noopener">
+      Facebook
+    </a>
+  {%- endif -%}
+</div>

@@ -1,6 +1,8 @@
 <div class="verela-header-wrapper">
   <input class="verela-menu-state" type="checkbox" id="VerelaMobileMenu">
 
+  {% render 'verela-contact-links', variant: 'header', label: 'Jsme tu pro vás' %}
+
   <header class="verela-header">
     <label class="verela-mobile-toggle" for="VerelaMobileMenu" aria-label="Otevřít menu">
       <span class="verela-mobile-toggle__line"></span>
@@ -80,6 +82,7 @@
     <a href="/collections/telova-pece">Tělová péče</a>
     <a href="/collections/aromaterapie">Aromaterapie</a>
     <a href="/pages/kontakt">Kontakt</a>
+    {% render 'verela-contact-links', variant: 'mobile', label: 'Kontakt' %}
   </nav>
 </div>
 

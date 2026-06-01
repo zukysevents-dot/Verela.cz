@@ -127,6 +127,65 @@ p,
   gap: 28px;
 }
 
+.verela-contact-links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.8rem 1.4rem;
+  font-size: 1.25rem;
+  line-height: 1.35;
+  letter-spacing: 0 !important;
+}
+
+.verela-contact-links__label {
+  color: var(--verela-muted);
+  font-weight: 600;
+}
+
+.verela-contact-links__item {
+  color: var(--verela-ink);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.verela-contact-links__item:hover {
+  color: var(--verela-rose);
+}
+
+.verela-contact-links--header {
+  justify-content: center;
+  min-height: 34px;
+  padding: 0.7rem 2rem;
+  border-bottom: 1px solid rgba(157, 134, 99, 0.16);
+  background: rgba(255, 252, 247, 0.58);
+}
+
+.verela-contact-links--mobile {
+  display: none;
+}
+
+.verela-contact-links--contact {
+  margin: 0 0 2.4rem;
+  padding: 1.6rem;
+  border: 1px solid var(--verela-border);
+  border-radius: 8px;
+  background: var(--verela-soft);
+}
+
+.verela-contact-links--footer {
+  justify-content: center;
+  margin: 0 0 3.2rem;
+  padding: 1.8rem 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.footer .verela-contact-links--footer .verela-contact-links__label,
+.footer .verela-contact-links--footer .verela-contact-links__item {
+  color: rgba(255, 255, 255, 0.88) !important;
+}
+
 .verela-menu {
   display: flex;
   gap: 26px;
@@ -1347,6 +1406,16 @@ button.shopify-payment-button__button--unbranded {
     gap: 10px;
   }
 
+  .verela-contact-links--header {
+    justify-content: center;
+    padding: 0.55rem 1.2rem;
+    font-size: 1.1rem;
+  }
+
+  .verela-contact-links--header .verela-contact-links__label {
+    display: none;
+  }
+
   .verela-menu {
     display: none;
   }
@@ -1395,6 +1464,21 @@ button.shopify-payment-button__button--unbranded {
     display: block;
     padding: 15px 0;
     border-bottom: 1px solid var(--verela-border);
+  }
+
+  .verela-contact-links--mobile {
+    display: flex;
+    margin-top: 1.6rem;
+    padding: 1.4rem;
+    border: 1px solid var(--verela-border);
+    border-radius: 8px;
+    background: var(--verela-surface);
+  }
+
+  .verela-mobile-menu .verela-contact-links--mobile a {
+    display: inline-flex;
+    padding: 0;
+    border-bottom: 0;
   }
 
   .banner {

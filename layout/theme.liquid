@@ -33,6 +33,28 @@
 
     {% render 'meta-tags' %}
 
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": {{ shop.name | json }},
+        "url": {{ shop.url | json }},
+        "telephone": "+420774318382"{% if settings.verela_contact_email != blank or shop.email != blank %},
+        "email": {{ settings.verela_contact_email | default: shop.email | json }}{% endif %}{% if settings.social_instagram_link != blank or settings.social_facebook_link != blank %},
+        "sameAs": [
+          {%- assign first_social_link = true -%}
+          {%- if settings.social_instagram_link != blank -%}
+            {{ settings.social_instagram_link | json }}
+            {%- assign first_social_link = false -%}
+          {%- endif -%}
+          {%- if settings.social_facebook_link != blank -%}
+            {%- unless first_social_link -%},{%- endunless -%}
+            {{ settings.social_facebook_link | json }}
+          {%- endif -%}
+        ]{% endif %}
+      }
+    </script>
+
     <script src="{{ 'constants.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'pubsub.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>

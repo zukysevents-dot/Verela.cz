@@ -42,6 +42,10 @@
       assign only_empty_brand = true
     endif
   -%}
+  <div class="page-width">
+    {% render 'verela-contact-links', variant: 'footer', label: 'Kontakt Verela' %}
+  </div>
+
   {%- if section.blocks.size > 0
     or section.settings.newsletter_enable
     or section.settings.show_social

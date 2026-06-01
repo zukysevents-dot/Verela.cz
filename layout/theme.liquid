@@ -37,6 +37,11 @@
 
     {% render 'meta-tags' %}
 
+    {%- liquid
+      assign verela_instagram_link = settings.social_instagram_link | default: 'https://www.instagram.com/verela.cz/'
+      assign verela_facebook_link = settings.social_facebook_link | default: 'https://www.facebook.com/verela.cz/'
+    -%}
+
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -44,18 +49,11 @@
         "name": {{ shop.name | json }},
         "url": {{ shop.url | json }},
         "telephone": "+420774318382",
-        "email": {{ settings.verela_contact_email | default: 'info@verela.cz' | json }}{% if settings.social_instagram_link != blank or settings.social_facebook_link != blank %},
+        "email": {{ settings.verela_contact_email | default: 'info@verela.cz' | json }},
         "sameAs": [
-          {%- assign first_social_link = true -%}
-          {%- if settings.social_instagram_link != blank -%}
-            {{ settings.social_instagram_link | json }}
-            {%- assign first_social_link = false -%}
-          {%- endif -%}
-          {%- if settings.social_facebook_link != blank -%}
-            {%- unless first_social_link -%},{%- endunless -%}
-            {{ settings.social_facebook_link | json }}
-          {%- endif -%}
-        ]{% endif %}
+          {{ verela_instagram_link | json }},
+          {{ verela_facebook_link | json }}
+        ]
       }
     </script>
 

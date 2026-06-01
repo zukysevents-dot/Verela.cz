@@ -8,6 +8,8 @@
   assign contact_email = settings.verela_contact_email | default: 'info@verela.cz'
   assign form_id_suffix = id_suffix | default: section.id | default: 'page'
   assign contact_form_id = 'VerelaContactForm-' | append: form_id_suffix
+  assign instagram_link = settings.social_instagram_link | default: 'https://www.instagram.com/verela.cz/'
+  assign facebook_link = settings.social_facebook_link | default: 'https://www.facebook.com/verela.cz/'
 -%}
 
 <div class="verela-contact-page">
@@ -39,6 +41,14 @@
           <dt>E-mail</dt>
           <dd><a href="mailto:{{ contact_email }}">{{ contact_email }}</a></dd>
         </div>
+        <div>
+          <dt>Sociální sítě</dt>
+          <dd>
+            <a href="{{ instagram_link }}" target="_blank" rel="noopener">Instagram</a>
+            <span aria-hidden="true"> / </span>
+            <a href="{{ facebook_link }}" target="_blank" rel="noopener">Facebook</a>
+          </dd>
+        </div>
       </dl>
       <p class="verela-contact-trust">Odpovídáme co nejdříve v pracovních dnech.</p>
     </div>
@@ -65,8 +75,8 @@
       <span>{{ contact_email }}</span>
     </a>
 
-    {%- if settings.social_instagram_link != blank -%}
-      <a class="verela-contact-card" href="{{ settings.social_instagram_link }}" target="_blank" rel="noopener">
+    {%- if instagram_link != blank -%}
+      <a class="verela-contact-card" href="{{ instagram_link }}" target="_blank" rel="noopener">
         <span class="verela-contact-card__icon" aria-hidden="true">
           {{- 'icon-instagram.svg' | inline_asset_content -}}
         </span>
@@ -75,8 +85,8 @@
       </a>
     {%- endif -%}
 
-    {%- if settings.social_facebook_link != blank -%}
-      <a class="verela-contact-card" href="{{ settings.social_facebook_link }}" target="_blank" rel="noopener">
+    {%- if facebook_link != blank -%}
+      <a class="verela-contact-card" href="{{ facebook_link }}" target="_blank" rel="noopener">
         <span class="verela-contact-card__icon" aria-hidden="true">
           {{- 'icon-facebook.svg' | inline_asset_content -}}
         </span>

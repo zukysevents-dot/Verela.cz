@@ -8,6 +8,8 @@
   assign contact_email = settings.verela_contact_email | default: 'info@verela.cz'
   assign contact_label = label | default: 'Kontakt'
   assign contact_variant = variant | default: 'default'
+  assign instagram_link = settings.social_instagram_link | default: 'https://www.instagram.com/verela.cz/'
+  assign facebook_link = settings.social_facebook_link | default: 'https://www.facebook.com/verela.cz/'
 -%}
 
 <div class="verela-contact-links verela-contact-links--{{ contact_variant }}">
@@ -41,8 +43,8 @@
     </a>
   {%- endif -%}
 
-  {%- if settings.social_instagram_link != blank -%}
-    <a class="verela-contact-links__item" href="{{ settings.social_instagram_link }}" target="_blank" rel="noopener">
+  {%- if instagram_link != blank -%}
+    <a class="verela-contact-links__item" href="{{ instagram_link }}" target="_blank" rel="noopener">
       <span class="verela-contact-links__icon" aria-hidden="true">
         {{- 'icon-instagram.svg' | inline_asset_content -}}
       </span>
@@ -53,8 +55,8 @@
     </a>
   {%- endif -%}
 
-  {%- if settings.social_facebook_link != blank -%}
-    <a class="verela-contact-links__item" href="{{ settings.social_facebook_link }}" target="_blank" rel="noopener">
+  {%- if facebook_link != blank -%}
+    <a class="verela-contact-links__item" href="{{ facebook_link }}" target="_blank" rel="noopener">
       <span class="verela-contact-links__icon" aria-hidden="true">
         {{- 'icon-facebook.svg' | inline_asset_content -}}
       </span>

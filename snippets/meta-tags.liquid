@@ -36,7 +36,7 @@
 
   if request.page_type == 'index'
     assign og_title = 'Verela.cz'
-    assign og_description = 'Beauty a wellness pomucky pro moderni domaci peci. LED masky, skincare doplnky a self-care produkty pro kazdodenni rutinu.'
+    assign og_description = 'Beauty a wellness pomůcky pro moderní domácí péči. LED masky, skincare doplňky a self-care produkty pro každodenní rutinu.'
   endif
 -%}
 
@@ -50,7 +50,7 @@
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="{{ og_image_width }}">
 <meta property="og:image:height" content="{{ og_image_height }}">
-<meta property="og:image:alt" content="Verela.cz - beauty a wellness pomucky pro domaci peci">
+<meta property="og:image:alt" content="Verela.cz - beauty a wellness pomůcky pro domácí péči">
 
 {%- if request.page_type == 'product' -%}
   <meta property="og:price:amount" content="{{ product.price | money_without_currency | strip_html }}">
@@ -64,4 +64,4 @@
 <meta name="twitter:title" content="{{ og_title | escape }}">
 <meta name="twitter:description" content="{{ og_description | escape }}">
 <meta name="twitter:image" content="{{ og_image }}">
-<meta name="twitter:image:alt" content="Verela.cz - beauty a wellness pomucky pro domaci peci">
+<meta name="twitter:image:alt" content="Verela.cz - beauty a wellness pomůcky pro domácí péči">

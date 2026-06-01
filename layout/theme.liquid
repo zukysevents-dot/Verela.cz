@@ -16,7 +16,7 @@
 
     <title>
       {%- if request.page_type == 'index' -%}
-        Verela - dostupne LED masky a beauty pomucky pro domaci peci
+        Verela.cz - dostupné LED masky a beauty pomůcky pro domácí péči
       {%- elsif request.page_type == 'page' and page.handle == 'kontakt' -%}
         Kontakt | Verela.cz
       {%- else -%}
@@ -28,7 +28,7 @@
     </title>
 
     {% if request.page_type == 'index' %}
-      <meta name="description" content="Dostupne LED masky, Gua Sha, rollery a beauty pomucky pro domaci peci. Jasne ceny, bezpecna platba, doruceni 5-12 dnu a vraceni do 14 dnu.">
+      <meta name="description" content="Dostupné LED masky, Gua Sha, rollery a beauty pomůcky pro domácí péči. Jasné ceny, bezpečná platba, doručení 5-12 dnů a vrácení do 14 dnů.">
     {% elsif request.page_type == 'page' and page.handle == 'kontakt' %}
       <meta name="description" content="Kontaktujte Verela.cz. CEO / hlavní kontaktní osoba Patrik Zukal, telefon +420 774 318 382, e-mail info@verela.cz.">
     {% elsif page_description %}

@@ -17,6 +17,8 @@
     <title>
       {%- if request.page_type == 'index' -%}
         Verela - dostupne LED masky a beauty pomucky pro domaci peci
+      {%- elsif request.page_type == 'page' and page.handle == 'kontakt' -%}
+        Kontakt | Verela.cz
       {%- else -%}
         {{ page_title }}
         {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
@@ -27,6 +29,8 @@
 
     {% if request.page_type == 'index' %}
       <meta name="description" content="Dostupne LED masky, Gua Sha, rollery a beauty pomucky pro domaci peci. Jasne ceny, bezpecna platba, doruceni 5-12 dnu a vraceni do 14 dnu.">
+    {% elsif request.page_type == 'page' and page.handle == 'kontakt' %}
+      <meta name="description" content="Kontaktujte Verela.cz. CEO / hlavní kontaktní osoba Patrik Zukal, telefon +420 774 318 382, e-mail info@verela.cz.">
     {% elsif page_description %}
       <meta name="description" content="{{ page_description | escape }}">
     {% endif %}
@@ -39,8 +43,8 @@
         "@type": "Organization",
         "name": {{ shop.name | json }},
         "url": {{ shop.url | json }},
-        "telephone": "+420774318382"{% if settings.verela_contact_email != blank or shop.email != blank %},
-        "email": {{ settings.verela_contact_email | default: shop.email | json }}{% endif %}{% if settings.social_instagram_link != blank or settings.social_facebook_link != blank %},
+        "telephone": "+420774318382",
+        "email": {{ settings.verela_contact_email | default: 'info@verela.cz' | json }}{% if settings.social_instagram_link != blank or settings.social_facebook_link != blank %},
         "sameAs": [
           {%- assign first_social_link = true -%}
           {%- if settings.social_instagram_link != blank -%}

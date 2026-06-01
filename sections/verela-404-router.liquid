@@ -1,4 +1,18 @@
-{%- if request.path contains 'proc-led-terapie' -%}
+{%- if request.path == '/pages/contact' or request.path == '/pages/contact/' -%}
+  <script>
+    window.location.replace('/pages/kontakt');
+  </script>
+  <section class="verela-led-404">
+    <div class="page-width">
+      <p class="verela-led-kicker">Přesměrování</p>
+      <h1>Kontakt najdete na nové adrese</h1>
+      <p>Pokud vás prohlížeč nepřesměruje automaticky, pokračujte na kontaktní stránku Verela.cz.</p>
+      <div class="verela-led-hero__actions">
+        <a class="button" href="/pages/kontakt">Přejít na kontakt</a>
+      </div>
+    </div>
+  </section>
+{%- elsif request.path contains 'proc-led-terapie' -%}
   <section class="verela-led-guide">
     <div class="verela-led-guide__hero">
       {%- if section.settings.guide_image != blank -%}

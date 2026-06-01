@@ -1,0 +1,19 @@
+{{ 'section-contact-form.css' | asset_url | stylesheet_tag }}
+
+<section class="verela-contact-page-section">
+  <div class="page-width">
+    {% render 'verela-contact-page', id_suffix: section.id %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Verela contact page",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Verela contact page"
+    }
+  ]
+}
+{% endschema %}

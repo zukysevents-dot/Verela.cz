@@ -1,11 +1,11 @@
 {%- liquid
-  assign contact_phone = settings.verela_contact_phone | default: '774 318 382'
+  assign contact_phone = settings.verela_contact_phone | default: '+420 774 318 382'
   assign contact_phone_href = contact_phone | remove: ' ' | remove: '-' | remove: '.'
   unless contact_phone_href contains '+'
     assign contact_phone_href = contact_phone_href | prepend: '+420'
   endunless
 
-  assign contact_email = settings.verela_contact_email | default: shop.email
+  assign contact_email = settings.verela_contact_email | default: 'info@verela.cz'
   assign contact_label = label | default: 'Kontakt'
   assign contact_variant = variant | default: 'default'
 -%}

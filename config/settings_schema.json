@@ -1324,7 +1324,7 @@
         "type": "text",
         "id": "social_facebook_link",
         "label": "t:settings_schema.social-media.settings.social_facebook_link.label",
-        "default": "https://www.facebook.com/verela.cz/",
+        "default": "https://www.facebook.com/profile.php?id=61590181779252",
         "placeholder": "t:settings_schema.social-media.settings.social_facebook_link.info"
       },
       {

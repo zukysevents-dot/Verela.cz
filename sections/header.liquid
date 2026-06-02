@@ -10,6 +10,21 @@
       <span class="verela-mobile-toggle__line"></span>
     </label>
 
+    <a href="{{ routes.root_url }}" class="verela-logo" aria-label="{{ shop.name }}">
+      {% if settings.logo != blank %}
+        {{ settings.logo | image_url: width: 360 | image_tag: alt: shop.name, loading: 'eager' }}
+      {% else %}
+        <img
+          class="verela-logo-fallback"
+          src="{{ 'verela-logo.svg' | asset_url }}"
+          alt="{{ shop.name | escape }}"
+          width="156"
+          height="64"
+          loading="eager"
+        >
+      {% endif %}
+    </a>
+
     <nav class="verela-menu" aria-label="Hlavní menu">
       <a href="{{ routes.root_url }}">Domů</a>
       <a href="/pages/proc-led-terapie">Proč LED?</a>
@@ -30,21 +45,6 @@
       <a href="/collections/bestsellery">Bestsellery</a>
       <a href="/pages/kontakt">Kontakt</a>
     </nav>
-
-    <a href="{{ routes.root_url }}" class="verela-logo" aria-label="{{ shop.name }}">
-      {% if settings.logo != blank %}
-        {{ settings.logo | image_url: width: 360 | image_tag: alt: shop.name, loading: 'eager' }}
-      {% else %}
-        <img
-          class="verela-logo-fallback"
-          src="{{ 'verela-logo.svg' | asset_url }}"
-          alt="{{ shop.name | escape }}"
-          width="156"
-          height="64"
-          loading="eager"
-        >
-      {% endif %}
-    </a>
 
     <div class="verela-icons">
       <a class="verela-icon" href="{{ routes.search_url }}" aria-label="Hledat">

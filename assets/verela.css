@@ -119,14 +119,14 @@ p,
 }
 
 .verela-header {
-  min-height: 82px;
+  min-height: 80px;
   max-width: 1440px;
   margin: 0 auto;
   padding: 0 44px;
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: 190px minmax(0, 1fr) auto;
   align-items: center;
-  gap: 32px;
+  gap: 28px;
 }
 
 .verela-contact-links {
@@ -204,16 +204,24 @@ p,
 
 .verela-contact-links--header {
   justify-content: center;
-  min-height: 38px;
-  padding: 0.75rem 2rem;
+  min-height: 34px;
+  padding: 0.6rem 2rem;
   border-bottom: 1px solid rgba(157, 134, 99, 0.16);
-  background: rgba(255, 252, 247, 0.78);
+  background: rgba(255, 252, 247, 0.68);
+}
+
+.verela-contact-links--header .verela-contact-links__label {
+  color: var(--verela-rose);
+  font-size: 0.98rem;
 }
 
 .verela-contact-links--header .verela-contact-links__item {
-  min-height: 3.2rem;
-  padding: 0.45rem 0.9rem;
+  min-height: 2.9rem;
+  padding: 0.36rem 0.85rem;
+  border-color: transparent;
+  background: transparent;
   box-shadow: none;
+  font-size: 1.15rem;
 }
 
 .verela-contact-links--header .verela-contact-links__icon {
@@ -679,8 +687,10 @@ p,
 
 .verela-menu {
   display: flex;
+  justify-content: center;
   gap: 10px;
   align-items: center;
+  min-width: 0;
 }
 
 .verela-menu a,
@@ -782,6 +792,7 @@ p,
 }
 
 .verela-logo {
+  justify-self: start;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -796,12 +807,13 @@ p,
 .verela-logo img {
   display: block;
   width: auto;
-  max-width: 156px;
-  max-height: 64px;
+  max-width: 166px;
+  max-height: 58px;
   object-fit: contain;
 }
 
 .verela-icons {
+  justify-self: end;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -2032,6 +2044,23 @@ button.shopify-payment-button__button--unbranded {
     padding: 0 16px;
     grid-template-columns: 44px 1fr auto;
     gap: 10px;
+  }
+
+  .verela-mobile-toggle {
+    order: 1;
+  }
+
+  .verela-logo {
+    order: 2;
+    justify-self: center;
+  }
+
+  .verela-menu {
+    order: 4;
+  }
+
+  .verela-icons {
+    order: 3;
   }
 
   .verela-contact-links--header {

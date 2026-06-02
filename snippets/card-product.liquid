@@ -135,9 +135,13 @@
             %}
           </div>
 
-          <span class="verela-card-cta" aria-hidden="true">
+          <a
+            href="{{ card_product.url }}"
+            class="verela-card-cta"
+            aria-label="Zobrazit produkt {{ card_product.title | escape }}"
+          >
             Zobrazit produkt
-          </span>
+          </a>
 
           <!-- VARIANTY -->
           {%- unless hide_variants -%}

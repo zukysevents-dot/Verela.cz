@@ -206,11 +206,46 @@
     }
 
     .verela-led-proof__list li {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 16px;
+      align-items: flex-start;
       padding: 24px;
       background: var(--verela-card);
       border: 1px solid var(--verela-border);
       border-radius: 16px;
       box-shadow: 0 10px 30px rgba(23, 20, 23, 0.04);
+    }
+
+    .verela-led-proof__icon,
+    .verela-led-banner__feature-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      min-width: 42px;
+      border: 1px solid rgba(138, 64, 89, 0.16);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.76);
+      color: var(--verela-accent);
+      box-shadow: 0 10px 28px rgba(23, 20, 23, 0.05);
+    }
+
+    .verela-led-proof__icon svg,
+    .verela-led-banner__feature-icon svg {
+      width: 19px;
+      height: 19px;
+      display: block;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .verela-led-proof__copy {
+      min-width: 0;
     }
 
     .verela-led-proof__list strong {
@@ -407,6 +442,61 @@
       line-height: 1.7;
     }
 
+    .verela-led-banner__features {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      max-width: 640px;
+      margin: 0 0 30px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .verela-led-banner__feature {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-height: 72px;
+      padding: 14px;
+      border: 1px solid rgba(23, 20, 23, 0.10);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.56);
+      box-shadow: 0 14px 34px rgba(23, 20, 23, 0.045);
+      backdrop-filter: blur(8px);
+    }
+
+    .verela-led-banner__feature span:last-child {
+      color: var(--verela-text);
+      font-size: 1.32rem;
+      line-height: 1.25;
+      font-weight: 820;
+    }
+
+    .verela-led-banner__content .button {
+      gap: 10px;
+    }
+
+    .verela-led-button-arrow {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.14);
+    }
+
+    .verela-led-button-arrow svg {
+      width: 15px;
+      height: 15px;
+      display: block;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
     @media screen and (max-width: 989px) {
       .verela-led-hero {
         min-height: 760px;
@@ -483,6 +573,11 @@
 
       .verela-led-proof__list {
         grid-template-columns: 1fr;
+      }
+
+      .verela-led-banner__features {
+        grid-template-columns: 1fr;
+        max-width: 420px;
       }
 
       .verela-led-products {
@@ -606,6 +701,13 @@
         padding: 20px;
       }
 
+      .verela-led-proof__icon,
+      .verela-led-banner__feature-icon {
+        width: 38px;
+        height: 38px;
+        min-width: 38px;
+      }
+
       .verela-led-section-head h2,
       .verela-led-split__content h2,
       .verela-led-banner__content h2 {
@@ -693,16 +795,31 @@
     <div class="page-width">
       <ul class="verela-led-proof__list" role="list">
         <li>
-          <strong>Dostupnější než salon</strong>
-          <span>Domácí LED rutina bez placení každé návštěvy zvlášť.</span>
+          <span class="verela-led-proof__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M7 11.5 10.2 15 17 8"></path><path d="M4 5h16v14H4z"></path></svg>
+          </span>
+          <span class="verela-led-proof__copy">
+            <strong>Dostupnější než salon</strong>
+            <span>Domácí LED rutina bez placení každé návštěvy zvlášť.</span>
+          </span>
         </li>
         <li>
-          <strong>Bez přehnaných slibů</strong>
-          <span>Beauty a wellness pomůcky komunikujeme čistě, ne jako léčbu.</span>
+          <span class="verela-led-proof__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.4 2.9 8.4 7 10 4.1-1.6 7-5.6 7-10V6z"></path><path d="m9 12 2 2 4-5"></path></svg>
+          </span>
+          <span class="verela-led-proof__copy">
+            <strong>Bez přehnaných slibů</strong>
+            <span>Beauty a wellness pomůcky komunikujeme čistě, ne jako léčbu.</span>
+          </span>
         </li>
         <li>
-          <strong>Český nákup</strong>
-          <span>Jasná cena, bezpečná platba, doručení a vrácení podle podmínek.</span>
+          <span class="verela-led-proof__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M4 7h16"></path><path d="M4 11h16"></path><path d="M7 15h4"></path><path d="M5 19h14a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1z"></path></svg>
+          </span>
+          <span class="verela-led-proof__copy">
+            <strong>Český nákup</strong>
+            <span>Jasná cena, bezpečná platba, doručení a vrácení podle podmínek.</span>
+          </span>
         </li>
       </ul>
     </div>
@@ -821,7 +938,32 @@
           Vyberte si LED masku nebo beauty doplněk podle typu péče, ceny a toho, jak chcete svou domácí rutinu používat.
           Čistý výběr, jasné produkty a rituál, který zapadne do běžného večera.
         </p>
-        <a class="button" href="/collections/bestsellery">Vybrat bestsellery</a>
+        <ul class="verela-led-banner__features" role="list">
+          <li class="verela-led-banner__feature">
+            <span class="verela-led-banner__feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M7 4h10"></path><path d="M9 4v4l-3 8a4 4 0 0 0 4 5h4a4 4 0 0 0 4-5l-3-8V4"></path><path d="M8 15h8"></path></svg>
+            </span>
+            <span>Výběr podle typu péče</span>
+          </li>
+          <li class="verela-led-banner__feature">
+            <span class="verela-led-banner__feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 8h16"></path><path d="M6 12h6"></path><path d="M6 16h3"></path><path d="M5 20h14a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1z"></path></svg>
+            </span>
+            <span>Jasná cena bez zmatku</span>
+          </li>
+          <li class="verela-led-banner__feature">
+            <span class="verela-led-banner__feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 11 12 4l8 7"></path><path d="M6 10v10h12V10"></path><path d="M10 20v-6h4v6"></path></svg>
+            </span>
+            <span>Domácí beauty rituál</span>
+          </li>
+        </ul>
+        <a class="button" href="/collections/bestsellery">
+          Vybrat bestsellery
+          <span class="verela-led-button-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg>
+          </span>
+        </a>
       </div>
     </div>
   </div>

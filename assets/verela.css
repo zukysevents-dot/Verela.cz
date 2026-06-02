@@ -688,7 +688,7 @@ p,
 .verela-menu {
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 6px;
   align-items: center;
   min-width: 0;
 }
@@ -705,11 +705,44 @@ p,
   line-height: 1;
   background: transparent;
   border: 0;
-  padding: 1.15rem 1.2rem;
+  padding: 0.88rem 1rem;
   border-radius: 999px;
   cursor: pointer;
   font-family: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.72rem;
   transition: background 180ms ease, color 180ms ease, box-shadow 180ms ease;
+}
+
+.verela-menu__icon {
+  width: 2.25rem;
+  height: 2.25rem;
+  min-width: 2.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(140, 82, 105, 0.14);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.62);
+  color: var(--verela-rose);
+  box-shadow: 0 8px 20px rgba(38, 32, 26, 0.045);
+  transition: background 180ms ease, border-color 180ms ease, color 180ms ease;
+}
+
+.verela-menu__icon svg {
+  width: 1.28rem;
+  height: 1.28rem;
+  display: block;
+  stroke: currentColor;
+  stroke-width: 1.9;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.verela-menu__text {
+  display: inline-block;
 }
 
 .verela-menu a:hover,
@@ -722,6 +755,13 @@ p,
 .verela-category-toggle:hover {
   background: rgba(255, 255, 255, 0.72);
   box-shadow: inset 0 0 0 1px rgba(157, 134, 99, 0.16);
+}
+
+.verela-menu a:hover .verela-menu__icon,
+.verela-category-toggle:hover .verela-menu__icon {
+  color: #ffffff;
+  border-color: rgba(140, 82, 105, 0.28);
+  background: var(--verela-rose);
 }
 
 .verela-category {

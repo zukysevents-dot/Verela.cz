@@ -26,11 +26,26 @@
     </a>
 
     <nav class="verela-menu" aria-label="Hlavní menu">
-      <a href="{{ routes.root_url }}">Domů</a>
-      <a href="/pages/proc-led-terapie">Proč LED?</a>
+      <a href="{{ routes.root_url }}">
+        <span class="verela-menu__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M4 11 12 4l8 7"></path><path d="M6.5 10.5V20h11v-9.5"></path><path d="M10 20v-5h4v5"></path></svg>
+        </span>
+        <span class="verela-menu__text">Domů</span>
+      </a>
+      <a href="/pages/proc-led-terapie">
+        <span class="verela-menu__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 3v18"></path><path d="M7 8h10"></path><path d="M6 14h12"></path></svg>
+        </span>
+        <span class="verela-menu__text">Proč LED?</span>
+      </a>
 
       <div class="verela-category">
-        <button class="verela-category-toggle" type="button" aria-expanded="false">Kategorie</button>
+        <button class="verela-category-toggle" type="button" aria-expanded="false">
+          <span class="verela-menu__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M4 5h7v7H4z"></path><path d="M13 5h7v7h-7z"></path><path d="M4 14h7v5H4z"></path><path d="M13 14h7v5h-7z"></path></svg>
+          </span>
+          <span class="verela-menu__text">Kategorie</span>
+        </button>
         <ul class="verela-category-menu">
           <li><a href="/collections/led-terapie">LED terapie</a></li>
           <li><a href="/collections/bestsellery">Bestsellery</a></li>
@@ -41,9 +56,24 @@
         </ul>
       </div>
 
-      <a href="/collections/led-terapie">LED terapie</a>
-      <a href="/collections/bestsellery">Bestsellery</a>
-      <a href="/pages/kontakt">Kontakt</a>
+      <a href="/collections/led-terapie">
+        <span class="verela-menu__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M7 4h10"></path><path d="M9 4v4l-3 8a4 4 0 0 0 4 5h4a4 4 0 0 0 4-5l-3-8V4"></path><path d="M8 15h8"></path></svg>
+        </span>
+        <span class="verela-menu__text">LED terapie</span>
+      </a>
+      <a href="/collections/bestsellery">
+        <span class="verela-menu__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 4 14.4 9l5.4.8-3.9 3.8.9 5.4-4.8-2.5L7.2 19l.9-5.4-3.9-3.8L9.6 9z"></path></svg>
+        </span>
+        <span class="verela-menu__text">Bestsellery</span>
+      </a>
+      <a href="/pages/kontakt">
+        <span class="verela-menu__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M4 5h16v14H4z"></path><path d="m4 7 8 6 8-6"></path></svg>
+        </span>
+        <span class="verela-menu__text">Kontakt</span>
+      </a>
     </nav>
 
     <div class="verela-icons">

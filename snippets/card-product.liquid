@@ -82,6 +82,14 @@
 
             </div>
           </div>
+
+          <a
+            href="{{ card_product.url }}"
+            class="verela-card-media-link"
+            aria-label="Zobrazit produkt {{ card_product.title | escape }}"
+          >
+            <span class="visually-hidden">Zobrazit produkt {{ card_product.title | escape }}</span>
+          </a>
         {%- endif -%}
 
         <!-- PREMIUM SALE BADGE -->
@@ -125,6 +133,10 @@
               show_compare_at_price: true
             %}
           </div>
+
+          <span class="verela-card-cta" aria-hidden="true">
+            Zobrazit produkt
+          </span>
 
           <!-- VARIANTY -->
           {%- unless hide_variants -%}

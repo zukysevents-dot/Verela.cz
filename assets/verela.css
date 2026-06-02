@@ -934,6 +934,47 @@ button.shopify-payment-button__button--unbranded {
   aspect-ratio: 1 / 1;
 }
 
+.product-card-wrapper .card {
+  height: 100%;
+  border: 1px solid rgba(157, 134, 99, 0.18);
+  border-radius: 10px;
+  background: rgba(255, 253, 249, 0.92);
+  box-shadow: 0 16px 38px rgba(38, 32, 26, 0.06);
+  overflow: hidden;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.product-card-wrapper:hover .card {
+  transform: translateY(-3px);
+  border-color: rgba(140, 82, 105, 0.28);
+  box-shadow: 0 24px 54px rgba(38, 32, 26, 0.1);
+}
+
+.product-card-wrapper .card__inner {
+  border-radius: 10px 10px 0 0 !important;
+  background:
+    radial-gradient(circle at 78% 18%, rgba(229, 205, 174, 0.35), transparent 34%),
+    linear-gradient(135deg, #fffaf5 0%, #f5efe7 100%) !important;
+}
+
+.product-card-wrapper .card__content {
+  padding: 1.6rem 1.7rem 1.8rem;
+}
+
+.product-card-wrapper .card__heading {
+  font-size: 1.6rem;
+  line-height: 1.28;
+  letter-spacing: 0 !important;
+}
+
+.product-card-wrapper .card__heading a {
+  color: var(--verela-ink);
+  text-decoration: none;
+}
+
 .card__media,
 .card__media .media {
   inset: 0 !important;
@@ -962,6 +1003,24 @@ button.shopify-payment-button__button--unbranded {
 
 .card-wrapper:hover .card__media .media img + img {
   opacity: 0 !important;
+}
+
+.verela-card-media-link {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: block;
+  border-radius: inherit;
+  cursor: pointer;
+}
+
+.verela-card-media-link:focus-visible {
+  outline: 2px solid var(--verela-rose);
+  outline-offset: -5px;
+}
+
+.product-card-wrapper .card__badge {
+  z-index: 3;
 }
 
 .card__information {
@@ -1012,6 +1071,28 @@ button.shopify-payment-button__button--unbranded {
   color: var(--verela-muted) !important;
   font-size: 1.35rem !important;
   font-weight: 600 !important;
+}
+
+.verela-card-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.8rem;
+  margin-top: 1.2rem;
+  padding: 0 1.35rem;
+  border: 1px solid rgba(140, 82, 105, 0.2);
+  border-radius: 999px;
+  background: rgba(255, 249, 241, 0.72);
+  color: var(--verela-ink);
+  font-size: 1.25rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.product-card-wrapper:hover .verela-card-cta {
+  border-color: rgba(140, 82, 105, 0.4);
+  background: var(--verela-ink);
+  color: #fff;
 }
 
 .card-variants {

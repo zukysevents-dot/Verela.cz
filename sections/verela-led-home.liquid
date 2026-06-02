@@ -344,11 +344,11 @@
 
     .verela-led-banner {
       position: relative;
-      min-height: 560px;
+      min-height: 540px;
       display: flex;
       align-items: center;
       overflow: hidden;
-      background: var(--verela-bg);
+      background: #f5eee6;
     }
 
     .verela-led-banner::before {
@@ -359,11 +359,12 @@
       background:
         linear-gradient(
           90deg,
-          rgba(247, 241, 234, 0.96) 0%,
-          rgba(247, 241, 234, 0.86) 42%,
-          rgba(247, 241, 234, 0.30) 76%,
-          rgba(247, 241, 234, 0.10) 100%
-        );
+          rgba(245, 238, 230, 0.94) 0%,
+          rgba(245, 238, 230, 0.80) 38%,
+          rgba(245, 238, 230, 0.34) 67%,
+          rgba(245, 238, 230, 0.12) 100%
+        ),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(23, 20, 23, 0.04));
       pointer-events: none;
     }
 
@@ -384,24 +385,26 @@
     }
 
     .verela-led-banner__content {
-      max-width: 720px;
-      padding: 76px 0;
+      max-width: 610px;
+      padding: 0;
     }
 
     .verela-led-banner__content h2 {
       margin: 0 0 18px;
-      font-size: clamp(3.4rem, 4.4vw, 6rem);
-      line-height: 1.04;
+      max-width: 590px;
+      font-size: clamp(3.4rem, 4vw, 5.4rem);
+      line-height: 1.02;
       letter-spacing: 0;
       font-weight: 900;
       color: var(--verela-text);
     }
 
     .verela-led-banner__content p {
+      max-width: 560px;
       margin: 0 0 28px;
       color: var(--verela-muted);
-      font-size: 1.75rem;
-      line-height: 1.75;
+      font-size: 1.68rem;
+      line-height: 1.7;
     }
 
     @media screen and (max-width: 989px) {
@@ -503,7 +506,7 @@
       }
 
       .verela-led-banner {
-        min-height: 620px;
+        min-height: 560px;
         align-items: flex-start;
       }
 
@@ -511,9 +514,9 @@
         background:
           linear-gradient(
             90deg,
-            rgba(247, 241, 234, 0.98) 0%,
-            rgba(247, 241, 234, 0.92) 52%,
-            rgba(247, 241, 234, 0.60) 100%
+            rgba(245, 238, 230, 0.98) 0%,
+            rgba(245, 238, 230, 0.90) 54%,
+            rgba(245, 238, 230, 0.62) 100%
           );
       }
 
@@ -524,7 +527,7 @@
 
       .verela-led-banner__content {
         max-width: 92%;
-        padding: 58px 0;
+        padding: 56px 0;
       }
     }
 
@@ -813,12 +816,12 @@
     <div class="page-width verela-led-banner__inner">
       <div class="verela-led-banner__content">
         <p class="verela-led-kicker">Dostupná beauty technologie</p>
-        <h2>Začněte s LED péčí, která působí prémiově a nestojí jako salonní kúry</h2>
+        <h2>Prémiová LED rutina doma, jednoduše a bez složitostí</h2>
         <p>
-          Vyberte si masku podle ceny, typu péče a jednoduchosti použití. K tomu můžete přidat Gua Sha,
-          roller nebo další drobnosti pro kompletní domácí rituál.
+          Vyberte si LED masku nebo beauty doplněk podle typu péče, ceny a toho, jak chcete svou domácí rutinu používat.
+          Čistý výběr, jasné produkty a rituál, který zapadne do běžného večera.
         </p>
-        <a class="button" href="/collections/bestsellery">Nakupovat bestsellery</a>
+        <a class="button" href="/collections/bestsellery">Vybrat bestsellery</a>
       </div>
     </div>
   </div>

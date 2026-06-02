@@ -1611,13 +1611,13 @@ button.shopify-payment-button__button--unbranded {
 }
 
 .verela-led-banner__content {
-  max-width: 680px;
-  padding: 4rem;
-  border: 1px solid rgba(24, 22, 25, 0.08);
-  border-radius: 8px;
-  background: rgba(247, 245, 240, 0.88);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  max-width: 610px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 
 .verela-led-kicker {
@@ -1632,6 +1632,18 @@ button.shopify-payment-button__button--unbranded {
 .verela-led-hero h1,
 .verela-led-banner h2 {
   margin: 0 0 1.6rem;
+}
+
+.verela-led-banner h2 {
+  max-width: 59rem;
+  font-size: clamp(3.4rem, 4vw, 5.4rem);
+  line-height: 1.02;
+}
+
+.verela-led-banner__content p {
+  max-width: 56rem;
+  font-size: 1.68rem;
+  line-height: 1.7;
 }
 
 .verela-led-hero__price {
@@ -1828,11 +1840,14 @@ button.shopify-payment-button__button--unbranded {
 }
 
 .verela-led-banner {
-  min-height: 560px;
+  min-height: 540px;
+  background: #f5eee6;
 }
 
 .verela-led-banner::after {
-  background: linear-gradient(90deg, rgba(247, 245, 240, 0.94) 0%, rgba(247, 245, 240, 0.72) 42%, rgba(247, 245, 240, 0.10) 100%);
+  background:
+    linear-gradient(90deg, rgba(245, 238, 230, 0.94) 0%, rgba(245, 238, 230, 0.80) 38%, rgba(245, 238, 230, 0.34) 67%, rgba(245, 238, 230, 0.12) 100%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(23, 20, 23, 0.04));
 }
 
 .verela-led-guide {
@@ -2190,6 +2205,10 @@ button.shopify-payment-button__button--unbranded {
   .verela-led-hero__content,
   .verela-led-banner__content {
     padding: 2.4rem;
+  }
+
+  .verela-led-banner__content {
+    padding: 5.6rem 0;
   }
 
   .verela-led-proof__list,

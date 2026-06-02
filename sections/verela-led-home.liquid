@@ -424,6 +424,44 @@
       padding: 0;
     }
 
+    .verela-led-banner__mini-icons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 0 0 18px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .verela-led-banner__mini-icons li {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      min-height: 42px;
+      padding: 8px 13px 8px 9px;
+      border: 1px solid rgba(138, 64, 89, 0.16);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.68);
+      color: var(--verela-text);
+      font-size: 1.22rem;
+      line-height: 1.2;
+      font-weight: 820;
+      box-shadow: 0 12px 30px rgba(23, 20, 23, 0.055);
+      backdrop-filter: blur(8px);
+    }
+
+    .verela-led-banner__mini-icons svg {
+      width: 18px;
+      height: 18px;
+      display: block;
+      color: var(--verela-accent);
+      stroke: currentColor;
+      stroke-width: 1.9;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
     .verela-led-banner__content h2 {
       margin: 0 0 18px;
       max-width: 590px;
@@ -580,6 +618,10 @@
         max-width: 420px;
       }
 
+      .verela-led-banner__mini-icons {
+        max-width: 440px;
+      }
+
       .verela-led-products {
         padding-top: 52px;
         padding-bottom: 52px;
@@ -706,6 +748,11 @@
         width: 38px;
         height: 38px;
         min-width: 38px;
+      }
+
+      .verela-led-banner__mini-icons li {
+        min-height: 40px;
+        font-size: 1.14rem;
       }
 
       .verela-led-section-head h2,
@@ -933,6 +980,20 @@
     <div class="page-width verela-led-banner__inner">
       <div class="verela-led-banner__content">
         <p class="verela-led-kicker">Dostupná beauty technologie</p>
+        <ul class="verela-led-banner__mini-icons" role="list">
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18"></path><path d="M7 8h10"></path><path d="M6 14h12"></path></svg>
+            LED péče
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11 12 4l8 7"></path><path d="M6 10v10h12V10"></path><path d="M10 20v-6h4v6"></path></svg>
+            Domácí rutina
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 11.5 10.2 15 17 8"></path><path d="M4 5h16v14H4z"></path></svg>
+            Jasný výběr
+          </li>
+        </ul>
         <h2>Prémiová LED rutina doma, jednoduše a bez složitostí</h2>
         <p>
           Vyberte si LED masku nebo beauty doplněk podle typu péče, ceny a toho, jak chcete svou domácí rutinu používat.

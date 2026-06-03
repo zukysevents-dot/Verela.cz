@@ -688,7 +688,7 @@ p,
 .verela-menu {
   display: flex;
   justify-content: center;
-  gap: 6px;
+  gap: 8px;
   align-items: center;
   min-width: 0;
 }
@@ -711,31 +711,32 @@ p,
   font-family: inherit;
   display: inline-flex;
   align-items: center;
-  gap: 0.72rem;
-  transition: background 180ms ease, color 180ms ease, box-shadow 180ms ease;
+  gap: 0.68rem;
+  transition: background 180ms ease, color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
 }
 
 .verela-menu__icon {
-  width: 2.25rem;
-  height: 2.25rem;
-  min-width: 2.25rem;
+  width: 2.05rem;
+  height: 2.05rem;
+  min-width: 2.05rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(140, 82, 105, 0.14);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.62);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
   color: var(--verela-rose);
-  box-shadow: 0 8px 20px rgba(38, 32, 26, 0.045);
-  transition: background 180ms ease, border-color 180ms ease, color 180ms ease;
+  opacity: 0.82;
+  box-shadow: none;
+  transition: color 180ms ease, opacity 180ms ease, transform 180ms ease;
 }
 
 .verela-menu__icon svg {
-  width: 1.28rem;
-  height: 1.28rem;
+  width: 1.65rem;
+  height: 1.65rem;
   display: block;
   stroke: currentColor;
-  stroke-width: 1.9;
+  stroke-width: 1.7;
   fill: none;
   stroke-linecap: round;
   stroke-linejoin: round;
@@ -753,15 +754,18 @@ p,
 
 .verela-menu a:hover,
 .verela-category-toggle:hover {
-  background: rgba(255, 255, 255, 0.72);
-  box-shadow: inset 0 0 0 1px rgba(157, 134, 99, 0.16);
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow:
+    inset 0 0 0 1px rgba(157, 134, 99, 0.15),
+    0 12px 26px rgba(38, 32, 26, 0.055);
 }
 
 .verela-menu a:hover .verela-menu__icon,
 .verela-category-toggle:hover .verela-menu__icon {
-  color: #ffffff;
-  border-color: rgba(140, 82, 105, 0.28);
-  background: var(--verela-rose);
+  color: var(--verela-rose);
+  opacity: 1;
+  transform: scale(1.08);
 }
 
 .verela-category {
